@@ -4,13 +4,48 @@ using UnityEngine;
 
 public class ExperimentController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    public ExperimentManager experimentMaganer;
+
+
+
 	void Update () {
-		
-	}
+        if (Input.GetButtonDown("Select1"))
+        {
+            SelectFirst();
+        }
+
+        if (Input.GetButtonDown("Select2"))
+        {
+            SelectSecond();
+        }
+
+        if (Input.GetButtonDown("SelectUndecided"))
+        {
+            SelectUndecided();
+        }
+    }
+
+    void SelectFirst()
+    {
+        Debug.Log("First object selected");
+        //TODO log the result
+
+        experimentMaganer.LoadNextObject();
+    }
+
+    void SelectSecond()
+    {
+        Debug.Log("Second object selected");
+        //TODO log the result
+
+        experimentMaganer.LoadNextObject();
+    }
+
+    void SelectUndecided()
+    {
+        Debug.Log("Undecided selected");
+        //TODO log the result
+
+        experimentMaganer.LoadNextObject();
+    }
 }

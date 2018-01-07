@@ -12,28 +12,50 @@ public class ExperimentManager : MonoBehaviour {
     public Transform spawnPoint1;
     public Transform spawnPoint2;
 
+    private GameObject originalObject;
+    private GameObject copyObject;
+
     private Material originalMaterial;
     private Material experimentMaterial;
 
+    public GameObject[] experimentObjects;
+    private int currentItemIndex;
+
     void Start()
     {
-        PrepareMaterials();
+        currentItemIndex = 0;
+        disabledFeatureKeyword = ExperimentRunParameters.experimentPart;
 
-        DisableTestedFeature();
+        SpawnExperimentObject();
+
         
-        SpawnTestingObjects();
-
-        textDisplayObject.text = disabledFeatureKeyword;
     }
 
 
-    void Update()
+    void SpawnExperimentObject()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Spawning experiment objects");
-            Start();
-        }
+        //Despawn old
+        DespawnOldObjects();
+
+        //Set new object
+        experimentObject = experimentObjects[currentItemIndex];
+
+        textDisplayObject.text = "Test " + (currentItemIndex + 1) + "/" + experimentObjects.Length;
+
+        //Prepare materials
+        PrepareMaterials();
+
+        //Disable experiment feature
+        DisableExperimentFeatureOnMaterial();
+
+        //Spawn both objects
+        SpawnExperimentObjects();
+    }
+
+    void DespawnOldObjects()
+    {
+        Destroy(originalObject);
+        Destroy(copyObject);
     }
 
 
@@ -47,21 +69,43 @@ public class ExperimentManager : MonoBehaviour {
     }
 
 
-    void DisableTestedFeature()
+    void DisableExperimentFeatureOnMaterial()
     {
         //Disable the experiment feature
         experimentMaterial.SetTexture(disabledFeatureKeyword, null);
     }
 
 
-    void SpawnTestingObjects()
+    void SpawnExperimentObjects()
     {
-        GameObject original = Instantiate(experimentObject, spawnPoint1.position, spawnPoint1.rotation);
-        GameObject copy = Instantiate(experimentObject, spawnPoint2.position, spawnPoint2.rotation);
+        bool swapPositions = Random.value < 0.5f;
 
-        AddExperimentMaterialToObject(copy);
+        Transform actualSpawnPoint1 = swapPositions ? spawnPoint2 : spawnPoint1;
+        Transform actualSpawnPoint2 = swapPositions ? spawnPoint1 : spawnPoint2;
+
+        originalObject = Instantiate(experimentObject, actualSpawnPoint1.position, actualSpawnPoint1.rotation);
+        copyObject = Instantiate(experimentObject, actualSpawnPoint2.position, actualSpawnPoint2.rotation);
+
+        AddExperimentMaterialToObject(copyObject);
 
         Debug.Log("Experiment objects spawned.");
+    }
+
+    public void LoadNextObject()
+    {
+
+        if (currentItemIndex + 1 >= experimentObjects.Length)
+        {
+            textDisplayObject.text = "Experiment completed";
+            DespawnOldObjects();
+        }
+        else
+        {
+            currentItemIndex++;
+            experimentObject = experimentObjects[currentItemIndex];
+            SpawnExperimentObject();
+        }
+
     }
 
     void AddExperimentMaterialToObject(GameObject experimentObject)

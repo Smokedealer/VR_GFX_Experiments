@@ -1,16 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+public class ExperimentRunParameters{
 
-public class ExperimentRunParameters : MonoBehaviour {
+    public static string experimentPartName = "Normal Map";
+    public static string experimentPart = "_BumpMap";
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

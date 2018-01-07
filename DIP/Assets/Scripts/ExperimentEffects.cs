@@ -5,9 +5,9 @@ using System.Linq;
 public class ExperimentEffects {
     private Dictionary<string, string> effects;
 
-    ExperimentEffects instance;
+    static ExperimentEffects instance;
 
-    public ExperimentEffects getInstance()
+    public static ExperimentEffects getInstance()
     {
         if (instance == null)
         {
