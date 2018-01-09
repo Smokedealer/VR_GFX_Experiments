@@ -501,6 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293933888}
   - component: {fileID: 293933887}
+  - component: {fileID: 293933889}
   m_Layer: 0
   m_Name: ExperimentManager
   m_TagString: Untagged
@@ -525,6 +526,12 @@ MonoBehaviour:
   disabledFeatureKeyword: _OcclusionMap
   spawnPoint1: {fileID: 1755696260}
   spawnPoint2: {fileID: 1679491166}
+  experimentObjects:
+  - {fileID: 1000011433437920, guid: b9194464b029e4b478d5ca5d068b5179, type: 2}
+  - {fileID: 1000010214624054, guid: 55ae3db7710ab1948b1038d6747bfb61, type: 2}
+  - {fileID: 1000013391492192, guid: 181622df8f0781e45b6513bbb889600d, type: 2}
+  - {fileID: 1000012391726282, guid: 24ca497e7d0e3174886a521b0176c8a7, type: 2}
+  - {fileID: 1000011275823026, guid: c4fa03dde2a5a52439028e5fba052e5c, type: 2}
 --- !u!4 &293933888
 Transform:
   m_ObjectHideFlags: 0
@@ -538,6 +545,18 @@ Transform:
   m_Father: {fileID: 1623149388}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293933889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293933886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8916c8528d402d4fa2504fc4402039b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experimentMaganer: {fileID: 293933887}
 --- !u!1 &355972521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1068,10 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1502317100021506, guid: 7956fe467a44e464099875d167d10b2e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7956fe467a44e464099875d167d10b2e, type: 2}
   m_IsPrefabParent: 0
@@ -1392,10 +1415,7 @@ MonoBehaviour:
 
     E - select right one
 
-    R - can''t decide
-
-
-    T - Change object'
+    R - can''t decide'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
@@ -1462,19 +1482,19 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1097071431}
-    characterCount: 105
+    characterCount: 86
     spriteCount: 0
-    spaceCount: 22
-    wordCount: 22
+    spaceCount: 17
+    wordCount: 18
     linkCount: 0
-    lineCount: 6
+    lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1651,6 +1671,10 @@ Prefab:
       propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1502317100021506, guid: 7956fe467a44e464099875d167d10b2e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7956fe467a44e464099875d167d10b2e, type: 2}
   m_IsPrefabParent: 0
@@ -1671,7 +1695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1528578467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,7 +1874,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -1972,7 +1996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &2049193716
 AudioListener:
   m_ObjectHideFlags: 0
