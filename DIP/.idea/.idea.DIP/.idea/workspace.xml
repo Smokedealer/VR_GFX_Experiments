@@ -40,12 +40,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-              <folding>
-                <marker date="1516907709350" expanded="true" signature="6:125" ph="..." />
-                <marker date="1516907709350" expanded="true" signature="178:588" ph="{...}" />
-                <marker date="1516907709350" expanded="true" signature="434:586" ph="{...}" />
-                <marker date="1516907709350" expanded="true" signature="477:583" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,28 +50,63 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenu.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Menu/MainMenu.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="42" column="39" lean-forward="false" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
               <folding>
-                <marker date="1516914932088" expanded="false" signature="6:78" ph="..." />
-                <marker date="1516914932088" expanded="true" signature="124:384" ph="{...}" />
-                <marker date="1516914932088" expanded="true" signature="222:382" ph="{...}" />
+                <marker date="1516929834060" expanded="false" signature="6:126" ph="..." />
+                <marker date="1516929834060" expanded="true" signature="167:999" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="223:304" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="333:380" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="415:490" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="539:866" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="546:860" ph="/* string selectedValue = dropDown.options[dropDown.value].text; ... */" />
+                <marker date="1516929834060" expanded="true" signature="893:997" ph="{...}" />
+                <marker date="1516929834060" expanded="true" signature="929:991" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainMenu.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Menu/MainMenu.cs">
+      <file leaf-file-name="P2PManager.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/OvrAvatar/Samples/SocialStarter/Assets/Scripts/P2PManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="35" column="68" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="35" selection-end-column="68" />
+            <state relative-caret-position="51">
+              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
               <folding>
-                <marker date="1516915509654" expanded="false" signature="6:126" ph="..." />
-                <marker date="1516915509654" expanded="true" signature="167:876" ph="{...}" />
-                <marker date="1516915509654" expanded="true" signature="223:304" ph="{...}" />
-                <marker date="1516915509654" expanded="true" signature="333:380" ph="{...}" />
-                <marker date="1516915509654" expanded="true" signature="415:490" ph="{...}" />
-                <marker date="1516915509654" expanded="true" signature="539:866" ph="{...}" />
-                <marker date="1516915509654" expanded="true" signature="546:860" ph="/* string selectedValue = dropDown.options[dropDown.value].text; ... */" />
+                <marker date="1510107902000" expanded="true" signature="6:85" ph="..." />
+                <marker date="1510107902000" expanded="true" signature="87:308" ph="/* Helper class to manage a Peer-to-Peer connection to the other user. ... */" />
+                <marker date="1510107902000" expanded="true" signature="332:6609" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="559:721" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="727:2562" ph="Connection Management" />
+                <marker date="1510107902000" expanded="true" signature="797:1054" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="928:1048" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1096:1391" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1127:1385" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1274:1375" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1457:1782" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1636:1776" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="1852:2546" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="2062:2540" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="2336:2530" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="2568:4325" ph="Send Update" />
+                <marker date="1510107902000" expanded="true" signature="2698:3726" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="3783:3919" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="3976:4112" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="4171:4309" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="4331:6607" ph="Receive Update" />
+                <marker date="1510107902000" expanded="true" signature="4389:4864" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="4471:4858" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="4654:4790" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="4920:6591" ph="{...}" />
+                <marker date="1510107902000" expanded="true" signature="5120:6585" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -86,6 +116,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Menu/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/OvrAvatar/Samples/SocialStarter/Assets/Scripts/P2PManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Question.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/QuestionSet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/PostProcessingExperiments/PPExperimentController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -151,41 +182,12 @@
           <expand>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="DIP (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="DIP (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="_Scripts" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="_Scripts" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Menu" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="DIP (4 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assembly-CSharp" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Assets" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="_Scripts" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="PostProcessingExperiments" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
           </expand>
           <select />
@@ -227,12 +229,12 @@
       <option name="presentableId" value="Default" />
       <updated>1516836416652</updated>
       <workItem from="1516836422130" duration="6929000" />
-      <workItem from="1516902165802" duration="2825000" />
+      <workItem from="1516902165802" duration="4442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9754000" />
+    <option name="totallyTimeSpent" value="11371000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -305,12 +307,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <marker date="1516907709350" expanded="true" signature="6:125" ph="..." />
-            <marker date="1516907709350" expanded="true" signature="178:588" ph="{...}" />
-            <marker date="1516907709350" expanded="true" signature="434:586" ph="{...}" />
-            <marker date="1516907709350" expanded="true" signature="477:583" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -338,12 +335,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-          <folding>
-            <marker date="1516907709350" expanded="true" signature="6:125" ph="..." />
-            <marker date="1516907709350" expanded="true" signature="178:588" ph="{...}" />
-            <marker date="1516907709350" expanded="true" signature="434:586" ph="{...}" />
-            <marker date="1516907709350" expanded="true" signature="477:583" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -351,26 +343,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <marker date="1516914932088" expanded="false" signature="6:78" ph="..." />
-            <marker date="1516914932088" expanded="true" signature="124:384" ph="{...}" />
-            <marker date="1516914932088" expanded="true" signature="222:382" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Scripts/Menu/MainMenu.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="35" column="68" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="35" selection-end-column="68" />
+        <state relative-caret-position="500">
+          <caret line="42" column="39" lean-forward="false" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
           <folding>
-            <marker date="1516915509654" expanded="false" signature="6:126" ph="..." />
-            <marker date="1516915509654" expanded="true" signature="167:876" ph="{...}" />
-            <marker date="1516915509654" expanded="true" signature="223:304" ph="{...}" />
-            <marker date="1516915509654" expanded="true" signature="333:380" ph="{...}" />
-            <marker date="1516915509654" expanded="true" signature="415:490" ph="{...}" />
-            <marker date="1516915509654" expanded="true" signature="539:866" ph="{...}" />
-            <marker date="1516915509654" expanded="true" signature="546:860" ph="/* string selectedValue = dropDown.options[dropDown.value].text; ... */" />
+            <marker date="1516929834060" expanded="false" signature="6:126" ph="..." />
+            <marker date="1516929834060" expanded="true" signature="167:999" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="223:304" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="333:380" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="415:490" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="539:866" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="546:860" ph="/* string selectedValue = dropDown.options[dropDown.value].text; ... */" />
+            <marker date="1516929834060" expanded="true" signature="893:997" ph="{...}" />
+            <marker date="1516929834060" expanded="true" signature="929:991" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/OvrAvatar/Samples/SocialStarter/Assets/Scripts/P2PManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding>
+            <marker date="1510107902000" expanded="true" signature="6:85" ph="..." />
+            <marker date="1510107902000" expanded="true" signature="87:308" ph="/* Helper class to manage a Peer-to-Peer connection to the other user. ... */" />
+            <marker date="1510107902000" expanded="true" signature="332:6609" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="559:721" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="727:2562" ph="Connection Management" />
+            <marker date="1510107902000" expanded="true" signature="797:1054" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="928:1048" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1096:1391" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1127:1385" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1274:1375" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1457:1782" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1636:1776" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="1852:2546" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="2062:2540" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="2336:2530" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="2568:4325" ph="Send Update" />
+            <marker date="1510107902000" expanded="true" signature="2698:3726" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="3783:3919" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="3976:4112" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="4171:4309" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="4331:6607" ph="Receive Update" />
+            <marker date="1510107902000" expanded="true" signature="4389:4864" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="4471:4858" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="4654:4790" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="4920:6591" ph="{...}" />
+            <marker date="1510107902000" expanded="true" signature="5120:6585" ph="{...}" />
           </folding>
         </state>
       </provider>

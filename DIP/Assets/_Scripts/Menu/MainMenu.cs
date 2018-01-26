@@ -36,6 +36,11 @@ public class MainMenu : MonoBehaviour {
 //        ExperimentRunParameters.experimentPart = effectTranslated;
     }
 
-    
- 
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            Debug.Log(Input.inputString);
+        }
+    }
 }
