@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ExperimentManager : MonoBehaviour {
 
     public GameObject experimentObject;
-    public TextMeshPro textDisplayObject;
+    public TextMeshProUGUI textDisplayObject;
     public string disabledFeatureKeyword;
 
     public Transform spawnPoint1;
@@ -18,6 +19,8 @@ public class ExperimentManager : MonoBehaviour {
     private Material originalMaterial;
     private Material experimentMaterial;
 
+    private bool swapPositions;
+
     public GameObject[] experimentObjects;
     private int currentItemIndex;
 
@@ -27,12 +30,10 @@ public class ExperimentManager : MonoBehaviour {
         disabledFeatureKeyword = ExperimentRunParameters.experimentPart;
 
         SpawnExperimentObject();
-
-        
     }
 
 
-    void SpawnExperimentObject()
+    private void SpawnExperimentObject()
     {
         //Despawn old
         DespawnOldObjects();
@@ -40,7 +41,7 @@ public class ExperimentManager : MonoBehaviour {
         //Set new object
         experimentObject = experimentObjects[currentItemIndex];
 
-        textDisplayObject.text = "Test " + (currentItemIndex + 1) + "/" + experimentObjects.Length;
+        textDisplayObject.text = (currentItemIndex + 1) + "/" + experimentObjects.Length;
 
         //Prepare materials
         PrepareMaterials();
@@ -52,14 +53,14 @@ public class ExperimentManager : MonoBehaviour {
         SpawnExperimentObjects();
     }
 
-    void DespawnOldObjects()
+    private void DespawnOldObjects()
     {
         Destroy(originalObject);
         Destroy(copyObject);
     }
 
 
-    void PrepareMaterials()
+    private void PrepareMaterials()
     {
         //Get original material
         originalMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
@@ -69,16 +70,16 @@ public class ExperimentManager : MonoBehaviour {
     }
 
 
-    void DisableExperimentFeatureOnMaterial()
+    private void DisableExperimentFeatureOnMaterial()
     {
         //Disable the experiment feature
         experimentMaterial.SetTexture(disabledFeatureKeyword, null);
     }
 
 
-    void SpawnExperimentObjects()
+    private void SpawnExperimentObjects()
     {
-        bool swapPositions = Random.value < 0.5f;
+        swapPositions = Random.value < 0.5f;
 
         Transform actualSpawnPoint1 = swapPositions ? spawnPoint2 : spawnPoint1;
         Transform actualSpawnPoint2 = swapPositions ? spawnPoint1 : spawnPoint2;
@@ -96,7 +97,7 @@ public class ExperimentManager : MonoBehaviour {
 
         if (currentItemIndex + 1 >= experimentObjects.Length)
         {
-            textDisplayObject.text = "Experiment completed";
+            textDisplayObject.text = "done";
             DespawnOldObjects();
         }
         else
@@ -108,7 +109,7 @@ public class ExperimentManager : MonoBehaviour {
 
     }
 
-    void AddExperimentMaterialToObject(GameObject experimentObject)
+    private void AddExperimentMaterialToObject(GameObject experimentObject)
     {
         experimentObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(experimentMaterial);
     }

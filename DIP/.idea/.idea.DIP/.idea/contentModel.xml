@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\kares\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.-1649379612.00" t="ExcludeRecursive" />
-    <e p="C:\Users\kares\OneDrive\Documents\#Vejška\#Diplomová práce\App\DIP" t="IncludeRecursive">
+    <e p="C:\Users\Matěj Kareš\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.1041192833.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Matěj Kareš\OneDrive\Documents\#Vejška\#Diplomová práce\App\DIP" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
           <e p="ExperimentResult.cs" t="Include" />
+          <e p="FadeOutFadeIn.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
             <e p="NewBehaviourScript.cs" t="Include" />
@@ -258,66 +260,11 @@
             <e p="Unlit Crosshair.shader" t="Include" />
           </e>
         </e>
-        <e p="OvrAvatar" t="Include">
-          <e p="Content" t="Include">
-            <e p="Materials" t="Include">
-              <e p="AvatarMaterialStateShader.cginc" t="Include" />
-              <e p="AvatarSurfaceShader.shader" t="Include" />
-              <e p="AvatarSurfaceShaderPBS.shader" t="Include" />
-              <e p="AvatarSurfaceShaderSelfOccluding.shader" t="Include" />
-            </e>
-          </e>
+        <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
-            <e p="AvatarMaterialEditor.cs" t="Include" />
-          </e>
-          <e p="Samples" t="Include">
-            <e p="GripPoses" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="PoseEditHelper.cs" t="Include" />
-              </e>
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
             </e>
-            <e p="RemoteLoopback" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="RemoteLoopbackManager.cs" t="Include" />
-              </e>
-            </e>
-            <e p="SocialStarter" t="Include">
-              <e p="Assets" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="P2PManager.cs" t="Include" />
-                  <e p="PlatformManager.cs" t="Include" />
-                  <e p="PlayerController.cs" t="Include" />
-                  <e p="RemotePlayer.cs" t="Include" />
-                  <e p="RoomManager.cs" t="Include" />
-                  <e p="VoipManager.cs" t="Include" />
-                </e>
-              </e>
-              <e p="README.txt" t="Include" />
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="OvrAvatar.cs" t="Include" />
-            <e p="OvrAvatarAsset.cs" t="Include" />
-            <e p="OvrAvatarAssetMesh.cs" t="Include" />
-            <e p="OvrAvatarAssetTexture.cs" t="Include" />
-            <e p="OvrAvatarBase.cs" t="Include" />
-            <e p="OvrAvatarBody.cs" t="Include" />
-            <e p="OvrAvatarComponent.cs" t="Include" />
-            <e p="OvrAvatarDriver.cs" t="Include" />
-            <e p="OvrAvatarHand.cs" t="Include" />
-            <e p="OvrAvatarLocalDriver.cs" t="Include" />
-            <e p="OvrAvatarMeshInstance.cs" t="Include" />
-            <e p="OvrAvatarPacket.cs" t="Include" />
-            <e p="OvrAvatarProjectorRenderComponent.cs" t="Include" />
-            <e p="OvrAvatarRemoteDriver.cs" t="Include" />
-            <e p="OvrAvatarRenderComponent.cs" t="Include" />
-            <e p="OvrAvatarSDKCAPI.cs" t="Include" />
-            <e p="OvrAvatarSDKManager.cs" t="Include" />
-            <e p="OvrAvatarSettings.cs" t="Include" />
-            <e p="OvrAvatarSettingsEditor.cs" t="Include" />
-            <e p="OvrAvatarSkinnedMeshRenderComponent.cs" t="Include" />
-            <e p="OvrAvatarSkinnedMeshRenderPBSComponent.cs" t="Include" />
-            <e p="OvrAvatarTouchController.cs" t="Include" />
           </e>
         </e>
         <e p="PostProcessing" t="Include">
