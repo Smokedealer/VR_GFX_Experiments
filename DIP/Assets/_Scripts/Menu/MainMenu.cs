@@ -7,16 +7,16 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour {
 
-    //public TMP_Dropdown dropDown;
+    public TMP_Dropdown dropDown;
 
     void Start()
     {
-        //dropDown.onValueChanged.AddListener(ChangeExperimentPart);
+        dropDown.onValueChanged.AddListener(ChangeExperimentPart);
     }
 
-    public void startGame()
+    public void StartExperiment(int sceneNumber)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneNumber);
     }
 
     public void quitApplication()
@@ -27,20 +27,13 @@ public class MainMenu : MonoBehaviour {
 
     public void ChangeExperimentPart(int index)
     {
-//        string selectedValue = dropDown.options[dropDown.value].text;
-//        Debug.Log(selectedValue);
-//
-//        string effectTranslated = ExperimentEffects.getInstance().GetValue(selectedValue);
-//        Debug.Log(effectTranslated);
-//
-//        ExperimentRunParameters.experimentPart = effectTranslated;
+        string selectedValue = dropDown.options[dropDown.value].text;
+        Debug.Log(selectedValue);
+
+        string effectTranslated = ExperimentEffects.getInstance().GetValue(selectedValue);
+        Debug.Log(effectTranslated);
+
+        ExperimentRunParameters.experimentPart = effectTranslated;
     }
 
-    private void Update()
-    {
-        if (Input.anyKeyDown)
-        {
-            Debug.Log(Input.inputString);
-        }
-    }
 }

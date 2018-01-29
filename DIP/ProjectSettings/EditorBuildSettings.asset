@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bb26755257004c642be006ffaf0aafc3
   - enabled: 1
-    path: Assets/Scenes/mainTestScene.unity
+    path: Assets/Scenes/ShaderExperiments.unity
     guid: f59c83f65e00dac4d9b8403517c3c1ea
+  - enabled: 1
+    path: Assets/Scenes/PostProExperiments.unity
+    guid: 9ff4291308489414697a6bab1a180a4a
