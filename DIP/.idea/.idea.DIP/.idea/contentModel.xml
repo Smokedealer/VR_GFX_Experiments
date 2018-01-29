@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Matěj Kareš\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.1041192833.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Matěj Kareš\OneDrive\Documents\#Vejška\#Diplomová práce\App\DIP" t="IncludeRecursive">
+    <e p="C:\Users\kares\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.-1930200978.00" t="ExcludeRecursive" />
+    <e p="E:\#Diplomka\App\DIP" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -10,6 +10,7 @@
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
           <e p="ExperimentResult.cs" t="Include" />
+          <e p="ExperimentSettings.cs" t="Include" />
           <e p="FadeOutFadeIn.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
@@ -22,11 +23,11 @@
             <e p="ExperimentManager.cs" t="Include" />
             <e p="ExperimentRunParameters.cs" t="Include" />
           </e>
+          <e p="Option.cs" t="Include" />
           <e p="PostProcessingExperiments" t="Include">
             <e p="PPExperimentController.cs" t="Include" />
           </e>
           <e p="Question.cs" t="Include" />
-          <e p="QuestionSet.cs" t="Include" />
           <e p="TouchController.cs" t="Include" />
         </e>
         <e p="External" t="Include">

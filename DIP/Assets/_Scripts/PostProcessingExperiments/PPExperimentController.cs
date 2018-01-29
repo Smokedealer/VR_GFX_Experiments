@@ -10,7 +10,6 @@ public class PPExperimentController : MonoBehaviour
 	public Material cameraMetrial;
 	public TextMeshPro questionTextDisplay;
 	
-	private QuestionSet questionSet;
 	private bool effectEnabled = true;
 	
 	

@@ -36,4 +36,25 @@ public class MainMenu : MonoBehaviour {
         ExperimentRunParameters.experimentPart = effectTranslated;
     }
 
+
+    public void SaveAndLoadTest(string filename)
+    {
+        var result = new ExperimentResult();
+        var question = new Question();
+        question.questionText = "Which of the two objects is more appealing to you?";
+        question.AddLeftRightUndecidedOptions();
+        result.questions.Add(question);
+
+        result.Save(filename);
+        
+        Debug.Log("Saved");
+        
+        var loaded = new ExperimentResult();
+        loaded = ExperimentResult.Load(filename);
+        
+        Debug.Log("Start: " + loaded.experimentStartTime);
+        Debug.Log("End: " + loaded.experimentEndTime);
+        Debug.Log("QuestionSetSize: " + loaded.questions.Count);
+        
+    }
 }

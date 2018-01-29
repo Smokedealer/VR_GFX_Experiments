@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 
 public class Question
 {
-    private string questionText;
-    private List<string> questionOptions;
-    private int answerIndex;
+    [XmlElement(ElementName = "Text")]
+    public string questionText;
+    
+    [XmlArray(ElementName = "Options")]
+    [XmlArrayItem("Option")]
+    public List<string> questionOptions = new List<string>();
+    
+    [XmlElement(ElementName = "Answer")]
+    public int answerIndex;
 
-    public Question() : this("Default question text.", new List<string>()) {}
-
-    public Question(string questionText) : this(questionText, new List<string>()) {}
-
-    public Question(string questionText, List<string> questionOptions)
+    public void AddLeftRightUndecidedOptions()
     {
-        this.questionText = questionText;
-        this.questionOptions = questionOptions;
-        answerIndex = -1;
+        questionOptions.Add("Left");
+        questionOptions.Add("Can't decide");
+        questionOptions.Add("Right");
     }
-    
-    
+
+    public void AddRating(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            questionOptions.Add(i.ToString());
+        }
+    }
 }
