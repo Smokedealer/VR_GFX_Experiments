@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <ExperimentResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ExperimentStart>2018-01-30T00:33:38.5189812+01:00</ExperimentStart>
+  <ExperimentStart>2018-01-30T23:36:08.4197174+01:00</ExperimentStart>
   <ExperimentEnd>0001-01-01T00:00:00</ExperimentEnd>
   <Questions>
     <Question>
       <Text>Which of the two objects is more appealing to you?</Text>
+      <ExperimentPart>0</ExperimentPart>
       <Options>
         <Option>Left</Option>
         <Option>Can't decide</Option>

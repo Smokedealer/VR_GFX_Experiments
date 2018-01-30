@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<ExperimentResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ExperimentStart>2018-01-31T00:17:53.7211549+01:00</ExperimentStart>
+  <ExperimentEnd>2018-01-31T00:24:02.3511826+01:00</ExperimentEnd>
+  <Questions>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>0</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>0</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>1</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>0</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>2</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>2</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>3</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>2</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>4</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>0</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>5</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>0</Answer>
+    </Question>
+    <Question>
+      <Text>Which of the two objects is more visually appealing</Text>
+      <ExperimentPart>6</ExperimentPart>
+      <Options>
+        <Option>Left</Option>
+        <Option>Can't decide</Option>
+        <Option>Right</Option>
+      </Options>
+      <Answer>0</Answer>
+    </Question>
+  </Questions>
+  <SystemInfo>
+    <GPU>NVIDIA GeForce GTX 1070</GPU>
+    <Driver>Direct3D 11.0 [level 11.1]</Driver>
+    <CPU>Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz</CPU>
+  </SystemInfo>
+</ExperimentResult>

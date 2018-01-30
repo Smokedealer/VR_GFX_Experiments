@@ -6,8 +6,6 @@ public class ExperimentController : MonoBehaviour {
 
     public ExperimentManager experimentMaganer;
 
-
-
 	void Update () {
         if (Input.GetButtonDown("Select1"))
         {
@@ -28,24 +26,21 @@ public class ExperimentController : MonoBehaviour {
     void SelectFirst()
     {
         Debug.Log("First object selected");
-        //TODO log the result
-
+        experimentMaganer.LogAnswer(0);
         experimentMaganer.LoadNextObject();
     }
 
     void SelectSecond()
     {
         Debug.Log("Second object selected");
-        //TODO log the result
-
+        experimentMaganer.LogAnswer(2);
         experimentMaganer.LoadNextObject();
     }
 
     void SelectUndecided()
     {
         Debug.Log("Undecided selected");
-        //TODO log the result
-
+        experimentMaganer.LogAnswer(1);
         experimentMaganer.LoadNextObject();
     }
 }

@@ -62,15 +62,15 @@ public class OVRHapticsClip
 		{
 			if (OVRHaptics.Config.SampleSizeInBytes == 1)
 			{
-				byte sample = 0; // TODO support multi-byte samples
+				byte sample = 0; 
 				if ((i < a.Count) && (i < b.Count))
-					sample = (byte)(Mathf.Clamp(a.Samples[i] + b.Samples[i], 0, System.Byte.MaxValue)); // TODO support multi-byte samples
+					sample = (byte)(Mathf.Clamp(a.Samples[i] + b.Samples[i], 0, System.Byte.MaxValue));
 				else if (i < a.Count)
-					sample = a.Samples[i]; // TODO support multi-byte samples
+					sample = a.Samples[i]; 
 				else if (i < b.Count)
-					sample = b.Samples[i]; // TODO support multi-byte samples
+					sample = b.Samples[i]; 
 
-				WriteSample(sample); // TODO support multi-byte samples
+				WriteSample(sample); 
 			}
 		}
 	}
@@ -89,7 +89,7 @@ public class OVRHapticsClip
 	/// <summary>
 	/// Adds the specified sample to the end of the clip.
 	/// </summary>
-	public void WriteSample(byte sample) // TODO support multi-byte samples
+	public void WriteSample(byte sample)
 	{
 		if (Count >= Capacity)
 		{
@@ -99,7 +99,7 @@ public class OVRHapticsClip
 
 		if (OVRHaptics.Config.SampleSizeInBytes == 1)
 		{
-			Samples[Count * OVRHaptics.Config.SampleSizeInBytes] = sample; // TODO support multi-byte samples
+			Samples[Count * OVRHaptics.Config.SampleSizeInBytes] = sample;
 		}
 
 		Count++;
@@ -134,7 +134,7 @@ public class OVRHapticsClip
 		{
 			if (OVRHaptics.Config.SampleSizeInBytes == 1)
 			{
-				WriteSample((byte)(Mathf.Clamp01(Mathf.Abs(sourceData[i])) * System.Byte.MaxValue)); // TODO support multi-byte samples
+				WriteSample((byte)(Mathf.Clamp01(Mathf.Abs(sourceData[i])) * System.Byte.MaxValue)); 
 			}
 			i+= stepSize * sourceChannelCount;
 			accumulatedStepSizeError += stepSizeError;

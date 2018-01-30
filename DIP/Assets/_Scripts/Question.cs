@@ -32,4 +32,10 @@ public class Question
             questionOptions.Add(i.ToString());
         }
     }
+
+    public void setBasicQuestion()
+    {
+        AddLeftRightUndecidedOptions();
+        questionText = "Which of the two objects is more visually appealing";
+    }
 }

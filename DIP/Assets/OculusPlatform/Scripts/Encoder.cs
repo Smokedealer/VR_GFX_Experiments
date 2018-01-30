@@ -29,7 +29,7 @@ public class Encoder : IDisposable {
 
       ulong size = (ulong)CAPI.ovr_VoipEncoder_GetCompressedDataSize(enc);
       if(size > 0) {
-        byte[] compressedData = new byte[size]; //TODO 10376403 - pool this
+        byte[] compressedData = new byte[size]; 
         ulong sizeRead = (ulong)CAPI.ovr_VoipEncoder_GetCompressedData(enc, compressedData, (UIntPtr)size);
 
         if (sizeRead != size)

@@ -3,6 +3,7 @@
   <component name="ContentModelStore">
     <e p="C:\Users\kares\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.-1930200978.00" t="ExcludeRecursive" />
     <e p="E:\#Diplomka\App\DIP" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -438,6 +439,13 @@
             <e p="OvrAvatarSkinnedMeshRenderPBSComponent.cs" t="Include" />
             <e p="OvrAvatarSkinnedMeshRenderPBSV2Component.cs" t="Include" />
             <e p="OvrAvatarTouchController.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="PostProcessing" t="Include">

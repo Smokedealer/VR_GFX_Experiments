@@ -1193,7 +1193,7 @@ internal static class OVRPlugin
 		if (version >= OVRP_1_12_0.version)
 			return OVRP_1_12_0.ovrp_GetNodePoseState(stepId, nodeId).AngularVelocity;
 
-		return new Vector3f(); //TODO: Convert legacy quat to vec3?
+		return new Vector3f(); 
 	}
 
 	public static Vector3f GetNodeAcceleration(Node nodeId, Step stepId)
@@ -1212,7 +1212,7 @@ internal static class OVRPlugin
 		if (version >= OVRP_1_12_0.version)
 			return OVRP_1_12_0.ovrp_GetNodePoseState(stepId, nodeId).AngularAcceleration;
 
-		return new Vector3f(); //TODO: Convert legacy quat to vec3?
+		return new Vector3f(); 
 	}
 
 	public static bool GetNodePresent(Node nodeId)

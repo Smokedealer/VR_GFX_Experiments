@@ -33,9 +33,24 @@ public class MainMenu : MonoBehaviour {
         string effectTranslated = ExperimentEffects.getInstance().GetValue(selectedValue);
         Debug.Log(effectTranslated);
 
-        ExperimentRunParameters.experimentPart = effectTranslated;
+        ExperimentRunParameters.settings.experimentEffect = effectTranslated;
     }
 
+
+    public void LoadExperimentDetails()
+    {
+        var experiment = new ExperimentSettings();
+        experiment.sceneNumber = 1;
+        experiment.Save("experiment.xml");
+        
+        var settings = ExperimentSettings.Load("experiment.xml");
+        
+        if(settings == null) Debug.LogError("File not found.");
+        
+        //TODO: Zkontrolovat důležité údaje
+
+        ExperimentRunParameters.settings = settings;
+    }
 
     public void SaveAndLoadTest(string filename)
     {

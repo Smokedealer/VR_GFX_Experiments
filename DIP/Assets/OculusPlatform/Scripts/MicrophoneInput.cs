@@ -46,7 +46,7 @@ namespace Oculus.Platform
         return null;
       }
 
-      float[] samples = new float[copySize]; //TODO 10376403 - pool this
+      float[] samples = new float[copySize];
       microphoneClip.GetData(samples, lastMicrophoneSample);
       lastMicrophoneSample = pos;
       return samples;

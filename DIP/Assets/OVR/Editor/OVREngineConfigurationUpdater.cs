@@ -227,7 +227,7 @@ class OVREngineConfigurationUpdater
 
 	private static void EnforceOSIG()
 	{
-		// Don't bug the user in play mode.
+		
 		if (Application.isPlaying)
 			return;
 		
