@@ -98,10 +98,12 @@ namespace UnityEngine.EventSystems
         protected OVRInputModule()
         {}
 
-		protected new void Reset()
+#if UNITY_EDITOR
+        protected override void Reset()
         {
             allowActivationOnMobileDevice = true;
         }
+#endif
 
         [Obsolete("Mode is no longer needed on input module as it handles both mouse and keyboard simultaneously.", false)]
         public enum InputMode

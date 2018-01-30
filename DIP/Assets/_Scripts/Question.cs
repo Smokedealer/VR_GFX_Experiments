@@ -8,6 +8,9 @@ public class Question
     [XmlElement(ElementName = "Text")]
     public string questionText;
     
+    [XmlElement(ElementName = "ExperimentPart")]
+    public int experimentPart;
+    
     [XmlArray(ElementName = "Options")]
     [XmlArrayItem("Option")]
     public List<string> questionOptions = new List<string>();

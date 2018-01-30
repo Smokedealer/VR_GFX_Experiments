@@ -15,6 +15,9 @@ public class ExperimentResult
 
     [XmlArray(ElementName = "Questions")]
     public List<Question> questions;
+    
+    [XmlElement(ElementName = "SystemInfo")]
+    public SystemInfoSerializable systemInfo;
 
 
     public ExperimentResult()
@@ -22,6 +25,7 @@ public class ExperimentResult
         experimentStartTime = DateTime.Now;
         experimentEndTime = new DateTime();
         questions = new List<Question>();
+        systemInfo = new SystemInfoSerializable();
     }
 
 

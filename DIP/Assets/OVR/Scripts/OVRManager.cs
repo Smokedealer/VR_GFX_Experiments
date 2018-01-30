@@ -2,14 +2,14 @@
 
 Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
+Licensed under the Oculus VR Rift SDK License Version 3.4.1 (the "License");
 you may not use the Oculus VR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
 You may obtain a copy of the License at
 
-http://www.oculus.com/licenses/LICENSE-3.3
+https://developer.oculus.com/licenses/sdk-3.4.1
 
 Unless required by applicable law or agreed to in writing, the Oculus VR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -243,18 +243,6 @@ public class OVRManager : MonoBehaviour
 			return OVRPlugin.hasInputFocus;
 		}
 	}
-
-	/// <summary>
-	/// If true, then the Oculus health and safety warning (HSW) is currently visible.
-	/// </summary>
-	[Obsolete]
-	public static bool isHSWDisplayed { get { return false; } }
-
-	/// <summary>
-	/// If the HSW has been visible for the necessary amount of time, this will make it disappear.
-	/// </summary>
-	[Obsolete]
-	public static void DismissHSWDisplay() {}
 
 	/// <summary>
 	/// If true, chromatic de-aberration will be applied, improving the image at the cost of texture bandwidth.
@@ -782,6 +770,16 @@ public class OVRManager : MonoBehaviour
 	public bool resetTrackerOnLoad = false;
 
 	/// <summary>
+	/// If true, the Reset View in the universal menu will cause the pose to be reset. This should generally be 
+	/// enabled for applications with a stationary position in the virtual world and will allow the View Reset 
+	/// command to place the person back to a predefined location (such as a cockpit seat). 
+	/// Set this to false if you have a locomotion system because resetting the view would effectively teleport 
+	/// the player to potentially invalid locations.
+	/// </summary>
+	[Tooltip("If true, the Reset View in the universal menu will cause the pose to be reset. This should generally be enabled for applications with a stationary position in the virtual world and will allow the View Reset command to place the person back to a predefined location (such as a cockpit seat). Set this to false if you have a locomotion system because resetting the view would effectively teleport the player to potentially invalid locations.")]
+    public bool AllowRecenter = true;
+
+    /// <summary>
 	/// True if the current platform supports virtual reality.
 	/// </summary>
 	public bool isSupportedPlatform { get; private set; }
@@ -996,8 +994,11 @@ public class OVRManager : MonoBehaviour
 		if (resetTrackerOnLoad)
 			display.RecenterPose();
 
-		// Disable the occlusion mesh by default until open issues with the preview window are resolved.
-		OVRPlugin.occlusionMesh = false;
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+		// Force OcculusionMesh on all the time, you can change the value to false if you really need it be off for some reasons, 
+		// be aware there are performance drops if you don't use occlusionMesh.
+		OVRPlugin.occlusionMesh = true;
+#endif
 	}
 
 #if UNITY_EDITOR
@@ -1020,7 +1021,9 @@ public class OVRManager : MonoBehaviour
 			boundary = new OVRBoundary();
 	}
 
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 	private bool suppressDisableMixedRealityBecauseOfNoMainCameraWarning = false;
+#endif
 	private void Update()
 	{
 #if UNITY_EDITOR
@@ -1035,7 +1038,7 @@ public class OVRManager : MonoBehaviour
 		if (OVRPlugin.shouldQuit)
 			Application.Quit();
 
-		if (OVRPlugin.shouldRecenter)
+        if (AllowRecenter && OVRPlugin.shouldRecenter)
 		{
 			OVRManager.display.RecenterPose();
 		}
