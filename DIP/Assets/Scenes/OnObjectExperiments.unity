@@ -185,6 +185,10 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_PrefabInternal: {fileID: 1680822887}
+--- !u!1 &120638839 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 1680822887}
 --- !u!1 &123713389
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +741,7 @@ MonoBehaviour:
   disabledFeatureKeyword: 
   spawnPoint1: {fileID: 1755696260}
   spawnPoint2: {fileID: 1679491166}
+  FPC: {fileID: 120638839}
   experimentObjects:
   - {fileID: 1000011433437920, guid: b9194464b029e4b478d5ca5d068b5179, type: 2}
   - {fileID: 1000013391492192, guid: 181622df8f0781e45b6513bbb889600d, type: 2}
@@ -2423,6 +2428,14 @@ Prefab:
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: near clip plane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_MouseLook.lockCursor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}

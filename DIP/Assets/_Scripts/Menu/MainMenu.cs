@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour {
 
     public void quitApplication()
     {
-        //TODO Exit app
+        Application.Quit();
         Debug.Log("Application exit");
     }
 
@@ -36,17 +36,30 @@ public class MainMenu : MonoBehaviour {
         ExperimentRunParameters.settings.experimentEffect = effectTranslated;
     }
 
+    public void StartPostProcessingExperiment(string effectName)
+    {
+        int ppeSceneNumber = 2;
+        
+        ExperimentSettings settings = new ExperimentSettings();
+        settings.experimentEffect = effectName;
+        settings.sceneNumber = ppeSceneNumber;
+
+        ExperimentRunParameters.settings = settings;
+        
+        StartExperiment(ppeSceneNumber);
+    }
+
 
     public void LoadExperimentDetails()
     {
-        var experiment = new ExperimentSettings();
-        experiment.sceneNumber = 1;
-        experiment.Save("experiment.xml");
+        var file = new ExperimentSettings();
+        file.sceneNumber = 1;
+        file.Save("experiment.xml");
         
         var settings = ExperimentSettings.Load("experiment.xml");
-        
-        if(settings == null) Debug.LogError("File not found.");
-        
+
+        if (settings == null) Debug.LogError("File not found.");
+
         //TODO: Zkontrolovat důležité údaje
 
         ExperimentRunParameters.settings = settings;

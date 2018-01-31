@@ -26,6 +26,7 @@ public class ExperimentManager : MonoBehaviour {
     private Material experimentMaterial;
 
     public ExperimentResult experimentResult;
+    public GameObject FPC;  // Assign the First Person Controller to this in the Editor.
 
     private bool swapPositions;
 

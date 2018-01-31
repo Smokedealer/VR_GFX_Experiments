@@ -40,7 +40,7 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       intensity: 1
       radius: 0.3
@@ -85,13 +85,13 @@ MonoBehaviour:
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
-      lowPercent: 45
+      lowPercent: 31.093313
       highPercent: 95
       minLuminance: -5
       maxLuminance: 1
       keyValue: 0.25
       dynamicKeyValue: 1
-      adaptationType: 0
+      adaptationType: 1
       speedUp: 2
       speedDown: 1
       logMin: -8
