@@ -18,7 +18,19 @@ public class PPExperimentController : MonoBehaviour
     {
         if (Input.GetButtonDown("SceneSwap"))
         {
-            EffectToggle(ExperimentRunParameters.settings.experimentEffect);
+            string effect;
+            
+            if (ExperimentRunParameters.settings == null)
+            {
+                Debug.LogError("Effect not loaded. Using SSAO.");
+                effect = "SSAO";
+            }
+            else
+            {
+                effect = ExperimentRunParameters.settings.experimentEffect;
+            }
+            
+            EffectToggle(effect);
         }
     }
 
