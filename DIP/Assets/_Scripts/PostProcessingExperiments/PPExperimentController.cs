@@ -12,6 +12,17 @@ public class PPExperimentController : MonoBehaviour
 
     private bool effectEnabled = true;
 
+    private GameObject[] roomSpawnPoints;
+    private GameObject player;
+
+    private int currentRoomNumber = 0;
+
+    void Start()
+    {
+        roomSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(roomSpawnPoints.Length);
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,6 +43,20 @@ public class PPExperimentController : MonoBehaviour
             
             EffectToggle(effect);
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentRoomNumber = (currentRoomNumber + 1) % roomSpawnPoints.Length; 
+            NextRoom(currentRoomNumber);
+        }
+        
+    }
+
+
+    public void NextRoom(int roomNumber)
+    {
+        Debug.Log("Entering room: " + roomNumber);
+        player.transform.position = roomSpawnPoints[roomNumber].transform.position;
     }
 
     public void EffectToggle(string effect)
