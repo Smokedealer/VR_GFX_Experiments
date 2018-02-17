@@ -41,7 +41,10 @@ public class PPExperimentController : MonoBehaviour
                 effect = ExperimentRunParameters.settings.experimentEffect;
             }
             
+            SteamVR_Fade.Start(Color.black, 0.5f); 
             EffectToggle(effect);
+            SteamVR_Fade.View(Color.clear, 0.5f); 
+            
         }
 
         if (Input.GetKeyDown(KeyCode.E))

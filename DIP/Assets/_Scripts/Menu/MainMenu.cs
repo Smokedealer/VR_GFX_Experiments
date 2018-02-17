@@ -7,12 +7,6 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour {
 
-    public TMP_Dropdown dropDown;
-
-    void Start()
-    {
-        dropDown.onValueChanged.AddListener(ChangeExperimentPart);
-    }
 
     public void StartExperiment(int sceneNumber)
     {
@@ -23,17 +17,6 @@ public class MainMenu : MonoBehaviour {
     {
         Application.Quit();
         Debug.Log("Application exit");
-    }
-
-    public void ChangeExperimentPart(int index)
-    {
-        string selectedValue = dropDown.options[dropDown.value].text;
-        Debug.Log(selectedValue);
-
-        string effectTranslated = ExperimentEffects.getInstance().GetValue(selectedValue);
-        Debug.Log(effectTranslated);
-
-        ExperimentRunParameters.settings.experimentEffect = effectTranslated;
     }
 
     public void StartPostProcessingExperiment(string effectName)
