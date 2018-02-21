@@ -31,19 +31,16 @@ public class ExperimentResult
 
     public void Save(string filename)
     {
-        using (var stream = new FileStream(filename, FileMode.Create))
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(ExperimentResult));
-            serializer.Serialize(stream, this);
-        }
+        var stream = new FileStream(filename, FileMode.Create);
+        
+        XmlSerializer serializer = new XmlSerializer(typeof(ExperimentResult));
+        serializer.Serialize(stream, this);
     }
     
     public static ExperimentResult Load(string filename)
     {
-        using (var stream = new FileStream(filename, FileMode.Open))
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(ExperimentResult));
-            return (ExperimentResult)serializer.Deserialize(stream);
-        }
+        var stream = new FileStream(filename, FileMode.Open);
+        XmlSerializer serializer = new XmlSerializer(typeof(ExperimentResult));
+        return (ExperimentResult)serializer.Deserialize(stream);
     }
 }

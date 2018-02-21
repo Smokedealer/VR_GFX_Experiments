@@ -9,9 +9,10 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
+          <e p="EffectSettings.cs" t="Include" />
+          <e p="Experiment.cs" t="Include" />
           <e p="ExperimentResult.cs" t="Include" />
           <e p="ExperimentSettings.cs" t="Include" />
-          <e p="FadeOutFadeIn.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
             <e p="PauseMenuScript.cs" t="Include" />
@@ -28,6 +29,7 @@
           </e>
           <e p="Question.cs" t="Include" />
           <e p="SystemInfoSerializable.cs" t="Include" />
+          <e p="Test.cs" t="Include" />
           <e p="VRUIInput.cs" t="Include" />
           <e p="VRUIItem.cs" t="Include" />
         </e>
@@ -526,7 +528,6 @@
             <e p="SteamVR_Utils.cs" t="Include" />
           </e>
         </e>
-        <e p="UIRaycastTest.cs" t="Include" />
         <e p="VRTK" t="Include">
           <e p="Editor" t="Include">
             <e p="VRTK_AdaptiveQualityEditor.cs" t="Include" />

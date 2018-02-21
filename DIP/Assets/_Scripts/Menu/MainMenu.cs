@@ -68,4 +68,9 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("QuestionSetSize: " + loaded.questions.Count);
         
     }
+
+    public void DevButton()
+    {
+        Debug.Log("Dev button");
+    }
 }
