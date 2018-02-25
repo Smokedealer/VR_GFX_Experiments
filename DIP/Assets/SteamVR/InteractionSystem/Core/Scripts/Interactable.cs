@@ -16,9 +16,9 @@ namespace Valve.VR.InteractionSystem
 		public delegate void OnAttachedToHandDelegate( Hand hand );
 		public delegate void OnDetachedFromHandDelegate( Hand hand );
 
-		[HideInInspector]
+	
 		public event OnAttachedToHandDelegate onAttachedToHand;
-		[HideInInspector]
+
 		public event OnDetachedFromHandDelegate onDetachedFromHand;
 
 		//-------------------------------------------------

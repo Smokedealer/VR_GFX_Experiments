@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tests>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>1</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>2</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>3</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>4</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>5</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+    <Test>
+      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ObjectOneSettings>
+        <EffectActive>true</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>1</EffectIntensity>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <EffectActive>false</EffectActive>
+        <EffectName>Normal Map</EffectName>
+        <PropertyName>_BumpMap</PropertyName>
+        <EffectIntensity>0</EffectIntensity>
+      </ObjectTwoSettings>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appealing to you?</Text>
+          <ExperimentPart>6</ExperimentPart>
+          <Options>
+            <Option>Left</Option>
+            <Option>Can't decide</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+    </Test>
+  </Tests>
+</Experiment>

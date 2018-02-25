@@ -25,44 +25,48 @@ public class ExperimentManager : MonoBehaviour {
     private Material originalMaterial;
     private Material experimentMaterial;
 
-    public ExperimentResult experimentResult;
+//    public ExperimentResult experimentResult;
+    public Experiment experiment;
     public GameObject FPC;  // Assign the First Person Controller to this in the Editor.
 
     private bool swapPositions;
 
-    public GameObject[] experimentObjects;
+    public List<GameObject> experimentObjects;
     private int currentItemIndex;
+    private int currentQuestionIndex;
 
     void Start()
     {
-        experimentResult = new ExperimentResult();
-        
+        //Load experiment info
+        experiment = Experiment.Load("experimentOOSettings.xml");
+
+        //Set beginning
         currentItemIndex = 0;
-        disabledFeatureKeyword = ExperimentRunParameters.settings.experimentEffect;
-        experimentResult.experimentStartTime = DateTime.Now;
-
-        for(int i = 0; i < experimentObjects.Length; i++)  
+        
+        //Fill in experiment start time
+        experiment.experimentStartTime = DateTime.Now;
+        
+        //Load all aobjects from resources
+        foreach (var test in experiment.tests)
         {
-            Question question = new Question();
-            question.setBasicQuestion();
-            
-            experimentResult.questions.Add(question);
+            experimentObjects.Add(Resources.Load<GameObject>(test.experimentObejctName));
+            Debug.Log("Experiment object sucessfully loaded.");
         }
-
+        
         SpawnExperimentObject();
     }
 
 
     private void SpawnExperimentObject()
     {
-        //Despawn old
+        //Despawn old (if any)
         DespawnOldObjects();
 
         //Set new object
         experimentObject = experimentObjects[currentItemIndex];
 
         //Display part of the experiment
-        textDisplayObject.text = (currentItemIndex + 1) + "/" + experimentObjects.Length;
+        textDisplayObject.text = (currentItemIndex + 1) + "/" + experimentObjects.Count;
 
         //Display question
         SetQuestionText();
@@ -89,17 +93,18 @@ public class ExperimentManager : MonoBehaviour {
 
     private void SetQuestionText()
     {
-        questionTextDisplay.text = experimentResult.questions[currentItemIndex].questionText;
+        questionTextDisplay.text = experiment.tests[currentItemIndex].questions[currentQuestionIndex].questionText;
     }
 
     private void SetOptions()
     {
         RemoveAnswersDisplay();
         
-        foreach (var option in experimentResult.questions[currentItemIndex].questionOptions)
+        foreach (var option in experiment.tests[currentItemIndex].questions[currentQuestionIndex].questionOptions)
         {
             var button = Instantiate(answerButtonPrefab, answersLayout);
             button.GetComponentInChildren<TextMeshProUGUI>().text = option;
+            //TODO přidat eventy na talčítka, jinak to nic nedělá
         }
 
     }
@@ -131,6 +136,8 @@ public class ExperimentManager : MonoBehaviour {
     {
         //Disable the experiment feature
         experimentMaterial.SetTexture(disabledFeatureKeyword, null);
+        
+        //TODO vypnout 
     }
 
 
