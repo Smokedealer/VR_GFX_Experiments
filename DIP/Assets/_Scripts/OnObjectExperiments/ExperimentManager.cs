@@ -126,27 +126,22 @@ public class ExperimentManager : MonoBehaviour {
     {
         //Get original material
         originalMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
-
-        string propertyName = experiment.tests[currentItemIndex].objectOneSettings.propertyName;
-        originalMaterial.SetTexture(propertyName, null);
-
+        setPropertyByType(experiment.tests[currentItemIndex].objectOneSettings, originalMaterial);
+        
         //Create a copy to edit
         experimentMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
+        setPropertyByType(experiment.tests[currentItemIndex].objectTwoSettings, experimentMaterial);
     }
 
-    private void setPropertyByType()
+    private void setPropertyByType(EffectSettings effectSettings, Material effectMaterial)
     {
-        var effectSettingsOne = experiment.tests[currentItemIndex].objectOneSettings;
-        var effectSettingsTwo = experiment.tests[currentItemIndex].objectTwoSettings;
-        
-        
-        switch (effectSettingsOne.propertyType)
+        switch (effectSettings.propertyType)
         {
             case "texture":
-                if(!effectSettingsOne.effectActive) originalMaterial.SetTexture(effectSettingsOne.propertyName, null);
+                if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
                 break;
             case "float":
-                if(!effectSettingsOne.effectActive) originalMaterial.SetFloat(effectSettingsOne.propertyName, effectSettingsOne.effectIntensity);
+                if(!effectSettings.effectActive) effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.effectIntensity);
                 break;
         }
         
