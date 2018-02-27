@@ -66,7 +66,7 @@ public class ExperimentManager : MonoBehaviour {
         experimentObject = experimentObjects[currentItemIndex];
 
         //Display part of the experiment
-        textDisplayObject.text = (currentItemIndex + 1) + "/" + experimentObjects.Count;
+        textDisplayObject.text = currentItemIndex + 1 + "/" + experimentObjects.Count;
 
         //Display question
         SetQuestionText();
@@ -78,7 +78,7 @@ public class ExperimentManager : MonoBehaviour {
         PrepareMaterials();
 
         //Disable experiment feature
-        DisableExperimentFeatureOnMaterial();
+//        DisableExperimentFeatureOnMaterial();
 
         //Spawn both objects
         SpawnExperimentObjects();
@@ -150,15 +150,6 @@ public class ExperimentManager : MonoBehaviour {
     }
 
 
-    private void DisableExperimentFeatureOnMaterial()
-    {
-        //Disable the experiment feature
-        experimentMaterial.SetTexture(disabledFeatureKeyword, null);
-        
-        //TODO vypnout 
-    }
-
-
     private void SpawnExperimentObjects()
     {
         swapPositions = Random.value < 0.5f;
@@ -169,14 +160,27 @@ public class ExperimentManager : MonoBehaviour {
         originalObject = Instantiate(experimentObject, actualSpawnPoint1.position, actualSpawnPoint1.rotation);
         copyObject = Instantiate(experimentObject, actualSpawnPoint2.position, actualSpawnPoint2.rotation);
 
-        AddExperimentMaterialToObject(copyObject);
+        AddExperimentMaterialToObject(originalObject, copyObject);
 
         Debug.Log("Experiment objects spawned.");
     }
 
     public void LoadNextObject()
     {
-        if (currentItemIndex + 1 >= experimentObjects.Length) //Experiment is done
+        
+
+        if (currentQuestionIndex + 1 < experiment.tests[currentItemIndex].questions.Count)
+        {
+            currentQuestionIndex++;
+            
+            //TODO 
+            //if more questions go to next question
+            //else go to next object if the is any
+        }
+        
+        
+        
+        if (currentItemIndex + 1 >= experimentObjects.Count) //Experiment is done
         {
             textDisplayObject.text = "done";
             RemoveAnswersDisplay();
@@ -198,13 +202,14 @@ public class ExperimentManager : MonoBehaviour {
     private void SaveExperimentResults()
     {
         DateTime now = DateTime.Now;
-        experimentResult.experimentEndTime = now;
+        experiment.experimentEndTime = now;
         string filename = now.ToString("yyyyMMddhhmm");
-        experimentResult.Save(filename + ".xml");
+        experiment.Save("result-" + filename + ".xml");
     }
 
-    private void AddExperimentMaterialToObject(GameObject experimentObject)
+    private void AddExperimentMaterialToObject(GameObject originalObject, GameObject experimentObject)
     {
+        originalObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(originalMaterial);
         experimentObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(experimentMaterial);
     }
 
@@ -216,8 +221,8 @@ public class ExperimentManager : MonoBehaviour {
             else if (answer == 0) answer = 2;
         }
         
-        experimentResult.questions[currentItemIndex].answerIndex = answer;
-        experimentResult.questions[currentItemIndex].experimentPart = currentItemIndex;
+        experiment.tests[currentItemIndex].questions[currentQuestionIndex].answerIndex = answer;
+        experiment.tests[currentItemIndex].questions[currentQuestionIndex].experimentPart = currentItemIndex;
     }
 
     public void ReturnToMainMenu()
