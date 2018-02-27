@@ -97,6 +97,7 @@ public class MainMenu : MonoBehaviour
             {
                 effectName = "Normal Map",
                 propertyName = "_BumpMap",
+                propertyType = "texture",
                 effectIntensity = 1,
                 effectActive = true
             };
@@ -105,6 +106,7 @@ public class MainMenu : MonoBehaviour
             {
                 effectName = "Normal Map",
                 propertyName = "_BumpMap",
+                propertyType = "texture",
                 effectIntensity = 0,
                 effectActive = false
             };

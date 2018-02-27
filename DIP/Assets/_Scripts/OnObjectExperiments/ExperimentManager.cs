@@ -50,7 +50,6 @@ public class ExperimentManager : MonoBehaviour {
         foreach (var test in experiment.tests)
         {
             experimentObjects.Add(Resources.Load<GameObject>(test.experimentObejctName));
-            Debug.Log("Experiment object sucessfully loaded.");
         }
         
         SpawnExperimentObject();
@@ -135,10 +134,13 @@ public class ExperimentManager : MonoBehaviour {
 
     private void setPropertyByType(EffectSettings effectSettings, Material effectMaterial)
     {
+        Debug.Log(effectSettings.propertyName + " " + effectSettings.effectActive);
+        
         switch (effectSettings.propertyType)
         {
             case "texture":
                 if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
+                Debug.Log("I did something");
                 break;
             case "float":
                 if(!effectSettings.effectActive) effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.effectIntensity);
@@ -165,22 +167,26 @@ public class ExperimentManager : MonoBehaviour {
         Debug.Log("Experiment objects spawned.");
     }
 
-    public void LoadNextObject()
+    private bool LoadNextQuestion()
     {
-        
-
-        if (currentQuestionIndex + 1 < experiment.tests[currentItemIndex].questions.Count)
+        if (currentQuestionIndex + 1 < experiment.tests[currentQuestionIndex].questions.Count)
         {
             currentQuestionIndex++;
-            
-            //TODO 
-            //if more questions go to next question
-            //else go to next object if the is any
+            SetQuestionText();
+            SetOptions();
+            return true;
         }
-        
-        
-        
-        if (currentItemIndex + 1 >= experimentObjects.Count) //Experiment is done
+
+        return false;
+    }
+
+    public void LoadNextObject()
+    {
+        if (currentQuestionIndex + 1 < experiment.tests[currentItemIndex].questions.Count)
+        {
+            LoadNextQuestion();
+        }
+        else if (currentItemIndex + 1 >= experimentObjects.Count) //Experiment is done
         {
             textDisplayObject.text = "done";
             RemoveAnswersDisplay();
