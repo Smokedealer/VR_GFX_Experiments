@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Matěj Kareš\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.1800853894.00" t="ExcludeRecursive" />
-    <e p="D:\Diplomka\VR_GFX_Experiments\DIP" t="IncludeRecursive">
+    <e p="C:\Users\kares\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.-1930200978.00" t="ExcludeRecursive" />
+    <e p="E:\#Diplomka\App\DIP" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -39,6 +39,24 @@
               <e p="Shaders" t="Include">
                 <e p="WindShader.shader" t="Include" />
               </e>
+            </e>
+          </e>
+          <e p="Knight" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="rotator.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="clothshader.shader" t="Include" />
+              <e p="particledistort.shader" t="Include" />
+              <e p="reflectAdd.shader" t="Include" />
+            </e>
+          </e>
+          <e p="Rocks and Boulders 2" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="Blend SM2.shader" t="Include" />
+              <e p="Blend SM3.shader" t="Include" />
+              <e p="RotateGameObject.cs" t="Include" />
+              <e p="shader info.txt" t="Include" />
             </e>
           </e>
           <e p="Standard Assets" t="Include">
