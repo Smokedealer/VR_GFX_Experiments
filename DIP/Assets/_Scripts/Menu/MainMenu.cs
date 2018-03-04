@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.PostProcessing;
+using VRTK;
 
 
 public class MainMenu : MonoBehaviour
@@ -10,6 +12,10 @@ public class MainMenu : MonoBehaviour
 
     public string[] experimentObjects;
 
+    public PostProcessingProfile profile;
+
+    public SteamVR_Fade _fade;
+    
     public void StartExperiment(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
@@ -35,54 +41,65 @@ public class MainMenu : MonoBehaviour
     }
 
 
-//    public void LoadExperimentDetails()
-//    {
-//        var file = new ExperimentSettings();
-//        file.sceneNumber = 1;
-//        file.Save("experiment.xml");
-//        
-//        var settings = ExperimentSettings.Load("experiment.xml");
-//
-//        if (settings == null) Debug.LogError("File not found.");
-//
-//        //TODO: Zkontrolovat důležité údaje
-//
-//        ExperimentRunParameters.settings = settings;
-//    }
-//
-//    public void SaveAndLoadTest(string filename)
-//    {
-//        var result = new ExperimentResult();
-//        var question = new Question();
-//        question.questionText = "Which of the two objects is more appealing to you?";
-//        question.AddLeftRightUndecidedOptions();
-//        result.questions.Add(question);
-//
-//        result.Save(filename);
-//        
-//        Debug.Log("Saved");
-//        
-//        var loaded = new ExperimentResult();
-//        loaded = ExperimentResult.Load(filename);
-//        
-//        Debug.Log("Start: " + loaded.experimentStartTime);
-//        Debug.Log("End: " + loaded.experimentEndTime);
-//        Debug.Log("QuestionSetSize: " + loaded.questions.Count);
-//        
-//    }
 
     public void DevButton()
     {
+        SteamVR_Fade.Start(Color.black, 2.5f);
+        Invoke("unfade", 2.5f);
+//        SteamVR_Fade.Start(Color.clear, 0.5f);
+        
         Debug.Log("Dev button");
-        SettingsFile();
+//        SerializePPProfile();
     }
 
-    private void SettingsFile()
+    private void unfade()
     {
-        string filename = "experimentOOSettings.xml";
+                SteamVR_Fade.Start(Color.clear, 0.5f);
+   
+    }
 
-        var experiment = new Experiment();
-        experiment.tests = new List<Test>();
+
+    private void SerializePPProfile()
+    {
+        PostProExperiment experiment = new PostProExperiment();
+        experiment.tests = new List<PostProTest>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            PostProTest test = new PostProTest();
+            test.experimentRoomName = "01";
+            test.questions = new List<Question>();
+            
+            Question question1 = new Question
+            {
+                questionText = "Which of the two scenes is more appealing to you",
+                experimentPart = i
+            };
+            question1.AddTwoSceneSelectOptions();
+            
+            Question question2 = new Question
+            {
+                questionText = "Do you see any flickering",
+                experimentPart = i
+            };
+            question2.AddTwoSceneSelectOptions();
+
+            test.questions = new List<Question>(1) {question1, question2};
+            
+            experiment.tests.Add(test);
+        }
+        
+        experiment.Save("ppexperiment.xml");
+    }
+
+    private void CreateOOExperimentXML()
+    {
+        const string filename = "experimentOOSettings.xml";
+
+        var experiment = new Experiment
+        {
+            tests = new List<Test>()
+        };
 
         int i = 1;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ExperimentStart>2018-02-27T15:53:45.4578557+01:00</ExperimentStart>
-  <ExperimentEnd>2018-02-27T15:53:50.5137463+01:00</ExperimentEnd>
+  <ExperimentStart>2018-03-04T22:19:55.2100964+01:00</ExperimentStart>
+  <ExperimentEnd>2018-03-04T22:25:23.7083705+01:00</ExperimentEnd>
   <Tests>
     <Test>
       <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
@@ -9,12 +9,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -26,7 +28,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>2</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -36,12 +38,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -53,7 +57,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>2</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -63,12 +67,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -80,7 +86,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -90,12 +96,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -107,7 +115,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>2</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -117,12 +125,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -134,7 +144,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>2</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -144,12 +154,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -161,7 +173,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>2</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>
@@ -171,12 +183,14 @@
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
         <EffectName>Normal Map</EffectName>
         <PropertyName>_BumpMap</PropertyName>
+        <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
       <Questions>
@@ -188,7 +202,7 @@
             <Option>Can't decide</Option>
             <Option>Right</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>3</Answer>
         </Question>
       </Questions>
     </Test>

@@ -26,21 +26,18 @@ public class ExperimentController : MonoBehaviour {
     void SelectFirst()
     {
         Debug.Log("First object selected");
-        experimentMaganer.LogAnswer(0);
-        experimentMaganer.LoadNextObject();
+        experimentMaganer.SelectAnswer(0);
     }
 
     void SelectSecond()
     {
         Debug.Log("Second object selected");
-        experimentMaganer.LogAnswer(2);
-        experimentMaganer.LoadNextObject();
+        experimentMaganer.SelectAnswer(2);
     }
 
     void SelectUndecided()
     {
         Debug.Log("Undecided selected");
-        experimentMaganer.LogAnswer(1);
-        experimentMaganer.LoadNextObject();
+        experimentMaganer.SelectAnswer(1);
     }
 }

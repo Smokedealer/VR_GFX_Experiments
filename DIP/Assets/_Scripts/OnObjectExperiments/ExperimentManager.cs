@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class ExperimentManager : MonoBehaviour {
 
     public GameObject experimentObject;
-    public TextMeshProUGUI textDisplayObject;
+    public TextMeshProUGUI experimentPartText;
     public TextMeshProUGUI questionTextDisplay;
     public GameObject answerButtonPrefab;
     public Transform answersLayout;
@@ -25,9 +25,7 @@ public class ExperimentManager : MonoBehaviour {
     private Material originalMaterial;
     private Material experimentMaterial;
 
-//    public ExperimentResult experimentResult;
-    public Experiment experiment;
-    public GameObject FPC;  // Assign the First Person Controller to this in the Editor.
+    private Experiment experiment;
 
     private bool swapPositions;
 
@@ -65,7 +63,7 @@ public class ExperimentManager : MonoBehaviour {
         experimentObject = experimentObjects[currentItemIndex];
 
         //Display part of the experiment
-        textDisplayObject.text = currentItemIndex + 1 + "/" + experimentObjects.Count;
+        experimentPartText.text = currentItemIndex + 1 + "/" + experimentObjects.Count;
 
         //Display question
         SetQuestionText();
@@ -98,12 +96,20 @@ public class ExperimentManager : MonoBehaviour {
     private void SetOptions()
     {
         RemoveAnswersDisplay();
+
+        int optionIndex = 0;
         
         foreach (var option in experiment.tests[currentItemIndex].questions[currentQuestionIndex].questionOptions)
         {
             var button = Instantiate(answerButtonPrefab, answersLayout);
             button.GetComponentInChildren<TextMeshProUGUI>().text = option;
-            //TODO přidat eventy na talčítka, jinak to nic nedělá
+            button.GetComponent<Button>().onClick.AddListener(
+                delegate
+                {
+                    SelectAnswer(optionIndex);
+                }
+            );
+            optionIndex++;
         }
 
     }
@@ -188,7 +194,7 @@ public class ExperimentManager : MonoBehaviour {
         }
         else if (currentItemIndex + 1 >= experimentObjects.Count) //Experiment is done
         {
-            textDisplayObject.text = "done";
+            experimentPartText.text = "done";
             RemoveAnswersDisplay();
             RemoveQuestionText();
             DespawnOldObjects();
@@ -219,8 +225,12 @@ public class ExperimentManager : MonoBehaviour {
         experimentObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(experimentMaterial);
     }
 
-    public void LogAnswer(int answer)
+    public void SelectAnswer(int answer)
     {
+        Debug.Log("Answer selected: " + answer);
+        
+        //TODO [BUG] klikání controllerem na tlačítka vždy vrátí 3
+        
         if (swapPositions)
         {
             if (answer == 2) answer = 0;
@@ -229,6 +239,8 @@ public class ExperimentManager : MonoBehaviour {
         
         experiment.tests[currentItemIndex].questions[currentQuestionIndex].answerIndex = answer;
         experiment.tests[currentItemIndex].questions[currentQuestionIndex].experimentPart = currentItemIndex;
+        
+        LoadNextObject();
     }
 
     public void ReturnToMainMenu()

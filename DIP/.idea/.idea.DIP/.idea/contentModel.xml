@@ -25,6 +25,8 @@
           </e>
           <e p="Option.cs" t="Include" />
           <e p="PostProcessingExperiments" t="Include">
+            <e p="PostProExperiment.cs" t="Include" />
+            <e p="PostProTest.cs" t="Include" />
             <e p="PPExperimentController.cs" t="Include" />
           </e>
           <e p="Question.cs" t="Include" />

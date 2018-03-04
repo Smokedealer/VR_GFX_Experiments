@@ -1,4 +1,8 @@
 ﻿// Basic Teleport|Locomotion|20010
+
+using System.Diagnostics.CodeAnalysis;
+// ReSharper disable All
+
 namespace VRTK
 {
     using UnityEngine;
@@ -24,6 +28,7 @@ namespace VRTK
     /// `VRTK/Examples/004_CameraRig_BasicTeleport` uses the `VRTK_SimplePointer` script on the Controllers to initiate a laser pointer by pressing the `Touchpad` on the controller and when the laser pointer is deactivated (release the `Touchpad`) then the user is teleported to the location of the laser pointer tip as this is where the pointer destination marker position is set to.
     /// </example>
     [AddComponentMenu("VRTK/Scripts/Locomotion/VRTK_BasicTeleport")]
+    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     public class VRTK_BasicTeleport : MonoBehaviour
     {
         [Header("Base Settings")]

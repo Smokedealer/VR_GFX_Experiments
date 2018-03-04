@@ -24,6 +24,19 @@ public class Question
         questionOptions.Add("Can't decide");
         questionOptions.Add("Right");
     }
+    
+    public void AddTwoSceneSelectOptions()
+    {
+        questionOptions.Add("Version 1");
+        questionOptions.Add("Can't decide");
+        questionOptions.Add("Version 2");
+    }
+    
+    public void AddYesNoOptions()
+    {
+        questionOptions.Add("Yes");
+        questionOptions.Add("No");
+    }
 
     public void AddRating(int count)
     {

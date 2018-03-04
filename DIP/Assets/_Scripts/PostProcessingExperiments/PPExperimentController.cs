@@ -1,85 +1,275 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.PostProcessing;
+using UnityEngine.UI;
 using TMPro;
+using VRTK;
 
 public class PPExperimentController : MonoBehaviour
 {
-    public PostProcessingProfile processingProfile;
-    public Material cameraMetrial;
-    public TextMeshPro questionTextDisplay;
+    public PostProExperiment experiment;
+    public PostProcessingBehaviour postProcessingBehaviour;
+    public VRTK_HeadsetFade headsetFade;
 
-    private bool effectEnabled = true;
+    public Canvas wallUICanvas;
+    
+    public TextMeshProUGUI experimentPartText;
+    public TextMeshProUGUI questionTextDisplay;
+    public Transform answersLayout;
+    public GameObject answerButtonPrefab;
+    
+    public string prefix = "PostProProfiles/ppp_";
+    public float transitionDuration = 0.5f;
+    
+    /********************************************************/
+    
+    private List<PostProcessingProfile> postProcessingProfiles;
+    private List<Transform> roomSpawnPoints;
+    private List<Transform> canvasAnchors;
+    private List<PostProTest> tests;
+    private List<Question> questions;
 
-    private GameObject[] roomSpawnPoints;
     private GameObject player;
 
     private int currentRoomNumber = 0;
-
+    private int currentProfileIndex = 0;
+    private int currentQuestionIndex = 0;
+    
     void Start()
     {
-        roomSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(roomSpawnPoints.Length);
+        LoadProfiles();
+        FindAndSortRooms();
+        
+        experiment = PostProExperiment.Load("ppexperiment.xml");
+        //TODO Handle file not found
+        
+        tests = experiment.tests;
+        questions = tests[currentRoomNumber].questions;
+
+        SetInitilaPositions();
+        
+        StartExperiment();
     }
 
-    // Update is called once per frame
+    private void SetInitilaPositions()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
+        wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
+    }
+
+
+    private void FindAndSortRooms()
+    {
+        List<GameObject> rooms = new List<GameObject>();
+        roomSpawnPoints = new List<Transform>();
+        canvasAnchors = new List<Transform>();
+        
+        //Find all experiment rooms
+        foreach (var experimentRoom in GameObject.FindGameObjectsWithTag("ExperimentRoom"))
+        {
+            rooms.Add(experimentRoom);
+        }
+
+        //Sort them from the lefmost first
+        rooms.Sort(ComparePositionsX);
+
+        //Find spawn points and canvas anchors in each room
+        foreach (var room in rooms)
+        {
+            Transform spawnPoint = FindComponentInChildWithTag<Transform>(room, "SpawnPoint");
+            Transform canvasAnchor = FindComponentInChildWithTag<Transform>(room, "CanvasAnchor");
+            
+            roomSpawnPoints.Add(spawnPoint);
+            canvasAnchors.Add(canvasAnchor);
+        }
+    }
+    
+    
+    public static Transform FindComponentInChildWithTag<T>(GameObject parent, string tag){
+        Transform t = parent.transform;
+        foreach(Transform tr in t)
+        {
+            if(tr.tag == tag)
+            {
+                return tr;
+            }
+        }
+        return null;
+    }
+
+    private static int ComparePositionsX(GameObject a, GameObject b)
+    {
+        return a.transform.position.x.CompareTo(b.transform.position.x);
+    }
+
+    private void LoadProfiles()
+    {
+        postProcessingProfiles = new List<PostProcessingProfile>();
+
+        
+        int count = 0;
+
+        while (Resources.Load(prefix + count) != null)
+        {
+            var profile = Resources.Load<PostProcessingProfile>(prefix + count);
+            postProcessingProfiles.Add(profile);
+            count++;
+        }
+    }
+
+    
     void Update()
     {
         if (Input.GetButtonDown("SceneSwap"))
         {
-            string effect;
-            
-            if (ExperimentRunParameters.settings == null)
-            {
-                Debug.LogError("Effect not loaded. Using SSAO.");
-                effect = "SSAO";
-            }
-            else
-            {
-                effect = ExperimentRunParameters.settings.experimentEffect;
-            }
-            
-            SteamVR_Fade.Start(Color.black, 0.5f); 
-            EffectToggle(effect);
-            SteamVR_Fade.View(Color.clear, 0.5f); 
-            
+            SceneSwap();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            currentRoomNumber = (currentRoomNumber + 1) % roomSpawnPoints.Length; 
-            NextRoom(currentRoomNumber);
+            currentRoomNumber = (currentRoomNumber + 1) % roomSpawnPoints.Count; 
+            StartCoroutine(RoomSwapRoutine());
         }
+        
+        //TODO UI updates
         
     }
 
-
-    public void NextRoom(int roomNumber)
+    public void SceneSwap()
     {
-        Debug.Log("Entering room: " + roomNumber);
-        player.transform.position = roomSpawnPoints[roomNumber].transform.position;
+        StartCoroutine(EffectToggle());
+        currentProfileIndex = (currentProfileIndex + 1) % postProcessingProfiles.Count; 
     }
 
-    public void EffectToggle(string effect)
-    {
-        effectEnabled = !effectEnabled;
 
-        switch (effect)
+
+    private void LoadNextTest()
+    {
+        currentRoomNumber = (currentRoomNumber + 1) % roomSpawnPoints.Count;
+        questions = experiment.tests[currentRoomNumber].questions;
+        currentQuestionIndex = 0;
+
+        StartCoroutine(RoomSwapRoutine());
+    }
+
+
+    private void StartExperiment()
+    {
+        SetQuestionText();
+        SetOptions();
+    }
+    
+
+    public void SelectAnswer(int answerIndex)
+    {
+        questions[currentQuestionIndex].answerIndex = answerIndex;
+
+        if (currentQuestionIndex + 1 < questions.Count)
         {
-            case "SSAO":
-                processingProfile.ambientOcclusion.enabled = effectEnabled;
-                break;
-            case "AA":
-                processingProfile.antialiasing.enabled = effectEnabled;
-                break;
-            case "Bloom":
-                processingProfile.bloom.enabled = effectEnabled;
-                break;
-            case "EyeAdapt":
-                processingProfile.eyeAdaptation.enabled = effectEnabled;
-                break;
+            LoadNextQuestion();
         }
+        else
+        {
+            if (currentRoomNumber + 1 < tests.Count)
+            {
+                LoadNextTest();   
+                refreshScene();
+            }
+            else
+            {
+                EndExperiment();
+            }
+               
+        }
+
+    }
+
+    private void refreshScene()
+    {
+        SetQuestionText();
+        SetOptions();
+        experimentPartText.text = currentRoomNumber + 1 + "/" + tests.Count;
+    }
+
+    private void LoadNextQuestion()
+    {
+        currentQuestionIndex++;
+        refreshScene();
+    }
+    
+    private void SetQuestionText()
+    {
+        questionTextDisplay.text = questions[currentQuestionIndex].questionText;
+    }
+
+    private void SetOptions()
+    {
+        RemoveAnswersDisplay();
+
+        int optionIndex = 0;
+        
+        foreach (var option in questions[currentQuestionIndex].questionOptions)
+        {
+            var button = Instantiate(answerButtonPrefab, answersLayout);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = option;
+            button.GetComponent<Button>().onClick.AddListener(
+                delegate
+                {
+                    SelectAnswer(optionIndex);
+                }
+            );
+
+            optionIndex++;
+        }
+
+    }
+    
+    private void RemoveAnswersDisplay()
+    {
+        //Remove old answers
+        foreach (Transform child in answersLayout) {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void RemoveQuestionText()
+    {
+        questionTextDisplay.text = "";
+    }
+
+    IEnumerator EffectToggle()
+    {
+        headsetFade.Fade(Color.black, transitionDuration); 
+        yield return new WaitForSeconds(transitionDuration);
+//        postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
+        headsetFade.Unfade(transitionDuration);
+    }
+    
+    IEnumerator RoomSwapRoutine()
+    {
+        headsetFade.Fade(Color.black, transitionDuration);
+        yield return new WaitForSeconds(transitionDuration);
+        player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
+        wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
+        headsetFade.Unfade(transitionDuration);
+    }
+
+    public void EndExperiment()
+    {
+        DateTime now = DateTime.Now;
+        experiment.experimentEndTime = now;
+        string filename = now.ToString("yyyyMMddhhmm");
+        experiment.Save("result-p-" + filename + ".xml");
+        
+        ReturnToMainMenu();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
