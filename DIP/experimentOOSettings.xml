@@ -7,15 +7,15 @@
       <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
-        <EffectName>Normal Map</EffectName>
-        <PropertyName>_BumpMap</PropertyName>
+        <EffectName>Occlusion Map</EffectName>
+        <PropertyName>_OcclusionMap</PropertyName>
         <PropertyType>texture</PropertyType>
         <EffectIntensity>1</EffectIntensity>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <EffectActive>false</EffectActive>
-        <EffectName>Normal Map</EffectName>
-        <PropertyName>_BumpMap</PropertyName>
+        <EffectName>Occlusion Map</EffectName>
+        <PropertyName>_OcclusionMap</PropertyName>
         <PropertyType>texture</PropertyType>
         <EffectIntensity>0</EffectIntensity>
       </ObjectTwoSettings>
@@ -33,7 +33,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Chopped Wood Pile</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
@@ -62,7 +62,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Closed Sack</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
@@ -91,7 +91,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Coffee Sack</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
@@ -120,7 +120,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Wooden Barrel</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
@@ -149,7 +149,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Wooden Bucket</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>
@@ -178,7 +178,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>Wooden Crate</ExperimentObejctName>
+      <ExperimentObejctName>Milk Churn</ExperimentObejctName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>

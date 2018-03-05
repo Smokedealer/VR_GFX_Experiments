@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 using VRTK;
 
 public class PPExperimentController : MonoBehaviour
@@ -18,6 +19,8 @@ public class PPExperimentController : MonoBehaviour
     
     public TextMeshProUGUI experimentPartText;
     public TextMeshProUGUI questionTextDisplay;
+    public TextMeshProUGUI sceneValueText;
+    public TextMeshProUGUI questionValueText;
     public Transform answersLayout;
     public GameObject answerButtonPrefab;
     
@@ -52,6 +55,7 @@ public class PPExperimentController : MonoBehaviour
         SetInitilaPositions();
         
         StartExperiment();
+        refreshScene();
     }
 
     private void SetInitilaPositions()
@@ -166,6 +170,9 @@ public class PPExperimentController : MonoBehaviour
 
     public void SelectAnswer(int answerIndex)
     {
+        
+        Debug.Log("Answer" + answerIndex);
+        
         questions[currentQuestionIndex].answerIndex = answerIndex;
 
         if (currentQuestionIndex + 1 < questions.Count)
@@ -193,6 +200,7 @@ public class PPExperimentController : MonoBehaviour
         SetQuestionText();
         SetOptions();
         experimentPartText.text = currentRoomNumber + 1 + "/" + tests.Count;
+        questionValueText.text = currentQuestionIndex + 1 + "/" + questions.Count;
     }
 
     private void LoadNextQuestion()
@@ -216,16 +224,19 @@ public class PPExperimentController : MonoBehaviour
         {
             var button = Instantiate(answerButtonPrefab, answersLayout);
             button.GetComponentInChildren<TextMeshProUGUI>().text = option;
-            button.GetComponent<Button>().onClick.AddListener(
-                delegate
-                {
-                    SelectAnswer(optionIndex);
-                }
+            button.GetComponent<Button>().onClick.AddListener
+            (
+                    ButtonClickDelegate(optionIndex)
             );
 
             optionIndex++;
         }
 
+    }
+    
+    private UnityAction ButtonClickDelegate(int optionIndex)
+    {
+        return delegate { SelectAnswer(optionIndex); };
     }
     
     private void RemoveAnswersDisplay()
@@ -245,7 +256,8 @@ public class PPExperimentController : MonoBehaviour
     {
         headsetFade.Fade(Color.black, transitionDuration); 
         yield return new WaitForSeconds(transitionDuration);
-//        postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
+        postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
+        sceneValueText.text = currentProfileIndex + 1 + "/" + postProcessingProfiles.Count;
         headsetFade.Unfade(transitionDuration);
     }
     

@@ -27,37 +27,23 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Application exit");
     }
 
-    public void StartPostProcessingExperiment(string effectName)
+    public void StartPostProcessingExperiment()
     {
-        int ppeSceneNumber = 2;
-        
-        ExperimentSettings settings = new ExperimentSettings();
-        settings.experimentEffect = effectName;
-        settings.sceneNumber = ppeSceneNumber;
-
-        ExperimentRunParameters.settings = settings;
-        
-        StartExperiment(ppeSceneNumber);
+        StartExperiment(2);
     }
 
+
+    public void StartOnObjectExperiment()
+    {
+        StartExperiment(1);
+    }
 
 
     public void DevButton()
     {
-        SteamVR_Fade.Start(Color.black, 2.5f);
-        Invoke("unfade", 2.5f);
-//        SteamVR_Fade.Start(Color.clear, 0.5f);
-        
         Debug.Log("Dev button");
-//        SerializePPProfile();
+        SerializePPProfile();
     }
-
-    private void unfade()
-    {
-                SteamVR_Fade.Start(Color.clear, 0.5f);
-   
-    }
-
 
     private void SerializePPProfile()
     {

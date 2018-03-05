@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -104,15 +105,17 @@ public class ExperimentManager : MonoBehaviour {
             var button = Instantiate(answerButtonPrefab, answersLayout);
             button.GetComponentInChildren<TextMeshProUGUI>().text = option;
             button.GetComponent<Button>().onClick.AddListener(
-                delegate
-                {
-                    SelectAnswer(optionIndex);
-                }
+                buttonClickDelegate(optionIndex)
             );
             optionIndex++;
         }
-
     }
+
+    private UnityAction buttonClickDelegate(int optionIndex)
+    {
+        return delegate { SelectAnswer(optionIndex); };
+    }
+
 
     private void RemoveAnswersDisplay()
     {
@@ -131,14 +134,14 @@ public class ExperimentManager : MonoBehaviour {
     {
         //Get original material
         originalMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
-        setPropertyByType(experiment.tests[currentItemIndex].objectOneSettings, originalMaterial);
+        SetPropertyByType(experiment.tests[currentItemIndex].objectOneSettings, originalMaterial);
         
         //Create a copy to edit
         experimentMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
-        setPropertyByType(experiment.tests[currentItemIndex].objectTwoSettings, experimentMaterial);
+        SetPropertyByType(experiment.tests[currentItemIndex].objectTwoSettings, experimentMaterial);
     }
 
-    private void setPropertyByType(EffectSettings effectSettings, Material effectMaterial)
+    private void SetPropertyByType(EffectSettings effectSettings, Material effectMaterial)
     {
         Debug.Log(effectSettings.propertyName + " " + effectSettings.effectActive);
         
@@ -146,7 +149,6 @@ public class ExperimentManager : MonoBehaviour {
         {
             case "texture":
                 if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
-                Debug.Log("I did something");
                 break;
             case "float":
                 if(!effectSettings.effectActive) effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.effectIntensity);
@@ -170,7 +172,6 @@ public class ExperimentManager : MonoBehaviour {
 
         AddExperimentMaterialToObject(originalObject, copyObject);
 
-        Debug.Log("Experiment objects spawned.");
     }
 
     private bool LoadNextQuestion()
@@ -221,6 +222,8 @@ public class ExperimentManager : MonoBehaviour {
 
     private void AddExperimentMaterialToObject(GameObject originalObject, GameObject experimentObject)
     {
+        Debug.Log("Same? " + originalMaterial.Equals(experimentMaterial));
+        
         originalObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(originalMaterial);
         experimentObject.GetComponent<Renderer>().material.CopyPropertiesFromMaterial(experimentMaterial);
     }
