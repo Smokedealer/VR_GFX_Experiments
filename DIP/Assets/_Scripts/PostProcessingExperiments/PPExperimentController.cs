@@ -46,7 +46,7 @@ public class PPExperimentController : MonoBehaviour
         LoadProfiles();
         FindAndSortRooms();
         
-        experiment = PostProExperiment.Load("ppexperiment.xml");
+        experiment = PostProExperiment.Load("experimentPPSettings.xml");
         //TODO Handle file not found
         
         tests = experiment.tests;
