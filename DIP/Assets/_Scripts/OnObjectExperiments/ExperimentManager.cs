@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 
 public class ExperimentManager : MonoBehaviour {
 
-    public GameObject experimentObject;
     public TextMeshProUGUI experimentPartText;
     public TextMeshProUGUI questionTextDisplay;
     public GameObject answerButtonPrefab;
@@ -20,6 +19,9 @@ public class ExperimentManager : MonoBehaviour {
     public Transform spawnPoint1;
     public Transform spawnPoint2;
 
+    /********************************************/
+    
+    private GameObject experimentObject;
     private GameObject originalObject;
     private GameObject copyObject;
 
@@ -30,7 +32,10 @@ public class ExperimentManager : MonoBehaviour {
 
     private bool swapPositions;
 
-    public List<GameObject> experimentObjects;
+
+    public StringGameObjectDictionary experimentObjects;
+    
+//    public List<GameObject> experimentObjects;
     private int currentItemIndex;
     private int currentQuestionIndex;
 
@@ -45,12 +50,7 @@ public class ExperimentManager : MonoBehaviour {
         //Fill in experiment start time
         experiment.experimentStartTime = DateTime.Now;
         
-        //Load all aobjects from resources
-        foreach (var test in experiment.tests)
-        {
-            experimentObjects.Add(Resources.Load<GameObject>(test.experimentObejctName));
-        }
-        
+                
         SpawnExperimentObject();
     }
 
@@ -61,10 +61,20 @@ public class ExperimentManager : MonoBehaviour {
         DespawnOldObjects();
 
         //Set new object
-        experimentObject = experimentObjects[currentItemIndex];
+        string objectTag = experiment.tests[currentItemIndex].experimentObejctName;
+        if (experimentObjects.dictionary.ContainsKey(objectTag))
+        {
+            experimentObject = experimentObjects.dictionary[objectTag];
+        }
+        else
+        {
+            //TODO načítá objekt ze souboru, který neexistuje
+            Debug.Log("Object with tag " + objectTag + " is not in the object dictionary.");
+            //
+        }
 
         //Display part of the experiment
-        experimentPartText.text = currentItemIndex + 1 + "/" + experimentObjects.Count;
+        experimentPartText.text = currentItemIndex + 1 + "/" + experiment.tests.Count;
 
         //Display question
         SetQuestionText();
@@ -74,9 +84,6 @@ public class ExperimentManager : MonoBehaviour {
         
         //Prepare materials
         PrepareMaterials();
-
-        //Disable experiment feature
-//        DisableExperimentFeatureOnMaterial();
 
         //Spawn both objects
         SpawnExperimentObjects();
@@ -149,6 +156,7 @@ public class ExperimentManager : MonoBehaviour {
         {
             case "texture":
                 if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
+                effectMaterial.SetFloat("_BumpScale", 10f);
                 break;
             case "float":
                 if(!effectSettings.effectActive) effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.effectIntensity);
@@ -193,7 +201,7 @@ public class ExperimentManager : MonoBehaviour {
         {
             LoadNextQuestion();
         }
-        else if (currentItemIndex + 1 >= experimentObjects.Count) //Experiment is done
+        else if (currentItemIndex + 1 >= experiment.tests.Count) //Experiment is done
         {
             experimentPartText.text = "done";
             RemoveAnswersDisplay();
@@ -205,7 +213,7 @@ public class ExperimentManager : MonoBehaviour {
         else
         {
             currentItemIndex++;
-            experimentObject = experimentObjects[currentItemIndex];
+//            experimentObject = experimentObjects[currentItemIndex];
             
             SpawnExperimentObject();
         }
@@ -231,8 +239,6 @@ public class ExperimentManager : MonoBehaviour {
     public void SelectAnswer(int answer)
     {
         Debug.Log("Answer selected: " + answer);
-        
-        //TODO [BUG] klikání controllerem na tlačítka vždy vrátí 3
         
         if (swapPositions)
         {
