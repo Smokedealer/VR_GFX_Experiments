@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="windows-1250"?>
 <PostProExperiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ExperimentStart>0001-01-01T00:00:00</ExperimentStart>
-  <ExperimentEnd>0001-01-01T00:00:00</ExperimentEnd>
+  <ExperimentEnd>2018-03-28T07:05:31.781876+02:00</ExperimentEnd>
   <Tests>
     <Test>
       <ExperimentRoomName>furniture_room</ExperimentRoomName>
@@ -14,7 +14,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
         <Question>
           <Text>Do you see any flickering?</Text>
@@ -24,7 +24,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
         <Question>
           <Text>Do you see shadows in unnatural places?</Text>
@@ -34,7 +34,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
       </Questions>
     </Test>
@@ -49,7 +49,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
         <Question>
           <Text>Do you see any flickering?</Text>
@@ -59,7 +59,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
       </Questions>
     </Test>
@@ -74,7 +74,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
         <Question>
           <Text>Do you see any flickering?</Text>
@@ -84,7 +84,7 @@
             <Option>No</Option>
             <Option>Yes, Scene 2</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>2</Answer>
         </Question>
       </Questions>
     </Test>
@@ -103,7 +103,7 @@
             <Option>Option</Option>
             <Option>Option</Option>
           </Options>
-          <Answer>0</Answer>
+          <Answer>1</Answer>
         </Question>
         <Question>
           <Text>Do you see any flickering?</Text>

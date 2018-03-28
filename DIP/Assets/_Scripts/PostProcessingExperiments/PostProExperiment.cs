@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.PostProcessing;
@@ -27,7 +28,8 @@ public class PostProExperiment
     
     public void Save(string filename)
     {
-        var stream = new FileStream(filename, FileMode.Create);
+        var encoding = Encoding.GetEncoding("UTF-8");
+        var stream = new StreamWriter(filename, false, encoding);
         
         XmlSerializer serializer = new XmlSerializer(typeof(PostProExperiment));
         serializer.Serialize(stream, this);

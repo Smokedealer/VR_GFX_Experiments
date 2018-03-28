@@ -24,7 +24,8 @@ public class PPExperimentController : MonoBehaviour
     public Transform answersLayout;
     public GameObject answerButtonPrefab;
     
-    public string prefix = "PostProProfiles/ppp_";
+    public string profilesPrefix = "PostProProfiles/ppp_";
+    public string roomsFolder = "ExperimentRooms/";
     public float transitionDuration = 0.5f;
     
     /********************************************************/
@@ -33,6 +34,7 @@ public class PPExperimentController : MonoBehaviour
     private List<Transform> roomSpawnPoints;
     private List<Transform> canvasAnchors;
     private List<PostProTest> tests;
+    private List<GameObject> rooms;
     private List<Question> questions;
 
     private GameObject player;
@@ -43,19 +45,44 @@ public class PPExperimentController : MonoBehaviour
     
     void Start()
     {
-        LoadProfiles();
-        FindAndSortRooms();
-        
         experiment = PostProExperiment.Load("experimentPPSettings.xml");
         //TODO Handle file not found
         
         tests = experiment.tests;
         questions = tests[currentRoomNumber].questions;
+        
+        LoadProfiles();
+        SpawnRooms();
+        FindAndSortRooms();
 
         SetInitilaPositions();
         
         StartExperiment();
-        refreshScene();
+        RefreshScene();
+    }
+
+    private void SpawnRooms()
+    {
+        float x = 0f;
+        
+        foreach (var test in tests)
+        {
+            string roomName = test.experimentRoomName;
+            var room = Resources.Load<GameObject>(roomsFolder + roomName);
+
+            if (room == null)
+            {
+                Debug.Log("Room " + roomName + " was not found in Resources.");
+                
+                //Default error room
+                room = Resources.Load<GameObject>(roomsFolder + "error_room");
+                //TODO set text and option to error
+            }
+
+            Instantiate(room, new Vector3(x, 0, 0), room.transform.rotation);
+
+            x += room.GetComponent<Renderer>().bounds.size.x * 2;
+        }
     }
 
     private void SetInitilaPositions()
@@ -117,9 +144,9 @@ public class PPExperimentController : MonoBehaviour
         
         int count = 0;
 
-        while (Resources.Load(prefix + count) != null)
+        while (Resources.Load(profilesPrefix + count) != null)
         {
-            var profile = Resources.Load<PostProcessingProfile>(prefix + count);
+            var profile = Resources.Load<PostProcessingProfile>(profilesPrefix + count);
             postProcessingProfiles.Add(profile);
             count++;
         }
@@ -184,7 +211,7 @@ public class PPExperimentController : MonoBehaviour
             if (currentRoomNumber + 1 < tests.Count)
             {
                 LoadNextTest();   
-                refreshScene();
+                RefreshScene();
             }
             else
             {
@@ -195,7 +222,7 @@ public class PPExperimentController : MonoBehaviour
 
     }
 
-    private void refreshScene()
+    private void RefreshScene()
     {
         SetQuestionText();
         SetOptions();
@@ -206,7 +233,7 @@ public class PPExperimentController : MonoBehaviour
     private void LoadNextQuestion()
     {
         currentQuestionIndex++;
-        refreshScene();
+        RefreshScene();
     }
     
     private void SetQuestionText()

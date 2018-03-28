@@ -33,9 +33,9 @@ public class ExperimentManager : MonoBehaviour {
     private bool swapPositions;
 
 
-    public StringGameObjectDictionary experimentObjects;
+//    public StringGameObjectDictionary experimentObjects;
     
-//    public List<GameObject> experimentObjects;
+    public List<GameObject> experimentObjects;
     private int currentItemIndex;
     private int currentQuestionIndex;
 
@@ -62,9 +62,12 @@ public class ExperimentManager : MonoBehaviour {
 
         //Set new object
         string objectTag = experiment.tests[currentItemIndex].experimentObejctName;
-        if (experimentObjects.dictionary.ContainsKey(objectTag))
+
+        var loadedGameObject = Resources.Load<GameObject>(objectTag);
+        
+        if (loadedGameObject != null)
         {
-            experimentObject = experimentObjects.dictionary[objectTag];
+            
         }
         else
         {

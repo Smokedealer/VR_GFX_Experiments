@@ -1187,11 +1187,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1183845830104802, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620615119688640, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064476880342552, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
       propertyPath: m_LocalRotation.y
@@ -1459,6 +1459,11 @@ Prefab:
         type: 2}
       propertyPath: ShapeModule.placementMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198757596897503078, guid: 5c7657582953d064498e75b2082e84ca,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198757596897503078, guid: 5c7657582953d064498e75b2082e84ca,
         type: 2}

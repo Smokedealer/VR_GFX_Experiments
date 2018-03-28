@@ -31,16 +31,11 @@
             <e p="PPExperimentController.cs" t="Include" />
           </e>
           <e p="Question.cs" t="Include" />
+          <e p="Recording" t="Include">
+            <e p="PointInTime.cs" t="Include" />
+          </e>
           <e p="SystemInfoSerializable.cs" t="Include" />
           <e p="Test.cs" t="Include" />
-          <e p="Util" t="Include">
-            <e p="Example.cs" t="Include" />
-            <e p="SerializableDictionary.cs" t="Include" />
-            <e p="SerializableDictionaryDrawer.cs" t="Include" />
-            <e p="SerializableDictionaryDrawerImplementations.cs" t="Include" />
-            <e p="SerializableDictionaryImplementations.cs" t="Include" />
-            <e p="SerializedPropertyExtension.cs" t="Include" />
-          </e>
           <e p="VRUIInput.cs" t="Include" />
           <e p="VRUIItem.cs" t="Include" />
         </e>
