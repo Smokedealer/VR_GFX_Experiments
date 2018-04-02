@@ -902,7 +902,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4999062406503014, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
@@ -1125,7 +1125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!223 &1895005576 stripped
 Canvas:
@@ -1177,7 +1177,7 @@ Prefab:
     - target: {fileID: 224823348464588268, guid: 63b5c0aa576afca489fa351498312c63,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224823348464588268, guid: 63b5c0aa576afca489fa351498312c63,
         type: 2}
