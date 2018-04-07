@@ -161,8 +161,17 @@ public class ExperimentManager : MonoBehaviour {
                 if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
                 effectMaterial.SetFloat("_BumpScale", 10f);
                 break;
+            case "integer":
+//                effectMaterial.SetInt(effectSettings.propertyName, effectSettings.effectIntensity);
+                break;
             case "float":
-                if(!effectSettings.effectActive) effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.effectIntensity);
+                effectMaterial.SetFloat(effectSettings.propertyName, effectSettings.propertyValue);
+                break;
+            case "color":
+//                effectMaterial.SetColor();
+                break;
+            case "matrix":
+//                effectMaterial.SetMatrix();
                 break;
         }
         

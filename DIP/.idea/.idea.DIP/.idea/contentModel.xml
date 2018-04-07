@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Matěj Kareš\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.1800853894.00" t="ExcludeRecursive" />
-    <e p="D:\Diplomka\VR_GFX_Experiments\DIP" t="IncludeRecursive">
+    <e p="C:\Users\kares\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DIP.-1930200978.00" t="ExcludeRecursive" />
+    <e p="E:\#Diplomka\App\DIP" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -32,13 +32,24 @@
           </e>
           <e p="Question.cs" t="Include" />
           <e p="Recording" t="Include">
+            <e p="Float3Holder.cs" t="Include" />
             <e p="PointInTime.cs" t="Include" />
             <e p="Recorder.cs" t="Include" />
+            <e p="Recording.cs" t="Include" />
           </e>
           <e p="SystemInfoSerializable.cs" t="Include" />
           <e p="Test.cs" t="Include" />
+          <e p="Tests" t="Include">
+            <e p="RecordingTests.cs" t="Include" />
+          </e>
           <e p="VRUIInput.cs" t="Include" />
           <e p="VRUIItem.cs" t="Include" />
+        </e>
+        <e p="AutoSave" t="Include">
+          <e p="Editor" t="Include">
+            <e p="AutoSaveExtension.cs" t="Include" />
+          </e>
+          <e p="README.txt" t="Include" />
         </e>
         <e p="External" t="Include">
           <e p="Desert Environment" t="Include">
