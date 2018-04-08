@@ -18,11 +18,12 @@ public class Float3Holder
     
     public Float3Holder(Quaternion data)
     {
-        this.data = new float[3];
+        this.data = new float[4];
 
         this.data[0] = data.x;
         this.data[1] = data.y;
         this.data[2] = data.z;
+        this.data[3] = data.w;
     }
 
     public Vector3 GetVector3()
@@ -38,6 +39,7 @@ public class Float3Holder
         quaternion.x = data[0];
         quaternion.y = data[1];
         quaternion.z = data[2];
+        quaternion.w = data[3];
 
         return quaternion;
     }

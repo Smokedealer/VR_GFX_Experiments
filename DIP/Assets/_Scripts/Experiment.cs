@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using VRTK;
 
+[Serializable]
 public class Experiment
 {
     /** Collection of tests to be done */
@@ -20,6 +22,8 @@ public class Experiment
 
     [XmlElement(ElementName = "SystemInfo")]
     public SystemInfoSerializable systemInfo;
+
+    public string headsetInfo = VRTK_DeviceFinder.GetHeadsetType().ToString();
 
     public void Save(string filename)
     {

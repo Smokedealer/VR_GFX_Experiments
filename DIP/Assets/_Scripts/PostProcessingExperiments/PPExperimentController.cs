@@ -288,6 +288,7 @@ public class PPExperimentController : MonoBehaviour
         headsetFade.Unfade(transitionDuration);
     }
     
+
     IEnumerator RoomSwapRoutine()
     {
         headsetFade.Fade(Color.black, transitionDuration);
@@ -295,6 +296,8 @@ public class PPExperimentController : MonoBehaviour
         player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
         wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
         headsetFade.Unfade(transitionDuration);
+
+        
     }
 
     public void EndExperiment()

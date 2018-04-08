@@ -20,9 +20,7 @@
           </e>
           <e p="OnObjectExperiments" t="Include">
             <e p="ExperimentController.cs" t="Include" />
-            <e p="ExperimentEffects.cs" t="Include" />
             <e p="ExperimentManager.cs" t="Include" />
-            <e p="ExperimentRunParameters.cs" t="Include" />
           </e>
           <e p="Option.cs" t="Include" />
           <e p="PostProcessingExperiments" t="Include">
@@ -34,13 +32,17 @@
           <e p="Recording" t="Include">
             <e p="Float3Holder.cs" t="Include" />
             <e p="PointInTime.cs" t="Include" />
+            <e p="RecordableObject.cs" t="Include" />
             <e p="Recorder.cs" t="Include" />
             <e p="Recording.cs" t="Include" />
           </e>
           <e p="SystemInfoSerializable.cs" t="Include" />
           <e p="Test.cs" t="Include" />
           <e p="Tests" t="Include">
-            <e p="RecordingTests.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="RecordingTests.cs" t="Include" />
+            </e>
+            <e p="RecordingTestsOld.cs" t="Include" />
           </e>
           <e p="VRUIInput.cs" t="Include" />
           <e p="VRUIItem.cs" t="Include" />

@@ -8,20 +8,24 @@ using UnityEngine;
 
 public class Recorder : MonoBehaviour
 {
-	public GameObject player;
-
-	public GameObject playerDummy;
+	public GameObject playerCamera;
+	public GameObject leftController;
+	public GameObject rightController;
+	
+	public GameObject playerCameraDummy;
+	public GameObject leftControllerDummy;
+	public GameObject rightControllerDummy;
 
 	public Experiment Experiment;
 
-	[SerializeField] private Recording recording;
+	private Recording recordedData;
 
-	private bool replaying = false;
+	private bool recording;
 	
 	// Use this for initialization
 	void Start () {
-		recording = new Recording();
-		replaying = false;
+		recordedData = new Recording();
+		recording = true;
 	}
 
 
@@ -31,74 +35,95 @@ public class Recorder : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		var playerRecording = recording.playerRecording;
-
-		if (!replaying)
+		if (recording)
 		{
-			RecordFrame(playerRecording);	
+			RecordFrame();	
 			
-			if (playerRecording.Count > 300)
+			if (recordedData.cameraPositions.Count > 1000)
 			{
 				Debug.Log("Saving recording");
-//				SaveRecording();
-//				playerRecording.Clear();
-				replaying = true;
+				SaveRecording();
+				recording = false;
+				Debug.Log("Loading recording");
+				LoadRecording();
 			}
 		}
 		else
 		{
-			if (index > playerRecording.Count) return;
 			
-			PointInTime pointInTime = playerRecording[index++];
-			playerDummy.transform.position = pointInTime.GetPosition();
-			playerDummy.transform.rotation = pointInTime.GetRotation();
+			ReplayFrame();
 		}
-		
-		
-		
+
 	}
 
-	private void RecordFrame(List<PointInTime> playerRecording)
+	private void ReplayFrame()
 	{
-		playerRecording.Add(new PointInTime(player.transform.position, player.transform.rotation));
-
-		if (playerRecording.Count % 1000 == 0)
+		if (recordedData == null)
 		{
-			Debug.Log("Recording size: " + playerRecording.Count);
+			Debug.LogError("No data to replay");
+			return;
 		}
+		
+		var cameraRecording = recordedData.cameraPositions;
+		var leftControllerRecording = recordedData.leftControllerPositions;
+		var rightControllerRecording = recordedData.rightControllerPositions;
+		
+		if (index >= cameraRecording.Count) return;
+
+		PointInTime pointInTime = cameraRecording[index];
+		playerCameraDummy.transform.position = pointInTime.GetPosition();
+		playerCameraDummy.transform.rotation = pointInTime.GetRotation();
+
+		pointInTime = leftControllerRecording[index];
+		leftControllerDummy.transform.position = pointInTime.GetPosition();
+		leftControllerDummy.transform.rotation = pointInTime.GetRotation();
+
+		pointInTime = rightControllerRecording[index];
+		rightControllerDummy.transform.position = pointInTime.GetPosition();
+		rightControllerDummy.transform.rotation = pointInTime.GetRotation();
+
+		index++;
 	}
 
-	public void SaveRecording()
+
+	private void RecordFrame()
+	{
+		recordedData.cameraPositions.Add(new PointInTime(playerCamera.transform.position, playerCamera.transform.rotation));
+		if (leftController != null) recordedData.leftControllerPositions.Add(new PointInTime(leftController.transform.position, leftController.transform.rotation));
+		if (rightController != null) recordedData.rightControllerPositions.Add(new PointInTime(rightController.transform.position, rightController.transform.rotation));
+	}
+
+	public void SaveRecording(string fileName = "testRecording.rec")
 	{
 		string directory = "Recordings";
-		string filePath = directory + "/" + recording.GetHashCode() + ".rec";
+		string filePath = directory + "/" + fileName;
 		if(!Directory.Exists(directory))
 		{
 			Directory.CreateDirectory(directory);
 		}
 		
 		BinaryFormatter binaryFormatter = new BinaryFormatter();
-		FileStream stream = new FileStream(filePath, FileMode.CreateNew);		
+		FileStream stream = new FileStream(filePath, FileMode.Create);		
 		
-		binaryFormatter.Serialize(stream, recording);
+		binaryFormatter.Serialize(stream, recordedData);
 		stream.Close();
 	
 	}
 
-	public void LoadRecording(string filePath)
+	public void LoadRecording(string filePath = "Recordings/testRecording.rec")
 	{
 		
 		if (File.Exists(filePath))
 		{
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
-			FileStream stream = new FileStream(filePath, FileMode.Create);			
+			FileStream stream = new FileStream(filePath, FileMode.Open);			
 			
-			
+			recordedData = binaryFormatter.Deserialize(stream) as Recording;
+			stream.Close();
 		}
 		else
 		{
 			Debug.LogError("File " + filePath + " does not exist.");
-			
 		}
 	}
 }

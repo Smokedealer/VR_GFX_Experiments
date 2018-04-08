@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+[Serializable]
 public class Recording
 {
     public Experiment Experiment;
-    public List<PointInTime> playerRecording;
+    public List<PointInTime> cameraPositions;
+    public List<PointInTime> leftControllerPositions;
+    public List<PointInTime> rightControllerPositions;
 
     public Recording()
     {
-        playerRecording = new List<PointInTime>();
-    }
-
-    public void Add(PointInTime pointInTime)
-    {
-        playerRecording.Add(pointInTime);
+        cameraPositions = new List<PointInTime>();
+        leftControllerPositions = new List<PointInTime>();
+        rightControllerPositions = new List<PointInTime>();
     }
 
 }
