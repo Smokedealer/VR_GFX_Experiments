@@ -61,7 +61,7 @@ public class ExperimentManager : MonoBehaviour {
         DespawnOldObjects();
 
         //Set new object
-        string objectTag = experiment.tests[currentItemIndex].experimentObejctName;
+        string objectTag = experiment.tests[currentItemIndex].experimentObjectName;
 
         var loadedGameObject = Resources.Load<GameObject>(objectTag);
         

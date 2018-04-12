@@ -4,7 +4,7 @@
   <ExperimentEnd>0001-01-01T00:00:00</ExperimentEnd>
   <Tests>
     <Test>
-      <ExperimentObejctName>box</ExperimentObejctName>
+      <ExperimentObjectName>box</ExperimentObjectName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Occlusion Map</EffectName>
@@ -33,7 +33,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>coffee_sack</ExperimentObejctName>
+      <ExperimentObjectName>coffee_sack</ExperimentObjectName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Occlusion Map</EffectName>
@@ -62,7 +62,7 @@
       </Questions>
     </Test>
     <Test>
-      <ExperimentObejctName>milk_churn</ExperimentObejctName>
+      <ExperimentObjectName>milk_churn</ExperimentObjectName>
       <ObjectOneSettings>
         <EffectActive>true</EffectActive>
         <EffectName>Normal Map</EffectName>

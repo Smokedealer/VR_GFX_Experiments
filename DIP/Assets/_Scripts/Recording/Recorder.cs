@@ -29,9 +29,7 @@ public class Recorder : MonoBehaviour
 	}
 
 
-	// Update is called once per frame
-
-	private int index = 0;
+	private int replayIndex = 0;
 	
 	void FixedUpdate ()
 	{
@@ -68,21 +66,21 @@ public class Recorder : MonoBehaviour
 		var leftControllerRecording = recordedData.leftControllerPositions;
 		var rightControllerRecording = recordedData.rightControllerPositions;
 		
-		if (index >= cameraRecording.Count) return;
+		if (replayIndex >= cameraRecording.Count) return;
 
-		PointInTime pointInTime = cameraRecording[index];
+		PointInTime pointInTime = cameraRecording[replayIndex];
 		playerCameraDummy.transform.position = pointInTime.GetPosition();
 		playerCameraDummy.transform.rotation = pointInTime.GetRotation();
 
-		pointInTime = leftControllerRecording[index];
+		pointInTime = leftControllerRecording[replayIndex];
 		leftControllerDummy.transform.position = pointInTime.GetPosition();
 		leftControllerDummy.transform.rotation = pointInTime.GetRotation();
 
-		pointInTime = rightControllerRecording[index];
+		pointInTime = rightControllerRecording[replayIndex];
 		rightControllerDummy.transform.position = pointInTime.GetPosition();
 		rightControllerDummy.transform.rotation = pointInTime.GetRotation();
 
-		index++;
+		replayIndex++;
 	}
 
 

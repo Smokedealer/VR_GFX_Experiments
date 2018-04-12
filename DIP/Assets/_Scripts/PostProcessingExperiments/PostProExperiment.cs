@@ -20,11 +20,9 @@ public class PostProExperiment
     [XmlArrayItem("Test")]
     public List<PostProTest> tests;
 
-//    [XmlElement(ElementName = "SystemInfo")]
-//    public SystemInfoSerializable systemInfo;
+    [XmlElement(ElementName = "SystemInfo")]
+    public SystemInfoSerializable systemInfo;
 
-//    [XmlElement(ElementName = "Profile")]
-//    public PostProcessingProfile profile;
     
     public void Save(string filename)
     {

@@ -53,24 +53,24 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             PostProTest test = new PostProTest();
-            test.experimentRoomName = "01";
+            test.experimentRoomName = "junk_room";
             test.questions = new List<Question>();
             
             Question question1 = new Question
             {
-                questionText = "Which of the two scenes is more appealing to you",
+                questionText = "[Sample question 1]",
                 experimentPart = i
             };
             question1.AddTwoSceneSelectOptions();
             
             Question question2 = new Question
             {
-                questionText = "Do you see any flickering",
+                questionText = "[Sample question 2]",
                 experimentPart = i
             };
             question2.AddTwoSceneSelectOptions();
 
-            test.questions = new List<Question>(1) {question1, question2};
+            test.questions = new List<Question>(2) {question1, question2};
             
             experiment.tests.Add(test);
         }
@@ -84,16 +84,16 @@ public class MainMenu : MonoBehaviour
 
         var experiment = new Experiment
         {
-            tests = new List<Test>()
+            tests = new List<OnObjectTest>()
         };
 
         int i = 1;
 
         foreach (var experimentObject in experimentObjects)
         {
-            Test test = new Test
+            OnObjectTest onObjectTest = new OnObjectTest
             {
-                experimentObejctName = experimentObject
+                experimentObjectName = experimentObject
             };
 
             var experimentSettings1 = new EffectSettings
@@ -114,8 +114,8 @@ public class MainMenu : MonoBehaviour
                 effectActive = false
             };
 
-            test.objectOneSettings = experimentSettings1;
-            test.objectTwoSettings = experimentSettings2;
+            onObjectTest.objectOneSettings = experimentSettings1;
+            onObjectTest.objectTwoSettings = experimentSettings2;
 
             Question question = new Question
             {
@@ -124,9 +124,9 @@ public class MainMenu : MonoBehaviour
             };
             question.AddLeftRightUndecidedOptions();
 
-            test.questions = new List<Question>(1) {question};
+            onObjectTest.questions = new List<Question>(1) {question};
 
-            experiment.tests.Add(test);
+            experiment.tests.Add(onObjectTest);
             i++;
         }
         

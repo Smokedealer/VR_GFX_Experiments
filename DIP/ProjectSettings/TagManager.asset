@@ -8,6 +8,7 @@ TagManager:
   - ExperimentRoom
   - TeleportPad
   - CanvasAnchor
+  - VRUIButton
   layers:
   - Default
   - TransparentFX

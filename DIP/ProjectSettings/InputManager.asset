@@ -247,7 +247,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: SceneSwap
-    descriptiveName: INput used to swap between active effect and disabled affect.
+    descriptiveName: Input used to swap between active effect and disabled affect.
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space

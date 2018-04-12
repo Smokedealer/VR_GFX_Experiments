@@ -22,6 +22,7 @@
             <e p="ExperimentController.cs" t="Include" />
             <e p="ExperimentManager.cs" t="Include" />
           </e>
+          <e p="OnObjectTest.cs" t="Include" />
           <e p="Option.cs" t="Include" />
           <e p="PostProcessingExperiments" t="Include">
             <e p="PostProExperiment.cs" t="Include" />
@@ -44,8 +45,6 @@
             </e>
             <e p="RecordingTestsOld.cs" t="Include" />
           </e>
-          <e p="VRUIInput.cs" t="Include" />
-          <e p="VRUIItem.cs" t="Include" />
         </e>
         <e p="AutoSave" t="Include">
           <e p="Editor" t="Include">
