@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Recorder : MonoBehaviour
 {
-	public GameObject playerCamera;
+	public Transform playerCamera;
 	public GameObject leftController;
 	public GameObject rightController;
 	
@@ -26,6 +26,10 @@ public class Recorder : MonoBehaviour
 	void Start () {
 		recordedData = new Recording();
 		recording = true;
+
+		playerCamera = Camera.main.transform;
+		
+		Debug.Log(Camera.main);
 	}
 
 
@@ -47,8 +51,7 @@ public class Recorder : MonoBehaviour
 			}
 		}
 		else
-		{
-			
+		{	
 			ReplayFrame();
 		}
 
@@ -86,7 +89,7 @@ public class Recorder : MonoBehaviour
 
 	private void RecordFrame()
 	{
-		recordedData.cameraPositions.Add(new PointInTime(playerCamera.transform.position, playerCamera.transform.rotation));
+		recordedData.cameraPositions.Add(new PointInTime(playerCamera.position, playerCamera.rotation));
 		if (leftController != null) recordedData.leftControllerPositions.Add(new PointInTime(leftController.transform.position, leftController.transform.rotation));
 		if (rightController != null) recordedData.rightControllerPositions.Add(new PointInTime(rightController.transform.position, rightController.transform.rotation));
 	}
@@ -108,7 +111,7 @@ public class Recorder : MonoBehaviour
 	
 	}
 
-	public void LoadRecording(string filePath = "Recordings/testRecording.rec")
+	public Recording LoadRecording(string filePath = "Recordings/testRecording.rec")
 	{
 		
 		if (File.Exists(filePath))
@@ -116,12 +119,15 @@ public class Recorder : MonoBehaviour
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 			FileStream stream = new FileStream(filePath, FileMode.Open);			
 			
-			recordedData = binaryFormatter.Deserialize(stream) as Recording;
+			var recording = binaryFormatter.Deserialize(stream) as Recording;
 			stream.Close();
+
+			return recording;
 		}
 		else
 		{
 			Debug.LogError("File " + filePath + " does not exist.");
+			return null;
 		}
 	}
 }
