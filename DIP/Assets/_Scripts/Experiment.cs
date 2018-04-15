@@ -49,7 +49,7 @@ public class Experiment
     /// <summary>
     /// Name of the headset used for the experiment.
     /// </summary>
-    public string headsetInfo = VRTK_DeviceFinder.GetHeadsetType().ToString();
+    //public string headsetInfo = VRTK_DeviceFinder.GetHeadsetType().ToString();
 
     
     
