@@ -10,9 +10,9 @@
           <Text>Which of the two scenes is more appealing to you?</Text>
           <ExperimentPart>0</ExperimentPart>
           <Options>
-            <Option>Yes, Scene 1</Option>
-            <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
+            <Option>Scene 1</Option>
+			<Option>None</Option>
+            <Option>Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -21,8 +21,9 @@
           <ExperimentPart>0</ExperimentPart>
           <Options>
             <Option>Yes, Scene 1</Option>
+			<Option>Yes, Scene 2</Option>
+			<Option>Yes, both</Option>
             <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -31,8 +32,9 @@
           <ExperimentPart>0</ExperimentPart>
           <Options>
             <Option>Yes, Scene 1</Option>
+			<Option>Yes, Scene 2</Option>
+			<Option>Yes, both</Option>
             <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -45,9 +47,9 @@
           <Text>Which of the two scenes is more appealing to you?</Text>
           <ExperimentPart>1</ExperimentPart>
           <Options>
-            <Option>Yes, Scene 1</Option>
-            <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
+            <Option>Scene 1</Option>
+			<Option>None</Option>
+            <Option>Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -56,8 +58,9 @@
           <ExperimentPart>1</ExperimentPart>
           <Options>
             <Option>Yes, Scene 1</Option>
+			<Option>Yes, Scene 2</Option>
+			<Option>Yes, both</Option>
             <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -70,9 +73,9 @@
           <Text>Which of the two scenes is more appealing to you?</Text>
           <ExperimentPart>2</ExperimentPart>
           <Options>
-            <Option>Yes, Scene 1</Option>
-            <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
+            <Option>Scene 1</Option>
+			<Option>None</Option>
+            <Option>Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>
@@ -81,37 +84,9 @@
           <ExperimentPart>2</ExperimentPart>
           <Options>
             <Option>Yes, Scene 1</Option>
+			<Option>Yes, Scene 2</Option>
+			<Option>Yes, both</Option>
             <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
-          </Options>
-          <Answer>0</Answer>
-        </Question>
-      </Questions>
-    </Test>
-    <Test>
-      <ExperimentRoomName>junk_room</ExperimentRoomName>
-      <Questions>
-        <Question>
-          <Text>Sample test room. This questing can be whatever you want.</Text>
-          <ExperimentPart>3</ExperimentPart>
-          <Options>
-            <Option>Option 1</Option>
-            <Option>Another Option</Option>
-            <Option>Option 3</Option>
-            <Option>Option</Option>
-            <Option>Option</Option>
-            <Option>Option</Option>
-            <Option>Option</Option>
-          </Options>
-          <Answer>0</Answer>
-        </Question>
-        <Question>
-          <Text>Do you see any flickering?</Text>
-          <ExperimentPart>3</ExperimentPart>
-          <Options>
-            <Option>Yes, Scene 1</Option>
-            <Option>No</Option>
-            <Option>Yes, Scene 2</Option>
           </Options>
           <Answer>0</Answer>
         </Question>

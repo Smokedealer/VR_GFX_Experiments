@@ -159,7 +159,7 @@ public class ExperimentManager : MonoBehaviour {
         {
             case "texture":
                 if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
-                effectMaterial.SetFloat("_BumpScale", 10f);
+                effectMaterial.SetFloat("_BumpScale", effectSettings.propertyValue);
                 break;
             case "integer":
 //                effectMaterial.SetInt(effectSettings.propertyName, effectSettings.effectIntensity);

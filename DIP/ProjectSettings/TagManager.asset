@@ -9,6 +9,7 @@ TagManager:
   - TeleportPad
   - CanvasAnchor
   - VRUIButton
+  - DefaultRoom
   layers:
   - Default
   - TransparentFX
