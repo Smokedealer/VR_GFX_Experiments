@@ -43,49 +43,42 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Dev button");
         SerializePPProfile();
+        CreateOOExperimentXML();
     }
 
-    private void SerializePPProfile()
+    private static void SerializePPProfile()
     {
-        PostProExperiment experiment = new PostProExperiment();
-        experiment.tests = new List<PostProTest>();
+        Experiment experiment = new Experiment();
+        experiment.tests = new List<Test>();
 
-        for (int i = 0; i < 4; i++)
+
+        PostProTest test = new PostProTest
         {
-            PostProTest test = new PostProTest();
-            test.experimentRoomName = "junk_room";
-            test.questions = new List<Question>();
-            
-            Question question1 = new Question
-            {
-                questionText = "[Sample question 1]",
-                experimentPart = i
-            };
-            question1.AddTwoSceneSelectOptions();
-            
-            Question question2 = new Question
-            {
-                questionText = "[Sample question 2]",
-                experimentPart = i
-            };
-            question2.AddTwoSceneSelectOptions();
+            experimentRoomName = "junk_room",
+            questions = new List<Question>()
+        };
 
-            test.questions = new List<Question>(2) {question1, question2};
-            
-            experiment.tests.Add(test);
-        }
+        Question question1 = new Question
+        {
+            questionText = "[Sample question 1]"
+        };
+        question1.AddSampleOptions();
         
-        experiment.Save("ppexperiment.xml");
+        test.questions = new List<Question>{question1};
+        
+        experiment.tests.Add(test);
+       
+        
+        experiment.Save("PPExperimentTemplate.xml");
     }
 
     private void CreateOOExperimentXML()
     {
-        const string filename = "experimentOOSettings.xml";
+        const string filename = "OOExperimentTemplate.xml";
 
-        var experiment = new Experiment
-        {
-            tests = new List<OnObjectTest>()
-        };
+        var experiment = new Experiment();
+        experiment.tests = new List<Test>();
+        
 
         int i = 1;
 
@@ -93,12 +86,11 @@ public class MainMenu : MonoBehaviour
         {
             OnObjectTest onObjectTest = new OnObjectTest
             {
-                experimentObjectName = experimentObject
+                experimentObjectName = "wooden_box"
             };
 
             var experimentSettings1 = new EffectSettings
             {
-                effectName = "Normal Map",
                 propertyName = "_BumpMap",
                 propertyType = "texture",
                 propertyValue = 1,
@@ -107,7 +99,6 @@ public class MainMenu : MonoBehaviour
 
             var experimentSettings2 = new EffectSettings
             {
-                effectName = "Normal Map",
                 propertyName = "_BumpMap",
                 propertyType = "texture",
                 propertyValue = 0,
@@ -119,10 +110,10 @@ public class MainMenu : MonoBehaviour
 
             Question question = new Question
             {
-                questionText = "Which of the two objects is more appealing to you?",
+                questionText = "[This text can be whatever you want.]",
                 experimentPart = i
             };
-            question.AddLeftRightUndecidedOptions();
+            question.AddSampleOptions();
 
             onObjectTest.questions = new List<Question>(1) {question};
 

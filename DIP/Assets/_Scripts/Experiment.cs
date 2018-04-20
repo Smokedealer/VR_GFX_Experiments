@@ -32,8 +32,9 @@ public class Experiment
     /// </summary>
     /// <see cref="OnObjectTest"/>
     [XmlArray(ElementName = "Tests")]
-    [XmlArrayItem("Test")]
-    public List<OnObjectTest> tests;
+    [XmlArrayItem("Test", typeof(OnObjectTest))]
+    [XmlArrayItem("Test", typeof(PostProTest))]
+    public List<Test> tests;
 
     
     

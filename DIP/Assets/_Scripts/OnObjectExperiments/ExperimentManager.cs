@@ -30,6 +30,8 @@ public class ExperimentManager : MonoBehaviour {
 
     private Experiment experiment;
 
+    private List<OnObjectTest> tests;
+
     private bool swapPositions;
 
 
@@ -43,6 +45,11 @@ public class ExperimentManager : MonoBehaviour {
     {
         //Load experiment info
         experiment = Experiment.Load("experimentOOSettings.xml");
+
+        foreach (var experimentTest in experiment.tests)
+        {
+            tests.Add(experimentTest as OnObjectTest);
+        }
 
         //Set beginning
         currentItemIndex = 0;
@@ -61,7 +68,7 @@ public class ExperimentManager : MonoBehaviour {
         DespawnOldObjects();
 
         //Set new object
-        string objectTag = experiment.tests[currentItemIndex].experimentObjectName;
+        string objectTag = tests[currentItemIndex].experimentObjectName;
 
         var loadedGameObject = Resources.Load<GameObject>(objectTag);
         
@@ -144,11 +151,11 @@ public class ExperimentManager : MonoBehaviour {
     {
         //Get original material
         originalMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
-        SetPropertyByType(experiment.tests[currentItemIndex].objectOneSettings, originalMaterial);
+        SetPropertyByType(tests[currentItemIndex].objectOneSettings, originalMaterial);
         
         //Create a copy to edit
         experimentMaterial = new Material(experimentObject.GetComponent<Renderer>().sharedMaterial);
-        SetPropertyByType(experiment.tests[currentItemIndex].objectTwoSettings, experimentMaterial);
+        SetPropertyByType(tests[currentItemIndex].objectTwoSettings, experimentMaterial);
     }
 
     private void SetPropertyByType(EffectSettings effectSettings, Material effectMaterial)

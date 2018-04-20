@@ -28,8 +28,6 @@ public class Recorder : MonoBehaviour
 		recording = true;
 
 		playerCamera = Camera.main.transform;
-		
-		Debug.Log(Camera.main);
 	}
 
 

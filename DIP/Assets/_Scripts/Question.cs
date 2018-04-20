@@ -37,6 +37,13 @@ public class Question
         questionOptions.Add("Yes");
         questionOptions.Add("No");
     }
+    
+    public void AddSampleOptions()
+    {
+        questionOptions.Add("Answer 1");
+        questionOptions.Add("Answer 2");
+        questionOptions.Add("Answer 3");
+    }
 
     public void AddRating(int count)
     {

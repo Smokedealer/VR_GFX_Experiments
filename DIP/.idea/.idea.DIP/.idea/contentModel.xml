@@ -9,11 +9,15 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
+          <e p="AbstractExperimentController.cs" t="Include" />
+          <e p="BasicLookInputModule.cs" t="Include" />
           <e p="CustomShaderScript.cs" t="Include" />
           <e p="EffectSettings.cs" t="Include" />
           <e p="Experiment.cs" t="Include" />
+          <e p="ExperimentLoader.cs" t="Include" />
           <e p="ExperimentResult.cs" t="Include" />
           <e p="ExperimentSettings.cs" t="Include" />
+          <e p="IntroOutroUI.cs" t="Include" />
           <e p="LICENSE.txt" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
@@ -23,8 +27,8 @@
           <e p="OnObjectExperiments" t="Include">
             <e p="ExperimentController.cs" t="Include" />
             <e p="ExperimentManager.cs" t="Include" />
+            <e p="OnObjectTest.cs" t="Include" />
           </e>
-          <e p="OnObjectTest.cs" t="Include" />
           <e p="Option.cs" t="Include" />
           <e p="PlayerControllerSwapper.cs" t="Include" />
           <e p="PostProcessingExperiments" t="Include">
@@ -48,6 +52,7 @@
             </e>
             <e p="RecordingTestsOld.cs" t="Include" />
           </e>
+          <e p="UIContainer.cs" t="Include" />
         </e>
         <e p="AutoSave" t="Include">
           <e p="Editor" t="Include">
@@ -215,6 +220,95 @@
           <e p="Western Props" t="Include">
             <e p="Scripts" t="Include">
               <e p="Destructible.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Oculus" t="Include">
+          <e p="VR" t="Include">
+            <e p="Editor" t="Include">
+              <e p="AndroidManifest.OVRSubmission.xml" t="Include" />
+              <e p="OVRBuild.cs" t="Include" />
+              <e p="OVREngineConfigurationUpdater.cs" t="Include" />
+              <e p="OVRLayerAttributeEditor.cs" t="Include" />
+              <e p="OVRManifestPreprocessor.cs" t="Include" />
+              <e p="OVRPluginUpdater.cs" t="Include" />
+              <e p="OVRPluginUpdaterStub.cs" t="Include" />
+              <e p="OVRScreenshotWizard.cs" t="Include" />
+            </e>
+            <e p="Plugins" t="Include">
+              <e p="placeholder.txt" t="Include" />
+            </e>
+            <e p="Resources" t="Include">
+              <e p="Cubemap Blit.shader" t="Include" />
+              <e p="OVRMRCameraFrame.shader" t="Include" />
+              <e p="OVRMRCameraFrameLit.shader" t="Include" />
+              <e p="OVRMRChromaKey.cginc" t="Include" />
+              <e p="OVRMRClipPlane.shader" t="Include" />
+              <e p="OVRMRUnlit.shader" t="Include" />
+              <e p="OVRMRUnlitTransparent.shader" t="Include" />
+              <e p="Texture2D Blit.shader" t="Include" />
+              <e p="Underlay Impostor.shader" t="Include" />
+              <e p="Underlay Transparent Occluder.shader" t="Include" />
+              <e p="Unlit Transparent Color.shader" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Composition" t="Include">
+                <e p="OVRCameraComposition.cs" t="Include" />
+                <e p="OVRComposition.cs" t="Include" />
+                <e p="OVRCompositionUtil.cs" t="Include" />
+                <e p="OVRDirectComposition.cs" t="Include" />
+                <e p="OVRExternalComposition.cs" t="Include" />
+                <e p="OVRSandwichComposition.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="OVRManagerEditor.cs" t="Include" />
+              </e>
+              <e p="OVRBoundary.cs" t="Include" />
+              <e p="OVRCameraRig.cs" t="Include" />
+              <e p="OVRCommon.cs" t="Include" />
+              <e p="OVRDebugHeadController.cs" t="Include" />
+              <e p="OVRDisplay.cs" t="Include" />
+              <e p="OVRHaptics.cs" t="Include" />
+              <e p="OVRHapticsClip.cs" t="Include" />
+              <e p="OVRInput.cs" t="Include" />
+              <e p="OVRLayerAttribute.cs" t="Include" />
+              <e p="OVRLint.cs" t="Include" />
+              <e p="OVRManager.cs" t="Include" />
+              <e p="OVRMixedReality.cs" t="Include" />
+              <e p="OVROnCompleteListener.cs" t="Include" />
+              <e p="OVROverlay.cs" t="Include" />
+              <e p="OVRPlatformMenu.cs" t="Include" />
+              <e p="OVRPlugin.cs" t="Include" />
+              <e p="OVRProfile.cs" t="Include" />
+              <e p="OVRTracker.cs" t="Include" />
+              <e p="Util" t="Include">
+                <e p="OVRChromaticAberration.cs" t="Include" />
+                <e p="OVRCubemapCapture.cs" t="Include" />
+                <e p="OVRDebugInfo.cs" t="Include" />
+                <e p="OVRGazePointer.cs" t="Include" />
+                <e p="OVRGearVrControllerTest.cs" t="Include" />
+                <e p="OVRGrabbable.cs" t="Include" />
+                <e p="OVRGrabber.cs" t="Include" />
+                <e p="OVRGridCube.cs" t="Include" />
+                <e p="OVRInputModule.cs" t="Include" />
+                <e p="OVRMixedRealityCaptureSettings.cs" t="Include" />
+                <e p="OVRModeParms.cs" t="Include" />
+                <e p="OVRMonoscopic.cs" t="Include" />
+                <e p="OVRPhysicsRaycaster.cs" t="Include" />
+                <e p="OVRPlayerController.cs" t="Include" />
+                <e p="OVRPointerEventData.cs" t="Include" />
+                <e p="OVRProgressIndicator.cs" t="Include" />
+                <e p="OVRRaycaster.cs" t="Include" />
+                <e p="OVRResetOrientation.cs" t="Include" />
+                <e p="OVRSceneSampleController.cs" t="Include" />
+                <e p="OVRScreenFade.cs" t="Include" />
+                <e p="OVRTrackedRemote.cs" t="Include" />
+                <e p="OVRWaitCursor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="OVRColorRampAlpha.shader" t="Include" />
+              <e p="Unlit Crosshair.shader" t="Include" />
             </e>
           </e>
         </e>
@@ -572,6 +666,7 @@
             <e p="SteamVR_Utils.cs" t="Include" />
           </e>
         </e>
+        <e p="UIRaycaster.cs" t="Include" />
         <e p="VRTK" t="Include">
           <e p="Editor" t="Include">
             <e p="VRTK_AdaptiveQualityEditor.cs" t="Include" />
