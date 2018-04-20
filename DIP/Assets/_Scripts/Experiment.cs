@@ -13,17 +13,6 @@ using VRTK;
 public class Experiment
 {
     /// <summary>
-    /// Experiment type:
-    /// 
-    /// <c>OO</c> for On Object shader experiments
-    /// <c>PP</c> for Post Processing stack experiments
-    /// <c>PPC</c> for Post Processing experiments with Custom shaders
-    /// 
-    /// </summary>
-    [XmlElement(ElementName = "ExperimentType")]
-    public string experimentType;
-    
-    /// <summary>
     /// The point in time that the experiment started
     /// </summary>
     [XmlElement(ElementName = "ExperimentStart")]
