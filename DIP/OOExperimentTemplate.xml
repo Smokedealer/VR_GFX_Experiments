@@ -16,7 +16,7 @@
           <Answer>0</Answer>
         </Question>
       </Questions>
-      <ExperimentObjectName>WoodenCrate</ExperimentObjectName>
+      <ExperimentObjectName>wooden_box</ExperimentObjectName>
       <ObjectOneSettings>
         <Settings>
           <EffectActive>true</EffectActive>

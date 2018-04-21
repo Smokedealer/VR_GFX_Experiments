@@ -14,6 +14,7 @@
           <e p="EffectSettings.cs" t="Include" />
           <e p="Experiment.cs" t="Include" />
           <e p="ExperimentLoader.cs" t="Include" />
+          <e p="IntroOutroUI.cs" t="Include" />
           <e p="LICENSE.txt" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
@@ -48,6 +49,7 @@
             </e>
             <e p="RecordingTestsOld.cs" t="Include" />
           </e>
+          <e p="UIContainer.cs" t="Include" />
         </e>
         <e p="AutoSave" t="Include">
           <e p="Editor" t="Include">
