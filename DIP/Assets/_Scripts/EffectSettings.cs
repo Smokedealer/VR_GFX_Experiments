@@ -16,5 +16,5 @@ public class EffectSettings
     public string propertyType;
     
     [XmlElement(ElementName = "EffectIntensity")]
-    public float propertyValue;
+    public string propertyValue;
 }

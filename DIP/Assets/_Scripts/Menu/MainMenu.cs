@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -82,44 +83,50 @@ public class MainMenu : MonoBehaviour
 
         int i = 1;
 
-        foreach (var experimentObject in experimentObjects)
+        
+        OnObjectTest onObjectTest = new OnObjectTest
         {
-            OnObjectTest onObjectTest = new OnObjectTest
-            {
-                experimentObjectName = "wooden_box"
-            };
+            experimentObjectName = "wooden_box"
+        };
 
-            var experimentSettings1 = new EffectSettings
-            {
-                propertyName = "_BumpMap",
-                propertyType = "texture",
-                propertyValue = 1,
-                effectActive = true
-            };
+        List<EffectSettings> settingsOne = new List<EffectSettings>();
+        List<EffectSettings> settingsTwo = new List<EffectSettings>();
+        
+        var experimentSettings1 = new EffectSettings
+        {
+            propertyName = "_BumpMap",
+            propertyType = "texture",
+            propertyValue = "1",
+            effectActive = true
+        };
 
-            var experimentSettings2 = new EffectSettings
-            {
-                propertyName = "_BumpMap",
-                propertyType = "texture",
-                propertyValue = 0,
-                effectActive = false
-            };
+        var experimentSettings2 = new EffectSettings
+        {
+            propertyName = "_BumpMap",
+            propertyType = "texture",
+            propertyValue = "0",
+            effectActive = false
+        };
 
-            onObjectTest.objectOneSettings = experimentSettings1;
-            onObjectTest.objectTwoSettings = experimentSettings2;
 
-            Question question = new Question
-            {
-                questionText = "[This text can be whatever you want.]",
-                experimentPart = i
-            };
-            question.AddSampleOptions();
+        settingsOne.Add(experimentSettings1);
+        settingsTwo.Add(experimentSettings2);
+        
+        onObjectTest.objectOneSettings = settingsOne;
+        onObjectTest.objectTwoSettings = settingsTwo;
 
-            onObjectTest.questions = new List<Question>(1) {question};
+        Question question = new Question
+        {
+            questionText = "[This text can be whatever you want.]",
+            experimentPart = i
+        };
+        question.AddSampleOptions();
 
-            experiment.tests.Add(onObjectTest);
-            i++;
-        }
+        onObjectTest.questions = new List<Question>(1) {question};
+
+        experiment.tests.Add(onObjectTest);
+        i++;
+        
         
         experiment.Save(filename);
         

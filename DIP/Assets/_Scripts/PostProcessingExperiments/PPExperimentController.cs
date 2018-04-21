@@ -51,6 +51,8 @@ public class PPExperimentController : MonoBehaviour
         tests = experiment.tests;
         questions = tests[currentRoomNumber].questions;
         
+        Debug.Log("Yo waddup");
+        
         LoadProfiles();
         SpawnRooms();
         FindAndSortRooms();
@@ -159,18 +161,9 @@ public class PPExperimentController : MonoBehaviour
         {
             SceneSwap();
         }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            currentRoomNumber = (currentRoomNumber + 1) % roomSpawnPoints.Count; 
-            StartCoroutine(RoomSwapRoutine());
-        }
-        
-        //TODO UI updates
-        
     }
 
-    public void SceneSwap()
+    public virtual void SceneSwap()
     {
         StartCoroutine(EffectToggle());
         currentProfileIndex = (currentProfileIndex + 1) % postProcessingProfiles.Count; 

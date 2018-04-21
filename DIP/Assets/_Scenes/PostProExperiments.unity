@@ -882,7 +882,69 @@ MonoBehaviour:
   VRController: {fileID: 1444685281}
   nonVRController: {fileID: 314825524}
   observerController: {fileID: 752131747}
-  controller: 2
+  controller: 0
+--- !u!1001 &408363275
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1453293603}
+    m_Modifications:
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &408363276 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 408363275}
+--- !u!1 &408363277 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 408363275}
+--- !u!1 &408363278 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 408363275}
+--- !u!1 &408363279 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 408363275}
+--- !u!1 &408363280 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 408363275}
 --- !u!1 &478363995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,6 +2193,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4508682984790054, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413063868833744, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114438507234219256, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8c0cc37cc6b4f7d4daa4115afe1403be, type: 2}
@@ -2143,6 +2213,11 @@ Transform:
 --- !u!4 &1221357308 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4268464826457606, guid: 8c0cc37cc6b4f7d4daa4115afe1403be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1221357306}
+--- !u!4 &1221357309 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4780331875608966, guid: 8c0cc37cc6b4f7d4daa4115afe1403be,
     type: 2}
   m_PrefabInternal: {fileID: 1221357306}
 --- !u!1 &1271534759 stripped
@@ -2559,6 +2634,74 @@ GameObject:
   m_PrefabParentObject: {fileID: 1454347086220986, guid: 8c0cc37cc6b4f7d4daa4115afe1403be,
     type: 2}
   m_PrefabInternal: {fileID: 1221357306}
+--- !u!1 &1453293602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1453293603}
+  - component: {fileID: 1453293604}
+  m_Layer: 0
+  m_Name: OculusSDK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1453293603
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453293602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 408363276}
+  m_Father: {fileID: 1221357309}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1453293604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453293602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeda6d41317f444b900e374895f14e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPopulateObjectReferences: 1
+  actualBoundaries: {fileID: 408363280}
+  actualHeadset: {fileID: 408363279}
+  actualLeftController: {fileID: 408363278}
+  actualRightController: {fileID: 408363277}
+  modelAliasLeftController: {fileID: 0}
+  modelAliasRightController: {fileID: 0}
+  cachedSystemSDKInfo:
+    baseTypeName: VRTK.SDK_BaseSystem
+    fallbackTypeName: VRTK.SDK_FallbackSystem
+    typeName: VRTK.SDK_OculusSystem
+    descriptionIndex: 0
+  cachedBoundariesSDKInfo:
+    baseTypeName: VRTK.SDK_BaseBoundaries
+    fallbackTypeName: VRTK.SDK_FallbackBoundaries
+    typeName: VRTK.SDK_OculusBoundaries
+    descriptionIndex: 0
+  cachedHeadsetSDKInfo:
+    baseTypeName: VRTK.SDK_BaseHeadset
+    fallbackTypeName: VRTK.SDK_FallbackHeadset
+    typeName: VRTK.SDK_OculusHeadset
+    descriptionIndex: 0
+  cachedControllerSDKInfo:
+    baseTypeName: VRTK.SDK_BaseController
+    fallbackTypeName: VRTK.SDK_FallbackController
+    typeName: VRTK.SDK_OculusController
+    descriptionIndex: 0
 --- !u!1 &1454782297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,14 +3474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e60a97f2c87ae41b6cdc1055d78cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XSensitivity: 2
-  YSensitivity: 2
-  clampVerticalRotation: 1
-  MinimumX: -90
-  MaximumX: 90
-  smooth: 0
-  smoothTime: 5
-  lockCursor: 0
 --- !u!1001 &2000518216
 Prefab:
   m_ObjectHideFlags: 0
@@ -3854,6 +3989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2097332762}
   - component: {fileID: 2097332761}
+  - component: {fileID: 2097332763}
   m_Layer: 0
   m_Name: PostProcessingExperimentController
   m_TagString: Untagged
@@ -3867,7 +4003,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097332760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40459150ba7238d49be71725f4b6df60, type: 3}
   m_Name: 
@@ -3898,3 +4034,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097332763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097332760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8027e899ce941a09250462c560ecbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postProcessingBehaviour: {fileID: 0}
+  headsetFade: {fileID: 999816459}
+  wallUICanvas: {fileID: 1895005576}
+  experimentPartText: {fileID: 749902657}
+  questionTextDisplay: {fileID: 1095353420}
+  sceneValueText: {fileID: 886444852}
+  questionValueText: {fileID: 1320760939}
+  answersLayout: {fileID: 708681403}
+  answerButtonPrefab: {fileID: 1540448786383374, guid: bfc1f64860c52924096635442ec66cf1,
+    type: 2}
+  profilesPrefix: PostProProfiles/ppp_
+  roomsFolder: ExperimentRooms/
+  transitionDuration: 0.5

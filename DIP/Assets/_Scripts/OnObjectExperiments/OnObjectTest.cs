@@ -7,10 +7,12 @@ public class OnObjectTest : Test
     [XmlElement(ElementName = "ExperimentObjectName")]
     public string experimentObjectName;
 
-    [XmlElement(ElementName = "ObjectOneSettings")]
-    public EffectSettings objectOneSettings;
+    [XmlArray(ElementName = "ObjectOneSettings")]
+    [XmlArrayItem(ElementName = "Settings")]
+    public List<EffectSettings> objectOneSettings;
     
-    [XmlElement(ElementName = "ObjectTwoSettings")]
-    public EffectSettings objectTwoSettings;
+    [XmlArray(ElementName = "ObjectTwoSettings")]
+    [XmlArrayItem(ElementName = "Settings")]
+    public List<EffectSettings> objectTwoSettings;
 
 }

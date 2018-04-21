@@ -9,15 +9,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
-          <e p="AbstractExperimentController.cs" t="Include" />
           <e p="BasicLookInputModule.cs" t="Include" />
           <e p="CustomShaderScript.cs" t="Include" />
           <e p="EffectSettings.cs" t="Include" />
           <e p="Experiment.cs" t="Include" />
           <e p="ExperimentLoader.cs" t="Include" />
-          <e p="ExperimentResult.cs" t="Include" />
-          <e p="ExperimentSettings.cs" t="Include" />
-          <e p="IntroOutroUI.cs" t="Include" />
           <e p="LICENSE.txt" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
@@ -26,7 +22,6 @@
           <e p="ObserverController.cs" t="Include" />
           <e p="OnObjectExperiments" t="Include">
             <e p="ExperimentController.cs" t="Include" />
-            <e p="ExperimentManager.cs" t="Include" />
             <e p="OnObjectTest.cs" t="Include" />
           </e>
           <e p="Option.cs" t="Include" />
@@ -34,6 +29,7 @@
           <e p="PostProcessingExperiments" t="Include">
             <e p="PostProExperiment.cs" t="Include" />
             <e p="PostProTest.cs" t="Include" />
+            <e p="PPCExperimentController.cs" t="Include" />
             <e p="PPExperimentController.cs" t="Include" />
           </e>
           <e p="Question.cs" t="Include" />
@@ -52,7 +48,6 @@
             </e>
             <e p="RecordingTestsOld.cs" t="Include" />
           </e>
-          <e p="UIContainer.cs" t="Include" />
         </e>
         <e p="AutoSave" t="Include">
           <e p="Editor" t="Include">

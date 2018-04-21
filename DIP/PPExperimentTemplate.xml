@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ExperimentStart>0001-01-01T00:00:00</ExperimentStart>
-  <ExperimentEnd>2018-04-20T22:37:47.3444871+02:00</ExperimentEnd>
+  <ExperimentEnd>0001-01-01T00:00:00</ExperimentEnd>
   <Tests>
-    <Test>
+    <TestPP>
       <Questions>
         <Question>
           <Text>[Sample question 1]</Text>
@@ -13,10 +13,10 @@
             <Option>Answer 2</Option>
             <Option>Answer 3</Option>
           </Options>
-          <Answer>1</Answer>
+          <Answer>0</Answer>
         </Question>
       </Questions>
       <ExperimentRoomName>junk_room</ExperimentRoomName>
-    </Test>
+    </TestPP>
   </Tests>
 </Experiment>
