@@ -50,6 +50,57 @@ public class PPExperimentController : MonoBehaviour
         experiment = Experiment.Load("PPExperimentTemplate.xml");
         //TODO Handle file not found
 
+        if (PlayerPrefs.GetInt("replay") == 1)
+        {
+            SpawnRooms();
+            
+            //Start Replay
+        }
+        else
+        {
+            InitScene();
+            PrepareExperiment();
+        }
+        
+        
+    }
+
+    /// <summary>
+    /// This method should aggregate all the actions that have to be done before the experiment begins such as
+    /// recorder initialisation.
+    /// </summary>
+    public virtual void InitScene()
+    {
+        InitRecorder();
+    }
+
+    /// <summary>
+    /// If the recorder is not explicitly set this method will attempt to find it in the scene.
+    /// </summary>
+    private void InitRecorder()
+    {
+        if (!recorder)
+        {
+            recorder = GameObject.FindGameObjectWithTag("Recorder").GetComponent<Recorder>();
+            
+            if (!recorder)
+            {
+                Debug.LogError("No gameobject with tag Recorder was found in the scene. Will not record.");
+                return;
+            }
+
+            //Sets which kind of recording this will be
+            recorder.SetType(this);
+        }
+    }
+
+    
+    /// <summary>
+    /// Does all the necessary actions in order to start the experiment. Can result in an error screen given that any of the
+    /// experiment rooms were not found, hence the experiment is corrupted.
+    /// </summary>
+    public virtual void PrepareExperiment()
+    {
         var loadedTests = experiment.tests;
         tests = new List<PostProTest>();
 
@@ -57,19 +108,25 @@ public class PPExperimentController : MonoBehaviour
         {
             tests.Add(loadedTest as PostProTest);
         }
-        
+
+        //For easy access to questions
         questions = tests[currentRoomNumber].questions;
-        
+
         LoadProfiles();
         SpawnRooms();
         FindAndSortRooms();
 
-        SetInitilaPositions();
-        
+        SetInitialPositions();
+
         SetQuestionAndAnswers();
         RefreshScene();
     }
 
+    
+    /// <summary>
+    /// Finds, loads and spawns all the rooms,
+    /// that were specified in the input file.
+    /// </summary>
     private void SpawnRooms()
     {
         float xOffset = 0f;
@@ -94,21 +151,37 @@ public class PPExperimentController : MonoBehaviour
         }
     }
 
-    private void SetInitilaPositions()
+    
+    /// <summary>
+    /// Player is placed into the default room
+    /// with a simple greeting screen and a tutorial.
+    /// 
+    /// The wall UI is placed on the wall in the first experiment room.
+    /// </summary>
+    private void SetInitialPositions()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = defaultRoom.transform.position;
         ui.wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
     }
 
-    public void MoveToFirstTest()
+    
+    /// <summary>
+    /// After the player pushes the start button
+    /// he is transported to the first testing room.
+    /// 
+    /// </summary>
+    public void ContinueFromDefaultRoom()
     {
+        //Experiment has not started yet
         if (!experimentStarted)
         {
             StartCoroutine(RoomSwapRoutine());
             experimentStarted = true;
+            if(recorder) recorder.StartRecording();
         }
         
+        //Experiment is complete
         if(experimentEnded)
         {
             EndExperiment();
@@ -347,6 +420,11 @@ public class PPExperimentController : MonoBehaviour
         ui.questionTextDisplay.text = "";
     }
 
+    
+    /// <summary>
+    /// Loads the next post processing profile and sets it to the camera.
+    /// </summary>
+    /// <returns>IEnumerator for the effect handling</returns>
     IEnumerator EffectToggle()
     {
         headsetFade.Fade(Color.black, transitionDuration); 
@@ -357,6 +435,10 @@ public class PPExperimentController : MonoBehaviour
     }
     
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>IEnumerator for the room swap</returns>
     IEnumerator RoomSwapRoutine()
     {
         headsetFade.Fade(Color.black, transitionDuration);
@@ -368,6 +450,8 @@ public class PPExperimentController : MonoBehaviour
 
     public void EndExperiment()
     {
+        if(recorder) recorder.StopRecording();
+        
         DateTime now = DateTime.Now;
         experiment.experimentEndTime = now;
         string filename = now.ToString("yyyyMMddhhmm");

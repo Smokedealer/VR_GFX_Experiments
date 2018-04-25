@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using Object = System.Object;
 
 
 public class Recorder : MonoBehaviour
@@ -16,43 +17,90 @@ public class Recorder : MonoBehaviour
 	public GameObject leftControllerDummy;
 	public GameObject rightControllerDummy;
 
-	public Experiment Experiment;
+	public FileType FileType;
 
 	private Recording recordedData;
 
 	private bool recording;
+	private bool replaying;
+	
+	private int replayIndex = 0;
 	
 	// Use this for initialization
 	void Start () {
-		recordedData = new Recording();
-		recording = true;
 
-		playerCamera = Camera.main.transform;
+		if (ApplicationDataContainer.replay)
+		{
+			recordedData = Recording.LoadRecording();
+		}
+		else
+		{
+			recordedData = new Recording {FileType = FileType};
+
+			playerCamera = Camera.main.transform;
+		}
+		
 	}
 
 
-	private int replayIndex = 0;
+	public void StartRecording()
+	{
+		recording = true;
+		replaying = false;
+	}
+
+	public void StopRecording()
+	{
+		recording = false;
+		recordedData.SaveRecording();
+	}
+
+	public void StartReplay()
+	{
+		recording = false;
+		replaying = true;
+	}
+
+	public void StopReplay()
+	{
+		replaying = false;
+	}
+
+	public void PauseReplay()
+	{
+		replaying = !replaying;
+	}
+
+	public void SetReplayToFrame(int replayIndex = 0)
+	{
+		this.replayIndex = replayIndex;
+	}
 	
 	void FixedUpdate ()
 	{
 		if (recording)
 		{
-			RecordFrame();	
-			
-			if (recordedData.cameraPositions.Count > 1000)
-			{
-				Debug.Log("Saving recording");
-				SaveRecording();
-				recording = false;
-				Debug.Log("Loading recording");
-				LoadRecording();
-			}
-		}
-		else
+			RecordFrame();
+		}	
+		
+		
+		if(replaying)
 		{	
 			ReplayFrame();
 		}
 
+	}
+
+	public void SetType(Object caller)
+	{
+		if (caller is PPExperimentController) FileType = FileType.PP;
+		if (caller is PPCExperimentController) FileType = FileType.PPC;
+		if (caller is OOExperimentController) FileType = FileType.OO;
+	}
+
+	public int GetRecordingSize()
+	{
+		return recordedData.cameraPositions.Count;
 	}
 
 	private void ReplayFrame()
@@ -66,8 +114,13 @@ public class Recorder : MonoBehaviour
 		var cameraRecording = recordedData.cameraPositions;
 		var leftControllerRecording = recordedData.leftControllerPositions;
 		var rightControllerRecording = recordedData.rightControllerPositions;
-		
-		if (replayIndex >= cameraRecording.Count) return;
+
+		if (replayIndex >= cameraRecording.Count)
+		{
+			Debug.Log("No more to replay.");
+			replaying = false;
+			return;
+		}
 
 		PointInTime pointInTime = cameraRecording[replayIndex];
 		playerCameraDummy.transform.position = pointInTime.GetPosition();
@@ -92,40 +145,5 @@ public class Recorder : MonoBehaviour
 		if (rightController != null) recordedData.rightControllerPositions.Add(new PointInTime(rightController.transform.position, rightController.transform.rotation));
 	}
 
-	public void SaveRecording(string fileName = "testRecording.rec")
-	{
-		string directory = "Recordings";
-		string filePath = directory + "/" + fileName;
-		if(!Directory.Exists(directory))
-		{
-			Directory.CreateDirectory(directory);
-		}
-		
-		BinaryFormatter binaryFormatter = new BinaryFormatter();
-		FileStream stream = new FileStream(filePath, FileMode.Create);		
-		
-		binaryFormatter.Serialize(stream, recordedData);
-		stream.Close();
 	
-	}
-
-	public Recording LoadRecording(string filePath = "Recordings/testRecording.rec")
-	{
-		
-		if (File.Exists(filePath))
-		{
-			BinaryFormatter binaryFormatter = new BinaryFormatter();
-			FileStream stream = new FileStream(filePath, FileMode.Open);			
-			
-			var recording = binaryFormatter.Deserialize(stream) as Recording;
-			stream.Close();
-
-			return recording;
-		}
-		else
-		{
-			Debug.LogError("File " + filePath + " does not exist.");
-			return null;
-		}
-	}
 }

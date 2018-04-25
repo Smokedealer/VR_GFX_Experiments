@@ -21,7 +21,7 @@ public class Experiment
     /// 
     /// </summary>
     [XmlElement(ElementName = "ExperimentType")]
-    public string experimentType;
+    public FileType experimentType;
     
     
     /// <summary>
@@ -43,8 +43,11 @@ public class Experiment
     /// A list of <c>Tests</c> to be performed
     /// </summary>
     /// <see cref="OnObjectTest"/>
+    /// <see cref="PostProTest"/>
+    /// <see cref="PostProCustomTest"/>
     [XmlArray(ElementName = "Tests")]
     [XmlArrayItem("TestOO", Type = typeof(OnObjectTest))]
+    [XmlArrayItem("TestPPC", Type = typeof(PostProCustomTest))]
     [XmlArrayItem("TestPP", Type = typeof(PostProTest))]
     public List<Test> tests;
 
@@ -76,6 +79,8 @@ public class Experiment
         
         XmlSerializer serializer = new XmlSerializer(typeof(Experiment));
         serializer.Serialize(stream, this);
+        
+        stream.Close();
     }
     
     
@@ -89,6 +94,8 @@ public class Experiment
     {
         var stream = new FileStream(filename, FileMode.Open);
         XmlSerializer serializer = new XmlSerializer(typeof(Experiment));
-        return (Experiment)serializer.Deserialize(stream);
+        var result = (Experiment)serializer.Deserialize(stream);
+        stream.Close();
+        return result;
     }
 }

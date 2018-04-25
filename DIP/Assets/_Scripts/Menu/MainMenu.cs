@@ -43,19 +43,20 @@ public class MainMenu : MonoBehaviour
     public void DevButton()
     {
         Debug.Log("Dev button");
-        SerializePPProfile();
-        CreateOOExperimentXML();
+        CreateExamplePPExperiment();
+        CreateExampleOOExperiment();
     }
 
-    private static void SerializePPProfile()
+    private static void CreateExamplePPExperiment()
     {
         Experiment experiment = new Experiment();
+        experiment.experimentType = FileType.PP;
         experiment.tests = new List<Test>();
 
 
         PostProTest test = new PostProTest
         {
-            experimentRoomName = "junk_room",
+            experimentRoomName = "furniture_room",
             questions = new List<Question>()
         };
 
@@ -73,11 +74,13 @@ public class MainMenu : MonoBehaviour
         experiment.Save("PPExperimentTemplate.xml");
     }
 
-    private void CreateOOExperimentXML()
+    private void CreateExampleOOExperiment()
     {
         const string filename = "OOExperimentTemplate.xml";
 
         var experiment = new Experiment();
+
+        experiment.experimentType = FileType.OO;
         experiment.tests = new List<Test>();
         
 
@@ -86,7 +89,7 @@ public class MainMenu : MonoBehaviour
         
         OnObjectTest onObjectTest = new OnObjectTest
         {
-            experimentObjectName = "wooden_box"
+            experimentObjectName = "WoodenCrate"
         };
 
         List<EffectSettings> settingsOne = new List<EffectSettings>();
@@ -96,16 +99,14 @@ public class MainMenu : MonoBehaviour
         {
             propertyName = "_BumpMap",
             propertyType = "texture",
-            propertyValue = "1",
-            effectActive = true
+            propertyValue = "1"
         };
 
         var experimentSettings2 = new EffectSettings
         {
             propertyName = "_BumpMap",
             propertyType = "texture",
-            propertyValue = "0",
-            effectActive = false
+            propertyValue = "0"
         };
 
 

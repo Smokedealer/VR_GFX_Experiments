@@ -9,6 +9,7 @@ TagManager:
   - TeleportPad
   - CanvasAnchor
   - VRUIButton
+  - Recorder
   layers:
   - Default
   - TransparentFX

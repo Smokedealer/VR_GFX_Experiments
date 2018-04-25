@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class ExperimentController : MonoBehaviour {
+public class OOExperimentController : MonoBehaviour {
 
     public TextMeshProUGUI experimentPartText;
     public TextMeshProUGUI questionTextDisplay;
@@ -145,7 +145,7 @@ public class ExperimentController : MonoBehaviour {
       
         foreach (var settings in tests[currentItemIndex].objectOneSettings)
         {
-            SetPropertyByType(settings, originalMaterial);
+            settings.SetPropertyByType(settings, originalMaterial);
         }
         
         //Create a copy to edit
@@ -153,48 +153,8 @@ public class ExperimentController : MonoBehaviour {
 
         foreach (var settings in tests[currentItemIndex].objectTwoSettings)
         {
-            SetPropertyByType(settings, experimentMaterial);
+           settings.SetPropertyByType(settings, experimentMaterial);
         }
-    }
-
-    private void SetPropertyByType(EffectSettings effectSettings, Material effectMaterial)
-    {
-        
-        switch (effectSettings.propertyType)
-        {
-            case "texture":
-                if(!effectSettings.effectActive) effectMaterial.SetTexture(effectSettings.propertyName, null);
-                effectMaterial.SetFloat(effectSettings.propertyName, float.Parse(effectSettings.propertyValue));
-                break;
-            case "integer":
-                effectMaterial.SetInt(effectSettings.propertyName, int.Parse(effectSettings.propertyValue));
-                break;
-            case "float":
-                effectMaterial.SetFloat(effectSettings.propertyName, float.Parse(effectSettings.propertyValue));
-                break;
-            case "color":
-                var color = ParseColor(effectSettings);
-                effectMaterial.SetColor(effectSettings.propertyName, color);
-                break;
-        }
-    }
-
-    private static Color ParseColor(EffectSettings effectSettings)
-    {
-        var colorString = effectSettings.propertyValue;
-
-        Char delimiter = ',';
-
-        var substrings = colorString.Split(delimiter);
-
-        Color color = new Color();
-
-        for (int i = 0; i <= 4; i++)
-        {
-            color[i] = float.Parse(substrings[i]);
-        }
-
-        return color;
     }
 
 
@@ -202,6 +162,7 @@ public class ExperimentController : MonoBehaviour {
     {
         swapPositions = Random.value < 0.5f;
 
+        //Swap the positions
         Transform actualSpawnPoint1 = swapPositions ? spawnPoint2 : spawnPoint1;
         Transform actualSpawnPoint2 = swapPositions ? spawnPoint1 : spawnPoint2;
 
