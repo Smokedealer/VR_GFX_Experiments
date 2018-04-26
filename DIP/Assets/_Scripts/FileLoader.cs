@@ -20,18 +20,20 @@ public class FileLoader : MonoBehaviour
 
 	public FileLoadType fileType = FileLoadType.Experiment;
 
-	public string extensionLookup = "*.xml";
+	private string filePattern;
 
 	public string folder = ".";
 	
 	// Use this for initialization
 	private void OnEnable()
 	{
+		filePattern = (fileType == FileLoadType.Experiment) ? "*.xml" : "*.rec";
+		
 		var info = new DirectoryInfo(folder);
-		var fileInfo = info.GetFiles(extensionLookup);
+		var fileInfo = info.GetFiles(filePattern);
 
 		//Remove all buttons if any
-		foreach (GameObject child in contentLayout.transform)
+		foreach (GameObject child in contentLayout)
 		{
 			Destroy(child);
 		}
@@ -65,15 +67,39 @@ public class FileLoader : MonoBehaviour
 		{
 			LoadRecordingFromFile(path);
 		}
-		
-		
 	}
 
 	private void LoadRecordingFromFile(string path)
 	{
 		var recording = Recording.LoadRecording(path);
+		
+		ApplicationDataContainer.replay = true;
+		ApplicationDataContainer.loadedRecording = recording;
 
-		switch (recording.FileType)
+		switch (recording.fileType)
+		{
+			case FileType.OO:
+				Debug.Log("OO recording loaded.");
+				
+				break;
+			case FileType.PP:
+				Debug.Log("PP recording loaded.");
+				break;
+			case FileType.PPC:
+				Debug.Log("PPC recording loaded.");
+				break;
+		}
+	}
+
+	private void LoadExperimentFromFile(string path)
+	{
+		var experiment = Experiment.Load(path);
+		
+		ApplicationDataContainer.replay = false;
+		ApplicationDataContainer.loadedExperiment = experiment;
+		
+		
+		switch (experiment.experimentType)
 		{
 			case FileType.OO:
 				Debug.Log("OO recording loaded.");
@@ -85,35 +111,5 @@ public class FileLoader : MonoBehaviour
 				Debug.Log("PPC recording loaded.");
 				break;
 		}
-
-	}
-
-	private void LoadExperimentFromFile(string path)
-	{
-		var experiment = Experiment.Load(path);
-
-		if (experiment.tests.Count > 0)
-		{
-			var sampleTest = experiment.tests[0];
-			
-			if (experiment.experimentType == FileType.PP)
-			{
-				Debug.Log("Custom Post Pro loaded");
-			}
-			else if (sampleTest is PostProTest)
-			{
-				Debug.Log("Post Pro loaded");
-			}
-			else if (sampleTest is OnObjectTest)
-			{
-				Debug.Log("On Object loaded");
-			}
-		}
-		else
-		{
-			Debug.Log("Loaded test is not supported.");
-		}
-			
-		
 	}
 }

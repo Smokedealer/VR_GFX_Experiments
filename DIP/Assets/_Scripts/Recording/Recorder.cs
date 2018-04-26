@@ -35,7 +35,7 @@ public class Recorder : MonoBehaviour
 		}
 		else
 		{
-			recordedData = new Recording {FileType = FileType};
+			recordedData = new Recording {fileType = FileType};
 
 			playerCamera = Camera.main.transform;
 		}

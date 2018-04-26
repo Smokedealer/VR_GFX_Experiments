@@ -35,7 +35,14 @@ public class OOExperimentController : MonoBehaviour {
     void Start()
     {
         //Load experiment info
-        experiment = Experiment.Load("OOExperimentTemplate.xml");
+        experiment = ApplicationDataContainer.loadedExperiment;
+
+
+        if (experiment == null)
+        {
+            Debug.Log("Loading default experiment");
+            experiment = Experiment.Load("OOExperimentTemplate.xml");
+        }
 
         tests = new List<OnObjectTest>();
         experimentObjects = new List<GameObject>();

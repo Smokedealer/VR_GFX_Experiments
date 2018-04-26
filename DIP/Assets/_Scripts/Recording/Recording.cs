@@ -11,7 +11,7 @@ public class Recording
     public List<PointInTime> leftControllerPositions;
     public List<PointInTime> rightControllerPositions;
 
-    public FileType FileType;
+    public FileType fileType;
 
     public Recording()
     {
@@ -22,7 +22,7 @@ public class Recording
     
     public void SaveRecording(string fileName = "testRecording.rec")
     {
-        string directory = "Recordings";
+        const string directory = "Recordings";
         string filePath = directory + "/" + fileName;
         if(!Directory.Exists(directory))
         {
@@ -39,7 +39,6 @@ public class Recording
 
     public static Recording LoadRecording(string filePath = "Recordings/testRecording.rec")
     {
-		
         if (File.Exists(filePath))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -50,7 +49,6 @@ public class Recording
 
             return recording;
         }
-        
         
         Debug.LogError("File " + filePath + " does not exist.");
         return null;

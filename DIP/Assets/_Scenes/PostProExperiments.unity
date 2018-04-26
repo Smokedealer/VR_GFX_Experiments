@@ -859,7 +859,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 334300403}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3707,7 +3707,7 @@ MonoBehaviour:
   playerCameraDummy: {fileID: 666580067}
   leftControllerDummy: {fileID: 666580066}
   rightControllerDummy: {fileID: 666580064}
-  recordingType: 1
+  FileType: 0
 --- !u!4 &1481007407
 Transform:
   m_ObjectHideFlags: 0
@@ -5092,7 +5092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experiment:
-    experimentType: 
+    experimentType: 0
   postProcessingBehaviour: {fileID: 1271534761}
   headsetFade: {fileID: 999816459}
   defaultRoom: {fileID: 253921231}
