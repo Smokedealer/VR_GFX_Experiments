@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class IntroOutroUI : MonoBehaviour
 {
@@ -10,9 +11,22 @@ public class IntroOutroUI : MonoBehaviour
     public TextMeshProUGUI sentence;
     public TextMeshProUGUI mainButtonText;
 
+    public Button mainButton;
+    public Button backButton;
+
 
     private void Start()
     {
         sentence.text = introString;
+    }
+
+    public void SetMainButtonText(string text)
+    {
+        mainButtonText.text = text;
+    }
+
+    public void HideBackButton()
+    {
+        backButton.gameObject.SetActive(false);
     }
 }

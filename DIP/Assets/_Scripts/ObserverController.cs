@@ -15,9 +15,6 @@ public class ObserverController : MonoBehaviour
     private float rotY; // rotation around the up/y axis
     private float rotX; // rotation around the right/x axis
 
-
-    public Canvas canvas;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

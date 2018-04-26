@@ -31,13 +31,13 @@ public class Recorder : MonoBehaviour
 
 		if (ApplicationDataContainer.replay)
 		{
-			recordedData = Recording.LoadRecording();
+			recordedData = ApplicationDataContainer.loadedRecording;
 		}
 		else
 		{
 			recordedData = new Recording {fileType = FileType};
 
-			playerCamera = Camera.main.transform;
+//			playerCamera = Camera.main.transform;
 		}
 		
 	}

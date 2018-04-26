@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -16,19 +16,19 @@ public class PPExperimentController : MonoBehaviour
     public VRTK_HeadsetFade headsetFade;
 
     public GameObject defaultRoom;
-    
+
     public UIContainer ui;
     public IntroOutroUI defaulRoomUI;
 
     public Recorder recorder;
- 
-    
+
+
     /********************************************************/
 
     private const string profilesPrefix = "PostProProfiles/ppp_";
     private const string roomsFolder = "ExperimentRooms/";
     private const float transitionDuration = 0.5f;
-    
+
     private List<PostProcessingProfile> postProcessingProfiles;
     private List<Transform> roomSpawnPoints;
     private List<Transform> canvasAnchors;
@@ -36,33 +36,56 @@ public class PPExperimentController : MonoBehaviour
     private List<GameObject> rooms;
     private List<Question> questions;
 
-    private GameObject player;
+    public GameObject player;
 
     private bool experimentStarted = false;
     private bool experimentEnded = false;
-    
+    private bool experimentError = false;
+
     private int currentRoomNumber = 0;
     private int currentProfileIndex = 0;
     private int currentQuestionIndex = 0;
-    
+
     void Start()
     {
-        experiment = Experiment.Load("PPExperimentTemplate.xml");
-        //TODO Handle file not found
+        experiment = ApplicationDataContainer.loadedExperiment;
 
-        if (PlayerPrefs.GetInt("replay") == 1)
+        if (experiment == null)
+        {
+            EndWithError();
+            return;
+        }
+
+        if (ApplicationDataContainer.replay)
         {
             SpawnRooms();
-            
-            //Start Replay
+            var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
+            controllerSwapper.controller = PlayerControllerSwapper.Controller.Observer;
+            controllerSwapper.RefreshActive();
+
+            recorder.StartReplay();
         }
         else
         {
+            player.GetComponent<PlayerControllerSwapper>().RefreshActive();
             InitScene();
             PrepareExperiment();
         }
-        
-        
+    }
+
+    private void EndWithError()
+    {
+        defaulRoomUI.headline.text = "Experiment Error";
+        defaulRoomUI.sentence.text = "No experiment was loaded or the loaded file is invalid. Please contact the experiment overseer for more information.";
+
+        defaulRoomUI.HideBackButton();
+        defaulRoomUI.SetMainButtonText("End");
+
+        recorder = null;
+
+        experimentEnded = true;
+        experimentStarted = true;
+        experimentError = true;
     }
 
     /// <summary>
@@ -82,7 +105,7 @@ public class PPExperimentController : MonoBehaviour
         if (!recorder)
         {
             recorder = GameObject.FindGameObjectWithTag("Recorder").GetComponent<Recorder>();
-            
+
             if (!recorder)
             {
                 Debug.LogError("No gameobject with tag Recorder was found in the scene. Will not record.");
@@ -94,7 +117,7 @@ public class PPExperimentController : MonoBehaviour
         }
     }
 
-    
+
     /// <summary>
     /// Does all the necessary actions in order to start the experiment. Can result in an error screen given that any of the
     /// experiment rooms were not found, hence the experiment is corrupted.
@@ -122,7 +145,7 @@ public class PPExperimentController : MonoBehaviour
         RefreshScene();
     }
 
-    
+
     /// <summary>
     /// Finds, loads and spawns all the rooms,
     /// that were specified in the input file.
@@ -130,7 +153,7 @@ public class PPExperimentController : MonoBehaviour
     private void SpawnRooms()
     {
         float xOffset = 0f;
-        
+
         foreach (var test in tests)
         {
             string roomName = test.experimentRoomName;
@@ -139,7 +162,7 @@ public class PPExperimentController : MonoBehaviour
             if (room == null)
             {
                 Debug.Log("Room " + roomName + " was not found in Resources.");
-                
+
                 //Default error room
                 room = Resources.Load<GameObject>(roomsFolder + "error_room");
                 //TODO set text and option to error
@@ -151,7 +174,7 @@ public class PPExperimentController : MonoBehaviour
         }
     }
 
-    
+
     /// <summary>
     /// Player is placed into the default room
     /// with a simple greeting screen and a tutorial.
@@ -160,12 +183,11 @@ public class PPExperimentController : MonoBehaviour
     /// </summary>
     private void SetInitialPositions()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = defaultRoom.transform.position;
         ui.wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
     }
 
-    
+
     /// <summary>
     /// After the player pushes the start button
     /// he is transported to the first testing room.
@@ -178,13 +200,21 @@ public class PPExperimentController : MonoBehaviour
         {
             StartCoroutine(RoomSwapRoutine());
             experimentStarted = true;
-            if(recorder) recorder.StartRecording();
+            if (recorder) recorder.StartRecording();
         }
-        
+
         //Experiment is complete
-        if(experimentEnded)
+        if (experimentEnded)
         {
-            EndExperiment();
+            if (experimentError)
+            {
+                ReturnToMainMenu();
+            }
+            else
+            {
+                EndExperiment();                
+            }
+
         }
     }
 
@@ -197,7 +227,7 @@ public class PPExperimentController : MonoBehaviour
         rooms = new List<GameObject>();
         roomSpawnPoints = new List<Transform>();
         canvasAnchors = new List<Transform>();
-        
+
         //Find all experiment rooms
         foreach (var experimentRoom in GameObject.FindGameObjectsWithTag("ExperimentRoom"))
         {
@@ -224,31 +254,33 @@ public class PPExperimentController : MonoBehaviour
                 canvasAnchor = room.transform;
                 canvasAnchor.transform.position += Vector3.forward * 2f;
             }
-            
+
             roomSpawnPoints.Add(spawnPoint);
             canvasAnchors.Add(canvasAnchor);
         }
     }
-    
+
     /// <summary>
     /// Helper method to find <c>Transform</c> components in children by tag
     /// </summary>
     /// <param name="parent">the parenting gameobject</param>
     /// <param name="tag">the tag to look for</param>
     /// <returns><c>Transform</c> that has been found</returns>
-    public static Transform FindComponentInChildWithTag(GameObject parent, string tag){
+    public static Transform FindComponentInChildWithTag(GameObject parent, string tag)
+    {
         Transform t = parent.transform;
-        foreach(Transform tr in t)
+        foreach (Transform tr in t)
         {
-            if(tr.CompareTag(tag))
+            if (tr.CompareTag(tag))
             {
                 return tr;
             }
         }
+
         return null;
     }
 
-    
+
     /// <summary>
     /// Compares two positions which is more to the left (less on X axis)
     /// </summary>
@@ -260,7 +292,7 @@ public class PPExperimentController : MonoBehaviour
         return a.transform.position.x.CompareTo(b.transform.position.x);
     }
 
-    
+
     /// <summary>
     /// Loads all post processing profiles that will be tested.
     /// Profiles have to be in <c>Resources/PostProProfiles/</c> folder and it is mandatory
@@ -271,7 +303,7 @@ public class PPExperimentController : MonoBehaviour
     {
         postProcessingProfiles = new List<PostProcessingProfile>();
 
-        
+
         int count = 0;
 
         while (Resources.Load(profilesPrefix + count) != null)
@@ -282,26 +314,26 @@ public class PPExperimentController : MonoBehaviour
         }
     }
 
-    
+
     /// <summary>
     /// Unity method called every frame
     /// </summary>
     void Update()
     {
-        if (Input.GetButtonDown("SceneSwap"))
+        if (Input.GetButtonDown("SceneSwap") && experimentStarted && !experimentEnded)
         {
             SceneSwap();
         }
     }
 
-    
+
     /// <summary>
     /// Applies the next available post processing profile to be tested.
     /// </summary>
     public virtual void SceneSwap()
     {
         StartCoroutine(EffectToggle());
-        currentProfileIndex = (currentProfileIndex + 1) % postProcessingProfiles.Count; 
+        currentProfileIndex = (currentProfileIndex + 1) % postProcessingProfiles.Count;
     }
 
 
@@ -329,7 +361,7 @@ public class PPExperimentController : MonoBehaviour
         SetQuestionText();
         SetOptions();
     }
-    
+
     /// <summary>
     /// Handles answer selected by the user. Answer is recorded.
     /// If there are more questions withing the same test, the next one is loaded.
@@ -376,7 +408,7 @@ public class PPExperimentController : MonoBehaviour
         currentQuestionIndex++;
         RefreshScene();
     }
-    
+
     private void SetQuestionText()
     {
         ui.questionTextDisplay.text = questions[currentQuestionIndex].questionText;
@@ -387,30 +419,30 @@ public class PPExperimentController : MonoBehaviour
         RemoveAnswersDisplay();
 
         int optionIndex = 0;
-        
+
         foreach (var option in questions[currentQuestionIndex].questionOptions)
         {
             var button = Instantiate(ui.answerButtonPrefab, ui.answersLayout);
             button.GetComponentInChildren<TextMeshProUGUI>().text = option;
             button.GetComponent<Button>().onClick.AddListener
             (
-                    ButtonClickDelegate(optionIndex)
+                ButtonClickDelegate(optionIndex)
             );
 
             optionIndex++;
         }
-
     }
-    
+
     private UnityAction ButtonClickDelegate(int optionIndex)
     {
         return delegate { SelectAnswer(optionIndex); };
     }
-    
+
     private void RemoveAnswersDisplay()
     {
         //Remove old answers
-        foreach (Transform child in ui.answersLayout) {
+        foreach (Transform child in ui.answersLayout)
+        {
             Destroy(child.gameObject);
         }
     }
@@ -420,20 +452,20 @@ public class PPExperimentController : MonoBehaviour
         ui.questionTextDisplay.text = "";
     }
 
-    
+
     /// <summary>
     /// Loads the next post processing profile and sets it to the camera.
     /// </summary>
     /// <returns>IEnumerator for the effect handling</returns>
     IEnumerator EffectToggle()
     {
-        headsetFade.Fade(Color.black, transitionDuration); 
+        headsetFade.Fade(Color.black, transitionDuration);
         yield return new WaitForSeconds(transitionDuration);
         postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
         ui.sceneValueText.text = currentProfileIndex + 1 + "/" + postProcessingProfiles.Count;
         headsetFade.Unfade(transitionDuration);
     }
-    
+
 
     /// <summary>
     /// 
@@ -445,18 +477,18 @@ public class PPExperimentController : MonoBehaviour
         yield return new WaitForSeconds(transitionDuration);
         player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
         ui.wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
-        headsetFade.Unfade(transitionDuration); 
+        headsetFade.Unfade(transitionDuration);
     }
 
     public void EndExperiment()
     {
-        if(recorder) recorder.StopRecording();
-        
+        if (recorder) recorder.StopRecording();
+
         DateTime now = DateTime.Now;
         experiment.experimentEndTime = now;
         string filename = now.ToString("yyyyMMddhhmm");
         experiment.Save("result-p-" + filename + ".xml");
-        
+
         ReturnToMainMenu();
     }
 

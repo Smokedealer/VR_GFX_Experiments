@@ -4,6 +4,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FileLoader : MonoBehaviour
@@ -45,7 +46,7 @@ public class FileLoader : MonoBehaviour
 			
 			button.onClick.AddListener(ButtonClickDelegate(file.ToString()));
 
-			var buttonText = button.GetComponentInChildren<Text>();
+			var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
 			buttonText.text = file.Name;
 		}
@@ -79,14 +80,11 @@ public class FileLoader : MonoBehaviour
 		switch (recording.fileType)
 		{
 			case FileType.OO:
-				Debug.Log("OO recording loaded.");
-				
+				SceneManager.LoadScene("OnObjectExperiments");
 				break;
 			case FileType.PP:
-				Debug.Log("PP recording loaded.");
-				break;
 			case FileType.PPC:
-				Debug.Log("PPC recording loaded.");
+				SceneManager.LoadScene("PostProExperiments");
 				break;
 		}
 	}
@@ -102,13 +100,11 @@ public class FileLoader : MonoBehaviour
 		switch (experiment.experimentType)
 		{
 			case FileType.OO:
-				Debug.Log("OO recording loaded.");
+				SceneManager.LoadScene("OnObjectExperiments");
 				break;
 			case FileType.PP:
-				Debug.Log("PP recording loaded.");
-				break;
 			case FileType.PPC:
-				Debug.Log("PPC recording loaded.");
+				SceneManager.LoadScene("PostProExperiments");
 				break;
 		}
 	}
