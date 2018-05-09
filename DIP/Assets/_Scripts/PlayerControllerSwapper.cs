@@ -19,10 +19,6 @@ public class PlayerControllerSwapper : MonoBehaviour
 
     private void Start()
     {
-        VRController.SetActive(false);
-        nonVRController.SetActive(false);
-        observerController.SetActive(false);
-        
         RefreshActive();
     }
 
@@ -30,13 +26,18 @@ public class PlayerControllerSwapper : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            controller = controller == Controller.VR ? Controller.NonVR : Controller.VR;
+            Debug.Log("Swapping!");
+            controller = controller == Controller.Observer ? Controller.NonVR : Controller.Observer;
             RefreshActive();
         }
     }
 
     public void RefreshActive()
     {
+        VRController.SetActive(false);
+        nonVRController.SetActive(false);
+        observerController.SetActive(false);
+        
         switch (controller)
         {
             case Controller.VR:

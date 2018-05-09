@@ -57,8 +57,8 @@ public class Experiment
     /// Information about the system the experiment was conducted on.
     /// See <see cref="SystemInfoSerializable"/>.
     /// </summary>
-    [XmlElement(ElementName = "SystemInfo")]
-    public SystemInfoSerializable systemInfo;
+//    [XmlElement(ElementName = "SystemInfo")]
+//    public SystemInfoSerializable systemInfo;
 
     
     

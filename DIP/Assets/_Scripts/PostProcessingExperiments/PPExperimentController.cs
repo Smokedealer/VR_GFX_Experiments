@@ -9,7 +9,7 @@ using TMPro;
 using UnityEngine.Events;
 using VRTK;
 
-public class PPExperimentController : MonoBehaviour
+public class PPExperimentController : MonoBehaviour, IExperimentController
 {
     public Experiment experiment;
     public PostProcessingBehaviour postProcessingBehaviour;
@@ -35,6 +35,7 @@ public class PPExperimentController : MonoBehaviour
     private List<PostProTest> tests;
     private List<GameObject> rooms;
     private List<Question> questions;
+    private List<string> roomNames;
 
     public GameObject player;
 
@@ -46,18 +47,37 @@ public class PPExperimentController : MonoBehaviour
     private int currentProfileIndex = 0;
     private int currentQuestionIndex = 0;
 
+    public enum SceneMode
+    {
+        Play, Replay
+    }
+
+    public SceneMode sceneMode;
+
     void Start()
     {
         experiment = ApplicationDataContainer.loadedExperiment;
 
         if (experiment == null)
         {
-            EndWithError();
-            return;
+//            EndWithError();
+//            return;
+
+            if (sceneMode == SceneMode.Play)
+            {
+                experiment = Experiment.Load("Experiments/PPExperimentTemplate.xml");
+                Debug.Log("Dummy experiment laoded");
+            }
+            else
+            {
+                ApplicationDataContainer.replay = true;
+                ApplicationDataContainer.loadedRecording = Recording.LoadRecording();
+            }   
         }
 
         if (ApplicationDataContainer.replay)
         {
+            roomNames = ApplicationDataContainer.loadedRecording.experimentGameObjects;
             SpawnRooms();
             var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
             controllerSwapper.controller = PlayerControllerSwapper.Controller.Observer;
@@ -126,10 +146,14 @@ public class PPExperimentController : MonoBehaviour
     {
         var loadedTests = experiment.tests;
         tests = new List<PostProTest>();
-
+        roomNames = new List<string>();
+        
+        
         foreach (var loadedTest in loadedTests)
         {
-            tests.Add(loadedTest as PostProTest);
+            var test = loadedTest as PostProTest;
+            tests.Add(test);
+            roomNames.Add(test.experimentRoomName);
         }
 
         //For easy access to questions
@@ -152,11 +176,10 @@ public class PPExperimentController : MonoBehaviour
     /// </summary>
     private void SpawnRooms()
     {
-        float xOffset = 0f;
+        float xOffset = 10f;
 
-        foreach (var test in tests)
+        foreach (var roomName in roomNames)
         {
-            string roomName = test.experimentRoomName;
             var room = Resources.Load<GameObject>(roomsFolder + roomName);
 
             if (room == null)
@@ -482,7 +505,11 @@ public class PPExperimentController : MonoBehaviour
 
     public void EndExperiment()
     {
-        if (recorder) recorder.StopRecording();
+        if (recorder)
+        {
+            recorder.recordedData.experimentGameObjects = GetAllRoomStrings();
+            recorder.StopRecording();   
+        }
 
         DateTime now = DateTime.Now;
         experiment.experimentEndTime = now;
@@ -490,6 +517,18 @@ public class PPExperimentController : MonoBehaviour
         experiment.Save("result-p-" + filename + ".xml");
 
         ReturnToMainMenu();
+    }
+
+    private List<string> GetAllRoomStrings()
+    {
+        List<string> roomNames = new List<string>();
+
+        foreach (var test in tests)
+        {
+            roomNames.Add(test.experimentRoomName);
+        }
+
+        return roomNames;
     }
 
     private void TeleportToDefaultRoom()
@@ -500,5 +539,10 @@ public class PPExperimentController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public Experiment GetExperimentReference()
+    {
+        return experiment;
     }
 }

@@ -10,12 +10,6 @@ using VRTK;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public string[] experimentObjects;
-
-    public PostProcessingProfile profile;
-
-    public SteamVR_Fade _fade;
     
     public void StartExperiment(int sceneNumber)
     {

@@ -41,7 +41,6 @@ public class FileLoader : MonoBehaviour
 		
 		foreach (var file in fileInfo)
 		{
-			Debug.Log(file.ToString());
 			var button = Instantiate(listItem, contentLayout);
 			
 			button.onClick.AddListener(ButtonClickDelegate(file.ToString()));
@@ -95,7 +94,6 @@ public class FileLoader : MonoBehaviour
 		
 		ApplicationDataContainer.replay = false;
 		ApplicationDataContainer.loadedExperiment = experiment;
-		
 		
 		switch (experiment.experimentType)
 		{

@@ -13,6 +13,9 @@ public class Recording
 
     public FileType fileType;
 
+    public List<string> experimentGameObjects;
+//    public Experiment experiment;
+    
     public Recording()
     {
         cameraPositions = new List<PointInTime>();
@@ -30,7 +33,9 @@ public class Recording
         }
 		
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream stream = new FileStream(filePath, FileMode.Create);		
+        FileStream stream = new FileStream(filePath, FileMode.Create);	
+        
+        Debug.Log("Saving " + cameraPositions.Count + " recorded frames");
 		
         binaryFormatter.Serialize(stream, this);
         stream.Close();
@@ -46,6 +51,8 @@ public class Recording
 			
             var recording = binaryFormatter.Deserialize(stream) as Recording;
             stream.Close();
+            
+            Debug.Log("Loaded " + recording.cameraPositions.Count + " frames");
 
             return recording;
         }

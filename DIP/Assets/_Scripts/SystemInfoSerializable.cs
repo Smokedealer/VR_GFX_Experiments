@@ -1,7 +1,9 @@
 ﻿
+using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
+[Serializable]
 public class SystemInfoSerializable
 {
     [XmlElement(ElementName = "GPU")]

@@ -19,7 +19,9 @@ public class Recorder : MonoBehaviour
 
 	public FileType FileType;
 
-	private Recording recordedData;
+	public Recording recordedData;
+
+	public IExperimentController experimentController;
 
 	private bool recording;
 	private bool replaying;
@@ -35,8 +37,11 @@ public class Recorder : MonoBehaviour
 		}
 		else
 		{
-			recordedData = new Recording {fileType = FileType};
-
+			recordedData = new Recording
+			{
+				fileType = FileType
+			};
+			
 //			playerCamera = Camera.main.transform;
 		}
 		
@@ -47,6 +52,8 @@ public class Recorder : MonoBehaviour
 	{
 		recording = true;
 		replaying = false;
+		
+		
 	}
 
 	public void StopRecording()
@@ -118,7 +125,7 @@ public class Recorder : MonoBehaviour
 		if (replayIndex >= cameraRecording.Count)
 		{
 			Debug.Log("No more to replay.");
-			replaying = false;
+			StopReplay();
 			return;
 		}
 
@@ -146,4 +153,9 @@ public class Recorder : MonoBehaviour
 	}
 
 	
+}
+
+public interface IExperimentController
+{
+	Experiment GetExperimentReference();
 }

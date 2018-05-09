@@ -4,10 +4,7 @@ using UnityEngine;
 
 
 public class EffectSettings
-{ 
-    [XmlElement(ElementName = "EffectName")]
-    public string effectName;
-    
+{    
     [XmlElement(ElementName = "PropertyName")]
     public string propertyName;
 
