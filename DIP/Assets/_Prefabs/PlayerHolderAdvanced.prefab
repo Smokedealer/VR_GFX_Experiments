@@ -1671,6 +1671,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1801518614836530
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4406059473677206}
+  - component: {fileID: 114710369292810704}
+  - component: {fileID: 114488790244609966}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1806085752610038
 GameObject:
   m_ObjectHideFlags: 1
@@ -2554,6 +2571,19 @@ Transform:
   m_Father: {fileID: 4945279752657906}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 89.980194, y: 0, z: 0}
+--- !u!4 &4406059473677206
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801518614836530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4841971748603964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4440439956314044
 Transform:
   m_ObjectHideFlags: 1
@@ -2817,10 +2847,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875400429244740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4841971748603964}
+  m_Father: {fileID: 4891764566730400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4715445345225986
@@ -2952,7 +2982,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4714866197591072}
+  - {fileID: 4406059473677206}
   m_Father: {fileID: 4643477589757984}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2966,6 +2996,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4714866197591072}
   - {fileID: 4896169847445542}
   - {fileID: 224753368612254968}
   m_Father: {fileID: 4643477589757984}
@@ -2982,7 +3013,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4891764566730400}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4905859936301754
 Transform:
@@ -3684,8 +3715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3121ca8109884558abbc245a6fcc1d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvases:
-  - {fileID: 0}
   VRController: {fileID: 1590602695928146}
   nonVRController: {fileID: 1792225976329194}
   observerController: {fileID: 1663443624734218}
@@ -3720,7 +3749,7 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 0}
   pointerRenderer: {fileID: 114143917958588624}
-  activationButton: 12
+  activationButton: 4
   holdButtonToActivate: 0
   activateOnEnable: 0
   activationDelay: 0
@@ -3852,8 +3881,8 @@ MonoBehaviour:
     maxAllowedPerFrameAngleDifference: 1.5
   validCollisionColor: {r: 0, g: 1, b: 0, a: 1}
   invalidCollisionColor: {r: 1, g: 0, b: 0, a: 1}
-  tracerVisibility: 0
-  cursorVisibility: 0
+  tracerVisibility: 1
+  cursorVisibility: 1
   maximumLength: 100
   scaleFactor: 0.002
   cursorScaleMultiplier: 25
@@ -3873,8 +3902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b26f999cbdac8478b6c2a046256169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationButton: 10
-  activationMode: 0
+  activationButton: 0
+  activationMode: 2
   selectionButton: 3
   clickMethod: 0
   attemptClickOnDeactivate: 0
@@ -3911,8 +3940,8 @@ MonoBehaviour:
     maxAllowedPerFrameAngleDifference: 1.5
   validCollisionColor: {r: 0, g: 1, b: 0, a: 1}
   invalidCollisionColor: {r: 1, g: 0, b: 0, a: 1}
-  tracerVisibility: 0
-  cursorVisibility: 0
+  tracerVisibility: 1
+  cursorVisibility: 1
   maximumLength: 100
   scaleFactor: 0.002
   cursorScaleMultiplier: 25
@@ -4087,7 +4116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreTriggerColliders: 0
-  colliderRadius: 0.1
+  colliderRadius: 0.3
   targetListPolicy: {fileID: 0}
   headsetColliding: 0
   collidingWith: {fileID: 0}
@@ -4244,8 +4273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b26f999cbdac8478b6c2a046256169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationButton: 12
-  activationMode: 1
+  activationButton: 0
+  activationMode: 2
   selectionButton: 3
   clickMethod: 0
   attemptClickOnDeactivate: 0
@@ -5208,6 +5237,24 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114488790244609966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801518614836530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &114489874253371454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6201,6 +6248,20 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &114710369292810704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801518614836530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 0
+  m_DragThreshold: 5
 --- !u!114 &114710545486098876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6310,11 +6371,11 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 0}
   pointerRenderer: {fileID: 114109002991637060}
-  activationButton: 10
-  holdButtonToActivate: 1
+  activationButton: 4
+  holdButtonToActivate: 0
   activateOnEnable: 0
   activationDelay: 0
-  selectionButton: 10
+  selectionButton: 3
   selectOnPress: 0
   selectionDelay: 0
   selectAfterHoverDuration: 0
@@ -6674,9 +6735,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTillFade: 0
-  blinkTransitionSpeed: 0.1
+  blinkTransitionSpeed: 0.2
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  headsetCollision: {fileID: 0}
+  headsetCollision: {fileID: 114190098883215638}
   headsetFade: {fileID: 0}
 --- !u!114 &114848206058440286
 MonoBehaviour:
@@ -6704,10 +6765,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   operation: 1
-  checkType: 1
+  checkType: 5
   identifiers:
   - TeleportPad
-  - VRUIButton
+  - UI
 --- !u!114 &114855764906771636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6864,7 +6925,7 @@ MonoBehaviour:
   triggerText: Select / Teleport
   gripText: 
   touchpadText: 
-  buttonOneText: Activate Pointer
+  buttonOneText: 
   buttonTwoText: Swap Scene
   startMenuText: 
   tipBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -7099,7 +7160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a9c9ae8b1fb1542b78598ac955afe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerText: 
+  triggerText: Select / Teleport
   gripText: 
   touchpadText: 
   buttonOneText: 
@@ -10059,7 +10120,7 @@ RectTransform:
   - {fileID: 224902365771339208}
   - {fileID: 224745610471122866}
   m_Father: {fileID: 4891764566730400}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

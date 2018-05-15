@@ -472,12 +472,11 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
         
         if (headsetFade != null)
         {
-            headsetFade.Fade(Color.black, transitionDuration);
+            headsetFade.Fade(Color.black, transitionDuration / 2);
             yield return new WaitForSeconds(transitionDuration);
-            headsetFade.Unfade(transitionDuration);
+            headsetFade.Unfade(transitionDuration * 2);
         }
-        
-        player.transform.position = Vector3.zero;
+       
         postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
         ui.sceneValueText.text = currentProfileIndex + 1 + "/" + postProcessingProfiles.Count;
     }

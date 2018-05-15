@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 748954423}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1518a5e598c7da244bc4850d3ae63354, type: 3}
   m_Name: 
@@ -2033,11 +2033,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: canvases.Array.data[0]
-      value: 
-      objectReference: {fileID: 748954429}
     - target: {fileID: 33641539698207214, guid: 84c0632ce949deb4fb4e8d5366ff471c,
         type: 2}
       propertyPath: m_Mesh
@@ -2051,21 +2046,6 @@ Prefab:
     - target: {fileID: 1355435779027432, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}
       propertyPath: m_Name
       value: PlayerHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: activeController
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: swapFrom
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: swapTo
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}

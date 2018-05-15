@@ -86,7 +86,7 @@ public class Recorder : MonoBehaviour
 	/// </summary>
 	void Start ()
 	{
-		playerCamera = Camera.main.transform;
+       
 		
 		
 		if (ApplicationDataContainer.replay)
@@ -112,10 +112,10 @@ public class Recorder : MonoBehaviour
 
 	public void StartRecording()
 	{
-		recording = true;
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+        recording = true;
 		replaying = false;
-		
-		
 	}
 
 	public void StopRecording(string filename = "testRecording.rec")

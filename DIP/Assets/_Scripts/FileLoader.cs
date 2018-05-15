@@ -43,7 +43,7 @@ public class FileLoader : MonoBehaviour
 		{
 			var button = Instantiate(listItem, contentLayout);
 			
-			button.onClick.AddListener(ButtonClickDelegate(file.ToString()));
+			button.onClick.AddListener(ButtonClickDelegate(file.FullName));
 
 			var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 

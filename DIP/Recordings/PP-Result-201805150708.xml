@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ExperimentType>PP</ExperimentType>
+  <ExperimentStart>0001-01-01T00:00:00</ExperimentStart>
+  <ExperimentEnd>2018-05-15T19:08:54.6163228+02:00</ExperimentEnd>
+  <Tests>
+    <TestPP>
+      <Questions>
+        <Question>
+          <Text>[Sample question 1]</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>furniture_room</ExperimentRoomName>
+    </TestPP>
+    <TestPP>
+      <Questions>
+        <Question>
+          <Text>[Sample question 1]</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>[Sample question 2]</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>[Sample question 3]</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>junk_room</ExperimentRoomName>
+    </TestPP>
+    <TestPP>
+      <Questions>
+        <Question>
+          <Text>[Sample question 1]</Text>
+          <ExperimentPart>0</ExperimentPart>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>wood_stuff_room</ExperimentRoomName>
+    </TestPP>
+  </Tests>
+</Experiment>
