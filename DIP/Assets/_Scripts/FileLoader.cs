@@ -34,7 +34,7 @@ public class FileLoader : MonoBehaviour
 		var fileInfo = info.GetFiles(filePattern);
 
 		//Remove all buttons if any
-		foreach (GameObject child in contentLayout)
+		foreach (Transform child in contentLayout)
 		{
 			Destroy(child);
 		}

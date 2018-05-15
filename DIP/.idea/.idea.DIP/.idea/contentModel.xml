@@ -17,9 +17,9 @@
         <e p="LICENSE.txt" t="Include" />
         <e p="Menu" t="Include">
           <e p="MainMenu.cs" t="Include" />
-          <e p="PauseMenuScript.cs" t="Include" />
         </e>
         <e p="ObserverController.cs" t="Include" />
+        <e p="ObserverUIController.cs" t="Include" />
         <e p="OnObjectExperiments" t="Include">
           <e p="OnObjectTest.cs" t="Include" />
           <e p="OOExperimentController.cs" t="Include" />
@@ -35,10 +35,10 @@
         <e p="Question.cs" t="Include" />
         <e p="Recording" t="Include">
           <e p="FileType.cs" t="Include" />
-          <e p="Float3Holder.cs" t="Include" />
           <e p="PointInTime.cs" t="Include" />
           <e p="Recorder.cs" t="Include" />
           <e p="Recording.cs" t="Include" />
+          <e p="SerializableTransform.cs" t="Include" />
         </e>
         <e p="SystemInfoSerializable.cs" t="Include" />
         <e p="Test.cs" t="Include" />
@@ -48,6 +48,7 @@
           </e>
           <e p="RecordingTestsOld.cs" t="Include" />
         </e>
+        <e p="TooltipHider.cs" t="Include" />
         <e p="UIContainer.cs" t="Include" />
       </e>
       <e p="Assets\AutoSave" t="Include">
@@ -219,7 +220,6 @@
           </e>
         </e>
       </e>
-      <e p="Assets\firstPersonEventsVRTK.cs" t="Include" />
       <e p="Assets\Oculus" t="Include">
         <e p="VR" t="Include">
           <e p="Editor" t="Include">
@@ -656,7 +656,6 @@
           <e p="SteamVR_Utils.cs" t="Include" />
         </e>
       </e>
-      <e p="Assets\TooltipHider.cs" t="Include" />
       <e p="Assets\UIRaycaster.cs" t="Include" />
       <e p="Assets\VRTK" t="Include">
         <e p="Editor" t="Include">

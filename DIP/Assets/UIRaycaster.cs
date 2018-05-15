@@ -1,54 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VRTK;
 
-public class UIRaycaster : MonoBehaviour {
-
-
-	[Header("Controller Key Bindings")]
-	[Tooltip("Key used to simulate trigger button.")]
-	public KeyCode triggerAlias = KeyCode.Mouse1;
-	[Tooltip("Key used to simulate grip button.")]
-	public KeyCode gripAlias = KeyCode.Mouse0;
-	[Tooltip("Key used to simulate touchpad button.")]
-	public KeyCode touchpadAlias = KeyCode.Q;
-	[Tooltip("Key used to simulate button one.")]
-	public KeyCode buttonOneAlias = KeyCode.E;
-	[Tooltip("Key used to simulate button two.")]
-	public KeyCode buttonTwoAlias = KeyCode.R;
-	[Tooltip("Key used to simulate start menu button.")]
-	public KeyCode startMenuAlias = KeyCode.F;
-	[Tooltip("Key used to switch between button touch and button press mode.")]
-	public KeyCode touchModifier = KeyCode.T;
-	[Tooltip("Key used to switch between hair touch mode.")]
-	public KeyCode hairTouchModifier = KeyCode.H;
+public class UIRaycaster : MonoBehaviour
+{
+	private Camera _camera;
+	private Vector2 pos;
 	
 	private void Start()
 	{
-		var controllerSDK = VRTK_SDK_Bridge.GetControllerSDK() as SDK_SimController;
-		if (controllerSDK != null)
-		{
-			Dictionary<string, KeyCode> keyMappings = new Dictionary<string, KeyCode>()
-			{
-				{"Trigger", triggerAlias },
-				{"Grip", gripAlias },
-				{"TouchpadPress", touchpadAlias },
-				{"ButtonOne", buttonOneAlias },
-				{"ButtonTwo", buttonTwoAlias },
-				{"StartMenu", startMenuAlias },
-				{"TouchModifier", touchModifier },
-				{"HairTouchModifier", hairTouchModifier }
-			};
-			controllerSDK.SetKeyMappings(keyMappings);
-		}
-		
+		_camera = Camera.current;
+		pos = new Vector2(Screen.width/2, Screen.height/2);		
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+		RaycastWorldUI();	
+	}
+	
+	void RaycastWorldUI(){
+		if(Input.GetMouseButtonDown(0)){
+			
+			Debug.Log("Clicked");
+			
+			PointerEventData pointerData = new PointerEventData(EventSystem.current);
+ 
+			pointerData.position = pos;
+
+			Debug.Log(pointerData);
+ 
+			List<RaycastResult> results = new List<RaycastResult>();
+			EventSystem.current.RaycastAll(pointerData, results);
+			Physics.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)));
+ 
+			if (results.Count > 0) {
+				string dbg = "Root Element: {0} \n GrandChild Element: {1}";
+				Debug.Log(string.Format(dbg, results[results.Count-1].gameObject.name,results[0].gameObject.name));
 		
+				//WorldUI is my layer name
+				if (results[0].gameObject.layer == LayerMask.NameToLayer("UI")){ 
+					dbg = "Root Element: {0} \n GrandChild Element: {1}";
+					Debug.Log(string.Format(dbg, results[results.Count-1].gameObject.name,results[0].gameObject.name));
+					//Debug.Log("Root Element: "+results[results.Count-1].gameObject.name);
+					//Debug.Log("GrandChild Element: "+results[0].gameObject.name);
+					results.Clear();
+				} 
+			}
+		}
 	}
 }

@@ -10,7 +10,7 @@ public class RecordingTests {
 	public void Float3Holder_PositionTest()
 	{
 		Vector3 position = new Vector3(5f, 6f, 7f);
-		Float3Holder holder = new Float3Holder(position);
+		SerializableTransform holder = new SerializableTransform(position);
 
 		Vector3 saved = holder.GetVector3();
 
@@ -24,7 +24,7 @@ public class RecordingTests {
 		quaternion.x = 5f;
 		quaternion.y = 6f;
 		quaternion.z = 7f;
-		Float3Holder holder = new Float3Holder(quaternion);
+		SerializableTransform holder = new SerializableTransform(quaternion);
 
 		Quaternion saved = holder.GetQuaternion();
 

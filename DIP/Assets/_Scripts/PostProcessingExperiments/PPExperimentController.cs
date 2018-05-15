@@ -20,7 +20,7 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     public UIContainer ui;
     public IntroOutroUI defaulRoomUI;
 
-    public Recorder recorder;
+    private Recorder recorder;
 
 
     /********************************************************/
@@ -47,46 +47,31 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     private int currentProfileIndex = 0;
     private int currentQuestionIndex = 0;
 
-    public enum SceneMode
-    {
-        Play, Replay
-    }
-
-    public SceneMode sceneMode;
 
     void Start()
     {
         experiment = ApplicationDataContainer.loadedExperiment;
 
-        if (experiment == null)
-        {
-//            EndWithError();
-//            return;
-
-            if (sceneMode == SceneMode.Play)
-            {
-                experiment = Experiment.Load("Experiments/PPExperimentTemplate.xml");
-                Debug.Log("Dummy experiment laoded");
-            }
-            else
-            {
-                ApplicationDataContainer.replay = true;
-                ApplicationDataContainer.loadedRecording = Recording.LoadRecording();
-            }   
-        }
+        recorder = FindObjectOfType<Recorder>();
 
         if (ApplicationDataContainer.replay)
         {
             roomNames = ApplicationDataContainer.loadedRecording.experimentGameObjects;
             SpawnRooms();
             var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
-            controllerSwapper.controller = PlayerControllerSwapper.Controller.Observer;
+            controllerSwapper.activeController = PlayerControllerSwapper.Controller.Observer;
             controllerSwapper.RefreshActive();
 
             recorder.StartReplay();
         }
         else
         {
+            if (experiment == null)
+            {
+                EndWithError();
+                return;
+            }
+            
             player.GetComponent<PlayerControllerSwapper>().RefreshActive();
             InitScene();
             PrepareExperiment();
@@ -482,11 +467,19 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     /// <returns>IEnumerator for the effect handling</returns>
     IEnumerator EffectToggle()
     {
-        headsetFade.Fade(Color.black, transitionDuration);
-        yield return new WaitForSeconds(transitionDuration);
+        
+        headsetFade = FindObjectOfType<VRTK_HeadsetFade>();
+        
+        if (headsetFade != null)
+        {
+            headsetFade.Fade(Color.black, transitionDuration);
+            yield return new WaitForSeconds(transitionDuration);
+            headsetFade.Unfade(transitionDuration);
+        }
+        
+        player.transform.position = Vector3.zero;
         postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
         ui.sceneValueText.text = currentProfileIndex + 1 + "/" + postProcessingProfiles.Count;
-        headsetFade.Unfade(transitionDuration);
     }
 
 
@@ -505,16 +498,18 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
 
     public void EndExperiment()
     {
+        DateTime now = DateTime.Now;
+        string filename = now.ToString("yyyyMMddhhmm");
+        
         if (recorder)
         {
             recorder.recordedData.experimentGameObjects = GetAllRoomStrings();
-            recorder.StopRecording();   
+            recorder.StopRecording("PP-Recording-" + filename + ".rec");   
         }
-
-        DateTime now = DateTime.Now;
+        
         experiment.experimentEndTime = now;
-        string filename = now.ToString("yyyyMMddhhmm");
-        experiment.Save("result-p-" + filename + ".xml");
+        
+        experiment.SaveResult("PP-Result-" + filename + ".xml");
 
         ReturnToMainMenu();
     }

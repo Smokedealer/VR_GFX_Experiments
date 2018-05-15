@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// This is an example of extension to existing experiments
+/// This class is currently unused.
+/// </summary>
 public class PPCExperimentController : PPExperimentController
 {
 
     private CustomShaderScript customShaderScript;
-    
-    private void Start()
-    {
-//        customShaderScript.enabled = true;
-        Debug.Log("Yo waddup");
-    }
+
 
     public override void SceneSwap()
     {
-        Debug.Log("Yo waddup");
+        //Here you can add the swapping code that best suits your needs
+        //Whether it is camera swapping, shader change or just material alteration
     }
 }

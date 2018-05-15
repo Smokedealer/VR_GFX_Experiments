@@ -9,31 +9,93 @@ using Object = System.Object;
 
 public class Recorder : MonoBehaviour
 {
+	/// <summary>
+	/// Reference to the "head" or simply the main camera to be recorded
+	/// </summary>
 	public Transform playerCamera;
+	
+	/// <summary>
+	/// Reference to the left controller
+	/// </summary>
 	public GameObject leftController;
+	
+	
+	/// <summary>
+	/// Reference to the right controller
+	/// </summary>
 	public GameObject rightController;
 	
+	/// <summary>
+	/// Dummy head object for replays
+	/// </summary>
 	public GameObject playerCameraDummy;
+	
+	/// <summary>
+	/// Dummy left controller object for replays
+	/// </summary>
 	public GameObject leftControllerDummy;
+	
+	
+	/// <summary>
+	/// Dummy left controller object for replays
+	/// </summary>
 	public GameObject rightControllerDummy;
 
+	/// <summary>
+	/// What kind of recording this class is working with
+	/// </summary>
 	public FileType FileType;
 
+	/// <summary>
+	/// Collection of recorded data.
+	/// </summary>
 	public Recording recordedData;
 
-	public IExperimentController experimentController;
-
+	/// <summary>
+	/// State boolean showing that the recorder is recording
+	/// </summary>
 	private bool recording;
+	
+	/// <summary>
+	/// State variable to tell if the recorder is replaying 
+	/// </summary>
 	private bool replaying;
 	
+	/// <summary>
+	/// Current frame to be played
+	/// </summary>
 	private int replayIndex = 0;
-	
-	// Use this for initialization
-	void Start () {
 
+	/// <summary>
+	/// List of recorded camera positions
+	/// </summary>
+	private List<PointInTime> cameraRecording;
+	
+	/// <summary>
+	/// List of left controller positions
+	/// </summary>
+	private List<PointInTime> leftControllerRecording;
+	
+	/// <summary>
+	/// List of right controller positions
+	/// </summary>
+	private List<PointInTime> rightControllerRecording;
+	
+	/// <summary>
+	/// On start Recorder checks if the operation
+	/// </summary>
+	void Start ()
+	{
+		playerCamera = Camera.main.transform;
+		
+		
 		if (ApplicationDataContainer.replay)
 		{
 			recordedData = ApplicationDataContainer.loadedRecording;
+			
+			cameraRecording = recordedData.cameraPositions;
+			leftControllerRecording = recordedData.leftControllerPositions;
+			rightControllerRecording = recordedData.rightControllerPositions;
 		}
 		else
 		{
@@ -56,10 +118,10 @@ public class Recorder : MonoBehaviour
 		
 	}
 
-	public void StopRecording()
+	public void StopRecording(string filename = "testRecording.rec")
 	{
 		recording = false;
-		recordedData.SaveRecording();
+		recordedData.SaveRecording(filename);
 	}
 
 	public void StartReplay()
@@ -110,7 +172,13 @@ public class Recorder : MonoBehaviour
 		return recordedData.cameraPositions.Count;
 	}
 
-	private void ReplayFrame()
+	public int GetCurrentFrameIndex()
+	{
+		return replayIndex;
+	}
+	
+
+	public void ReplayFrame()
 	{
 		if (recordedData == null)
 		{
@@ -118,9 +186,6 @@ public class Recorder : MonoBehaviour
 			return;
 		}
 		
-		var cameraRecording = recordedData.cameraPositions;
-		var leftControllerRecording = recordedData.leftControllerPositions;
-		var rightControllerRecording = recordedData.rightControllerPositions;
 
 		if (replayIndex >= cameraRecording.Count)
 		{

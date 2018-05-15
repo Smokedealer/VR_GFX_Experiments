@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 using UnityEngine;
 using VRTK;
@@ -75,12 +76,28 @@ public class Experiment
     /// <param name="filename">File name (or path)</param>
     public void Save(string filename)
     {
-        var stream = new FileStream(filename, FileMode.Create);
-        
         XmlSerializer serializer = new XmlSerializer(typeof(Experiment));
-        serializer.Serialize(stream, this);
         
-        stream.Close();
+        using(StreamWriter sw = new StreamWriter(filename, false, Encoding.UTF8))
+        {
+            serializer.Serialize(sw, this);
+        }
+    }
+    
+    /// <summary>
+    /// Saves the experiment to an XML file on the given path.
+    /// </summary>
+    /// <param name="filename">File name (or path)</param>
+    public void SaveResult(string filename)
+    {
+        const string directory = "Recordings";
+        string filePath = directory + "/" + filename;
+        if(!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+        
+        Save(filePath);
     }
     
     
@@ -92,8 +109,10 @@ public class Experiment
     /// <returns><c>Experiment</c> object loaded from the file</returns>
     public static Experiment Load(string filename)
     {
-        var stream = new FileStream(filename, FileMode.Open);
+        var stream = new StreamReader(filename, Encoding.UTF8, true);
+        
         XmlSerializer serializer = new XmlSerializer(typeof(Experiment));
+     
         var result = (Experiment)serializer.Deserialize(stream);
         stream.Close();
         return result;

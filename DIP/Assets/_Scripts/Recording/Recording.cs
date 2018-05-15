@@ -14,7 +14,6 @@ public class Recording
     public FileType fileType;
 
     public List<string> experimentGameObjects;
-//    public Experiment experiment;
     
     public Recording()
     {

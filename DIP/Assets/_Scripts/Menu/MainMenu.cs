@@ -1,46 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using UnityEngine.PostProcessing;
-using VRTK;
 
-
+/// <summary>
+/// Class for handling main manu user interface. It has some additional featrues like
+/// creating template files for experiment definition.
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
-    
+    /// <summary>
+    /// Loads given experiment scene
+    /// </summary>
+    /// <param name="sceneNumber">The number of the screen in build settings</param>
     public void StartExperiment(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
     }
 
+    /// <summary>
+    /// Application exit method. Only prints out <i>"Application Exit"</i> in Edit mode.
+    /// </summary>
     public void quitApplication()
     {
         Application.Quit();
         Debug.Log("Application exit");
     }
 
+    /// <summary>
+    /// Handler for post-processing screen swap.
+    /// </summary>
     public void StartPostProcessingExperiment()
     {
         StartExperiment(2);
     }
 
-
+    /// <summary>
+    /// Handler for on object experiment scene swap
+    /// </summary>
     public void StartOnObjectExperiment()
     {
         StartExperiment(1);
     }
 
-
-    public void DevButton()
+    /// <summary>
+    /// Handler for creating template files
+    /// </summary>
+    public void CreateTemplateFiles()
     {
         Debug.Log("Dev button");
         CreateExamplePPExperiment();
         CreateExampleOOExperiment();
     }
 
+    /// <summary>
+    /// Creates default post processing template that can be edited and used.
+    /// </summary>
     private static void CreateExamplePPExperiment()
     {
         Experiment experiment = new Experiment();
@@ -68,6 +82,9 @@ public class MainMenu : MonoBehaviour
         experiment.Save("PPExperimentTemplate.xml");
     }
 
+    /// <summary>
+    /// Creates default on object experiment template that can be edited and used.
+    /// </summary>
     private void CreateExampleOOExperiment()
     {
         const string filename = "OOExperimentTemplate.xml";
