@@ -86,8 +86,6 @@ public class Recorder : MonoBehaviour
 	/// </summary>
 	void Start ()
 	{
-       
-		
 		
 		if (ApplicationDataContainer.replay)
 		{
@@ -103,8 +101,6 @@ public class Recorder : MonoBehaviour
 			{
 				fileType = FileType
 			};
-			
-//			playerCamera = Camera.main.transform;
 		}
 		
 	}
@@ -112,8 +108,6 @@ public class Recorder : MonoBehaviour
 
 	public void StartRecording()
 	{
-        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
-
         recording = true;
 		replaying = false;
 	}
@@ -155,6 +149,7 @@ public class Recorder : MonoBehaviour
 		
 		if(replaying)
 		{	
+			replayIndex++;
 			ReplayFrame();
 		}
 
@@ -163,7 +158,6 @@ public class Recorder : MonoBehaviour
 	public void SetType(Object caller)
 	{
 		if (caller is PPExperimentController) FileType = FileType.PP;
-		if (caller is PPCExperimentController) FileType = FileType.PPC;
 		if (caller is OOExperimentController) FileType = FileType.OO;
 	}
 
@@ -205,8 +199,6 @@ public class Recorder : MonoBehaviour
 		pointInTime = rightControllerRecording[replayIndex];
 		rightControllerDummy.transform.position = pointInTime.GetPosition();
 		rightControllerDummy.transform.rotation = pointInTime.GetRotation();
-
-		replayIndex++;
 	}
 
 
@@ -215,6 +207,11 @@ public class Recorder : MonoBehaviour
 		recordedData.cameraPositions.Add(new PointInTime(playerCamera.position, playerCamera.rotation));
 		if (leftController != null) recordedData.leftControllerPositions.Add(new PointInTime(leftController.transform.position, leftController.transform.rotation));
 		if (rightController != null) recordedData.rightControllerPositions.Add(new PointInTime(rightController.transform.position, rightController.transform.rotation));
+	}
+
+	public bool IsReplaying()
+	{
+		return replaying;
 	}
 
 	

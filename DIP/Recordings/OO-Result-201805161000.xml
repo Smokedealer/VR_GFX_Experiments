@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ExperimentType>OO</ExperimentType>
+  <ExperimentStart>2018-05-16T22:00:52.4073709+02:00</ExperimentStart>
+  <ExperimentEnd>2018-05-16T22:00:53.358173+02:00</ExperimentEnd>
+  <Tests>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>[This text can be whatever you want.]</Text>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>WoodenCrate</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+  </Tests>
+  <SystemInfo>
+    <Driver>Direct3D 11.0 [level 11.1]</Driver>
+    <CPU>Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz</CPU>
+  </SystemInfo>
+  <VRDevice>None</VRDevice>
+</Experiment>

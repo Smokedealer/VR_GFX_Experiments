@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,6 @@ public class ObserverUIController : MonoBehaviour
 
 	public Slider slider;
 
-	public Button playPauseButton;
 	public Text buttonText;
 
 	public TextMeshProUGUI recordingProgressText;
@@ -32,14 +29,27 @@ public class ObserverUIController : MonoBehaviour
 			maxFrames = recorder.GetRecordingSize();
 			slider.maxValue = maxFrames;
 			slider.onValueChanged.AddListener(delegate {ValueChangeCheck(); });
+	
 			playing = true;
 		}
 	}
 
+	
+
 	private void ValueChangeCheck()
 	{
-		recorder.SetReplayToFrame((int)slider.value);
-		recorder.ReplayFrame();
+		if (!recorder.IsReplaying())
+		{
+			recorder.SetReplayToFrame((int) slider.value);
+			recorder.ReplayFrame();
+		}
+	}
+
+	
+	public void OnDragBegin()
+	{
+		playing = false;
+		recorder.StopReplay();
 	}
 
 	// Update is called once per frame
@@ -47,13 +57,15 @@ public class ObserverUIController : MonoBehaviour
 	{
 		slider.value = recorder.GetCurrentFrameIndex();
 		recordingProgressText.text = slider.value + "/" + maxFrames;
+		
+		buttonText.text = !playing ? "❚❚" : "►";
+
+		if (slider.value == maxFrames) playing = false;
 	}
 
 	public void PlayPauseClicked()
 	{
 		playing = !playing;
 		recorder.PauseReplay();
-
-		buttonText.text = playing ? "❚❚" : "►";
 	}
 }

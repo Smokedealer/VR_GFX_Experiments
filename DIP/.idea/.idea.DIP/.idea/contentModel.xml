@@ -8,7 +8,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets\_Scripts" t="Include">
         <e p="ApplicationDataContainer.cs" t="Include" />
+        <e p="ApplicationMode.cs" t="Include" />
         <e p="BasicLookInputModule.cs" t="Include" />
+        <e p="Controller.cs" t="Include" />
         <e p="CustomShaderScript.cs" t="Include" />
         <e p="EffectSettings.cs" t="Include" />
         <e p="Experiment.cs" t="Include" />
@@ -27,9 +29,7 @@
         <e p="Option.cs" t="Include" />
         <e p="PlayerControllerSwapper.cs" t="Include" />
         <e p="PostProcessingExperiments" t="Include">
-          <e p="PostProCustomTest.cs" t="Include" />
           <e p="PostProTest.cs" t="Include" />
-          <e p="PPCExperimentController.cs" t="Include" />
           <e p="PPExperimentController.cs" t="Include" />
         </e>
         <e p="Question.cs" t="Include" />

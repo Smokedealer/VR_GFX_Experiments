@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VRTK;
 
 /// <summary>
 /// Class for handling main manu user interface. It has some additional featrues like
@@ -8,6 +10,16 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Creates necessary folders for the application runtime.
+    /// </summary>
+    private void Awake()
+    {
+        new DirectoryInfo("Experiments").Create();
+        new DirectoryInfo("Results").Create();
+        new DirectoryInfo("Recordings").Create();
+    }
+
     /// <summary>
     /// Loads given experiment scene
     /// </summary>
@@ -47,7 +59,6 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void CreateTemplateFiles()
     {
-        Debug.Log("Dev button");
         CreateExamplePPExperiment();
         CreateExampleOOExperiment();
     }
@@ -79,7 +90,7 @@ public class MainMenu : MonoBehaviour
         experiment.tests.Add(test);
        
         
-        experiment.Save("PPExperimentTemplate.xml");
+        experiment.Save("Experiments/PPExperimentTemplate.xml");
     }
 
     /// <summary>
@@ -87,15 +98,12 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     private void CreateExampleOOExperiment()
     {
-        const string filename = "OOExperimentTemplate.xml";
+        const string filename = "Experiments/OOExperimentTemplate.xml";
 
         var experiment = new Experiment();
 
         experiment.experimentType = FileType.OO;
         experiment.tests = new List<Test>();
-        
-
-        int i = 1;
 
         
         OnObjectTest onObjectTest = new OnObjectTest
@@ -129,16 +137,13 @@ public class MainMenu : MonoBehaviour
 
         Question question = new Question
         {
-            questionText = "[This text can be whatever you want.]",
-            experimentPart = i
+            questionText = "[This text can be whatever you want.]"
         };
         question.AddSampleOptions();
 
         onObjectTest.questions = new List<Question>(1) {question};
 
         experiment.tests.Add(onObjectTest);
-        i++;
-        
         
         experiment.Save(filename);
         

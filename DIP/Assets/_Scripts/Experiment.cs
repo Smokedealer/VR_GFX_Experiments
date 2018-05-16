@@ -45,10 +45,8 @@ public class Experiment
     /// </summary>
     /// <see cref="OnObjectTest"/>
     /// <see cref="PostProTest"/>
-    /// <see cref="PostProCustomTest"/>
     [XmlArray(ElementName = "Tests")]
     [XmlArrayItem("TestOO", Type = typeof(OnObjectTest))]
-    [XmlArrayItem("TestPPC", Type = typeof(PostProCustomTest))]
     [XmlArrayItem("TestPP", Type = typeof(PostProTest))]
     public List<Test> tests;
 
@@ -58,17 +56,40 @@ public class Experiment
     /// Information about the system the experiment was conducted on.
     /// See <see cref="SystemInfoSerializable"/>.
     /// </summary>
-//    [XmlElement(ElementName = "SystemInfo")]
-//    public SystemInfoSerializable systemInfo;
+    [XmlElement(ElementName = "SystemInfo")]
+    public SystemInfoSerializable systemInfo;
 
-    
-    
+
+
     /// <summary>
     /// Name of the headset used for the experiment.
     /// </summary>
-    //public string headsetInfo = VRTK_DeviceFinder.GetHeadsetType().ToString();
+    ///
+    [XmlElement(ElementName =  "VRDevice")]
+    public string headsetInfo;
 
-    
+    /// <summary>
+    /// Additional information about the experiment environment.
+    /// </summary>
+    private void FillInSystemInfo()
+    {
+        systemInfo = new SystemInfoSerializable();
+        
+        systemInfo.cpuName = SystemInfo.graphicsDeviceName;
+        systemInfo.cpuName = SystemInfo.processorType;
+        systemInfo.driver = SystemInfo.graphicsDeviceVersion;
+
+        if (ApplicationDataContainer.runMode == Controller.NonVR)
+        {
+            headsetInfo = "None";
+        }
+        else
+        {
+            headsetInfo = VRTK_DeviceFinder.GetHeadsetType().ToString();
+        }
+        
+        
+    }
     
     /// <summary>
     /// Saves the experiment to an XML file on the given path.
@@ -77,12 +98,17 @@ public class Experiment
     public void Save(string filename)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Experiment));
-        
+
+        var dir = new FileInfo(filename).Directory;
+       
+        dir.Create();
+       
         using(StreamWriter sw = new StreamWriter(filename, false, Encoding.UTF8))
         {
             serializer.Serialize(sw, this);
         }
     }
+
     
     /// <summary>
     /// Saves the experiment to an XML file on the given path.
@@ -90,12 +116,10 @@ public class Experiment
     /// <param name="filename">File name (or path)</param>
     public void SaveResult(string filename)
     {
-        const string directory = "Recordings";
+        const string directory = "Results";
         string filePath = directory + "/" + filename;
-        if(!Directory.Exists(directory))
-        {
-            Directory.CreateDirectory(directory);
-        }
+       
+        FillInSystemInfo();
         
         Save(filePath);
     }

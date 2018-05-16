@@ -14,6 +14,8 @@ public class Recording
     public FileType fileType;
 
     public List<string> experimentGameObjects;
+
+//    public Experiment experiment;
     
     public Recording()
     {
@@ -22,15 +24,15 @@ public class Recording
         rightControllerPositions = new List<PointInTime>();
     }
     
-    public void SaveRecording(string fileName = "testRecording.rec")
+    public void SaveRecording(string fileName)
     {
         const string directory = "Recordings";
         string filePath = directory + "/" + fileName;
-        if(!Directory.Exists(directory))
-        {
-            Directory.CreateDirectory(directory);
-        }
-		
+        
+        var dir = new FileInfo(fileName).Directory;
+        
+        dir.Create();
+        
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream stream = new FileStream(filePath, FileMode.Create);	
         
@@ -38,10 +40,9 @@ public class Recording
 		
         binaryFormatter.Serialize(stream, this);
         stream.Close();
-	
     }
 
-    public static Recording LoadRecording(string filePath = "Recordings/testRecording.rec")
+    public static Recording LoadRecording(string filePath)
     {
         if (File.Exists(filePath))
         {

@@ -595,7 +595,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Swap Scene
+  m_text: Swap Variant
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 478363997}
-    characterCount: 10
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -888,7 +888,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000036239624, y: 66.836395}
-  m_SizeDelta: {x: 1501.3, y: 444.2}
+  m_SizeDelta: {x: 1225, y: 444.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881817306
 MonoBehaviour:
@@ -909,8 +909,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Welcome! The experiment consists of multiple scenes. Each scene has multiple
-    Questions. Choose your anwers as best as you can. '
+  m_text: "Welcome! The experiment consists of multiple rooms. Each room has multiple
+    Questions. Answer the questions by clicking on one of the options. Use the \"Swap
+    Variant\" button to switch between multiple scene variants. \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
@@ -937,12 +938,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
-  m_fontSizeBase: 80
+  m_fontSize: 56.1
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_textAlignment: 264
   m_isAlignmentEnumConverted: 1
@@ -977,12 +978,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 881817306}
-    characterCount: 127
+    characterCount: 217
     spriteCount: 0
-    spaceCount: 20
-    wordCount: 20
+    spaceCount: 35
+    wordCount: 33
     linkCount: 0
-    lineCount: 3
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -1380,7 +1381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160.70193, y: 41.63523}
+  m_AnchoredPosition: {x: 146.6, y: 41.635}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041670783
@@ -1402,7 +1403,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Scene:'
+  m_text: 'Variant:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
@@ -1466,10 +1467,10 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 78.09976, w: 0}
+  m_margin: {x: 0, y: 0, z: 70.282364, w: 0}
   m_textInfo:
     textComponent: {fileID: 1041670783}
-    characterCount: 6
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -2613,11 +2614,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: canvases.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4643477589757984, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2650,24 +2646,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
+    - target: {fileID: 114156070902815680, guid: 84c0632ce949deb4fb4e8d5366ff471c,
         type: 2}
-      propertyPath: canvases.Array.data[0]
+      propertyPath: recorder
       value: 
-      objectReference: {fileID: 2064985204}
-    - target: {fileID: 114087821723434098, guid: 84c0632ce949deb4fb4e8d5366ff471c,
-        type: 2}
-      propertyPath: canvases.Array.data[1]
-      value: 
-      objectReference: {fileID: 1311277634}
-    - target: {fileID: 1792225976329194, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4841971748603964, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.56
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2027896922}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84c0632ce949deb4fb4e8d5366ff471c, type: 2}
   m_IsPrefabParent: 0
@@ -2691,6 +2674,11 @@ GameObject:
 --- !u!4 &1889748067 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4714818241651160, guid: 84c0632ce949deb4fb4e8d5366ff471c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1889748063}
+--- !u!4 &1889748068 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4267685470793918, guid: 84c0632ce949deb4fb4e8d5366ff471c,
     type: 2}
   m_PrefabInternal: {fileID: 1889748063}
 --- !u!1 &1947775850 stripped
@@ -2855,6 +2843,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9838bcb5141f6d443bd2814ec3c3c46a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2027896922 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114494693263381468, guid: 9838bcb5141f6d443bd2814ec3c3c46a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2027896921}
+  m_Script: {fileID: 11500000, guid: 05ef1f3a1e871f044ba8d03acdc903bc, type: 3}
 --- !u!1001 &2064985203
 Prefab:
   m_ObjectHideFlags: 0
@@ -3042,16 +3036,30 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224617337310925788, guid: 63b5c0aa576afca489fa351498312c63,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224760498707900196, guid: 63b5c0aa576afca489fa351498312c63,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224774342648602792, guid: 63b5c0aa576afca489fa351498312c63,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224962942010309218, guid: 63b5c0aa576afca489fa351498312c63,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114231263410630952, guid: 63b5c0aa576afca489fa351498312c63, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 63b5c0aa576afca489fa351498312c63, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2064985204 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114686699500225324, guid: 63b5c0aa576afca489fa351498312c63,
-    type: 2}
-  m_PrefabInternal: {fileID: 2064985203}
-  m_Script: {fileID: 11500000, guid: 1518a5e598c7da244bc4850d3ae63354, type: 3}
 --- !u!1 &2097332760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,11 +3089,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experiment:
     experimentType: 1
+    systemInfo:
+      gpuName: 
+      driver: 
+      cpuName: 
+    headsetInfo: 
   postProcessingBehaviour: {fileID: 1889748065}
   headsetFade: {fileID: 1889748064}
   defaultRoom: {fileID: 253921231}
   ui: {fileID: 1233961777}
   defaulRoomUI: {fileID: 1311277638}
+  nonVRTransformToRecord: {fileID: 1889748068}
   player: {fileID: 1889748066}
 --- !u!4 &2097332762
 Transform:

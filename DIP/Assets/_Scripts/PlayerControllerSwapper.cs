@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using VRTK;
 
@@ -8,6 +9,7 @@ using VRTK;
 public class PlayerControllerSwapper : MonoBehaviour
 {
     private List<VRTK_UICanvas> canvases;
+    private List<VRTK_DestinationPoint> teleportPads;
     
     public GameObject VRController;
     public GameObject nonVRController;
@@ -15,27 +17,14 @@ public class PlayerControllerSwapper : MonoBehaviour
     public GameObject defaultCamera;
 
     public Controller activeController;
-    
-    public Controller swapFrom;
-    public Controller swapTo;
 
-    public enum Controller
-    {
-        VR,
-        NonVR,
-        Observer,
-        SimpleCamera
-    }
-
-    private void Start()
+    private void Awake()
     {
         FindAllCanvases();
-        
-        activeController = swapFrom;
-        RefreshActive();
+        FindAllTeleportPads();
     }
 
-    private void FindAllCanvases()
+    public void FindAllCanvases()
     {
         canvases = new List<VRTK_UICanvas>();
         
@@ -46,19 +35,33 @@ public class PlayerControllerSwapper : MonoBehaviour
             canvases.Add(canvas);
         }
     }
-
-    private void Update()
+    
+    public void FindAllTeleportPads()
     {
-        if (Input.GetKeyDown(KeyCode.F2))
+        teleportPads = new List<VRTK_DestinationPoint>();
+        
+        var foundPads = FindObjectsOfType<VRTK_DestinationPoint>();
+
+        foreach (var pad in foundPads)
         {
-            Debug.Log("Swapping!");
-            activeController = activeController == swapTo ? swapFrom: swapTo;
-            RefreshActive();
+            teleportPads.Add(pad);
         }
     }
 
+
     public void RefreshActive()
     {
+        activeController = ApplicationDataContainer.runMode;
+
+        if (ApplicationDataContainer.replay && SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            activeController = Controller.Observer;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 0 && activeController == Controller.NonVR)
+        {
+            activeController = Controller.SimpleCamera;
+        }
+        
         VRController.SetActive(false);
         nonVRController.SetActive(false);
         observerController.SetActive(false);
@@ -78,31 +81,38 @@ public class PlayerControllerSwapper : MonoBehaviour
                 nonVRController.SetActive(true);
                 break;
             case Controller.Observer:
-                XRSettings.LoadDeviceByName("None");
-                XRSettings.enabled = false;
+                UnlockMouseAndDisableVR();
                 observerController.SetActive(true);
                 break;
             case Controller.SimpleCamera:
-                XRSettings.enabled = false;
-                XRSettings.LoadDeviceByName("None");
+                UnlockMouseAndDisableVR();
                 defaultCamera.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.lockState = CursorLockMode.Confined;
                 break;
                 
         }
         
-        ToggleVRTKCanvases();
+        ToggleVRCanvasesAndTeleportPads();
     }
 
-    private void ToggleVRTKCanvases()
+    private void UnlockMouseAndDisableVR()
     {
-//        Debug.Log( XRSettings.enabled + " . " + XRDevice.) ;
+        XRSettings.LoadDeviceByName("None");
+        XRSettings.enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void ToggleVRCanvasesAndTeleportPads()
+    {
         
         foreach (var canvas in canvases)
         {
             canvas.enabled = VRController.active;
+        }
+
+        foreach (var pad in teleportPads)
+        {
+            pad.gameObject.active = VRController.active;
         }
     }
 }

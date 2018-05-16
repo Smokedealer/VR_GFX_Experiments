@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1250"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ExperimentType>OO</ExperimentType>
   <ExperimentStart>0001-01-01T00:00:00</ExperimentStart>
@@ -8,7 +8,6 @@
       <Questions>
         <Question>
           <Text>[This text can be whatever you want.]</Text>
-          <ExperimentPart>1</ExperimentPart>
           <Options>
             <Option>Answer 1</Option>
             <Option>Answer 2</Option>
@@ -22,14 +21,14 @@
         <Settings>
           <PropertyName>_BumpMap</PropertyName>
           <PropertyType>texture</PropertyType>
-          <EffectIntensity>1</EffectIntensity>
+          <PropertyValue>1</PropertyValue>
         </Settings>
       </ObjectOneSettings>
       <ObjectTwoSettings>
         <Settings>
           <PropertyName>_BumpMap</PropertyName>
           <PropertyType>texture</PropertyType>
-          <EffectIntensity>0</EffectIntensity>
+          <PropertyValue>0</PropertyValue>
         </Settings>
       </ObjectTwoSettings>
     </TestOO>

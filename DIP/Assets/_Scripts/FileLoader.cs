@@ -36,7 +36,7 @@ public class FileLoader : MonoBehaviour
 		//Remove all buttons if any
 		foreach (Transform child in contentLayout)
 		{
-			Destroy(child);
+			Destroy(child.gameObject);
 		}
 		
 		foreach (var file in fileInfo)
@@ -82,7 +82,6 @@ public class FileLoader : MonoBehaviour
 				SceneManager.LoadScene("OnObjectExperiments");
 				break;
 			case FileType.PP:
-			case FileType.PPC:
 				SceneManager.LoadScene("PostProExperiments");
 				break;
 		}
@@ -101,7 +100,6 @@ public class FileLoader : MonoBehaviour
 				SceneManager.LoadScene("OnObjectExperiments");
 				break;
 			case FileType.PP:
-			case FileType.PPC:
 				SceneManager.LoadScene("PostProExperiments");
 				break;
 		}

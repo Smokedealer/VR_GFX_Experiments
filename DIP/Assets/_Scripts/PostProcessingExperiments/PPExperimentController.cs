@@ -22,6 +22,8 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
 
     private Recorder recorder;
 
+    public Transform nonVRTransformToRecord;
+
 
     /********************************************************/
 
@@ -51,7 +53,7 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     void Start()
     {
         experiment = ApplicationDataContainer.loadedExperiment;
-
+        
         recorder = FindObjectOfType<Recorder>();
 
         if (ApplicationDataContainer.replay)
@@ -59,7 +61,7 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
             roomNames = ApplicationDataContainer.loadedRecording.experimentGameObjects;
             SpawnRooms();
             var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
-            controllerSwapper.activeController = PlayerControllerSwapper.Controller.Observer;
+            controllerSwapper.activeController = Controller.Observer;
             controllerSwapper.RefreshActive();
 
             recorder.StartReplay();
@@ -109,7 +111,7 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     {
         if (!recorder)
         {
-            recorder = GameObject.FindGameObjectWithTag("Recorder").GetComponent<Recorder>();
+            recorder = FindObjectOfType<Recorder>();
 
             if (!recorder)
             {
@@ -120,6 +122,18 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
             //Sets which kind of recording this will be
             recorder.SetType(this);
         }
+
+
+        var a = Camera.main.transform;
+        var b = nonVRTransformToRecord;
+        
+        Debug.Log(a.name + " - " + b.name);
+            
+        if (ApplicationDataContainer.runMode == Controller.NonVR)
+        {
+            Debug.Log("Setting alternative record point");
+            recorder.playerCamera = a;
+        }
     }
 
 
@@ -129,6 +143,10 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     /// </summary>
     public virtual void PrepareExperiment()
     {
+        postProcessingBehaviour = FindObjectOfType<PostProcessingBehaviour>();
+        headsetFade = FindObjectOfType<VRTK_HeadsetFade>();
+        
+        
         var loadedTests = experiment.tests;
         tests = new List<PostProTest>();
         roomNames = new List<string>();
@@ -421,6 +439,7 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     {
         ui.questionTextDisplay.text = questions[currentQuestionIndex].questionText;
     }
+
 
     private void SetOptions()
     {

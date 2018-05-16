@@ -67,6 +67,9 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     /// </summary>
     public GameObject objectNotFoundDummy;
 
+    public GameObject errorUI;
+    public GameObject wallUI;
+
     /********************************************/
     
     /// <summary>
@@ -128,6 +131,7 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     /// List of object names - strings (for replaying)
     /// </summary>
     private List<string> objectNames;
+   
 
     
     /// <summary>
@@ -139,13 +143,7 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
         experiment = ApplicationDataContainer.loadedExperiment;
 
         recorder = FindObjectOfType<Recorder>();
-        
-        if (experiment == null)
-        {
-            Debug.Log("Loading default experiment");
-            experiment = Experiment.Load("OOExperimentTemplate.xml");
-        }
-
+      
 
         //If replay flag is on, run replay routine
         if (ApplicationDataContainer.replay)
@@ -153,13 +151,20 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
             objectNames = ApplicationDataContainer.loadedRecording.experimentGameObjects;
             
             var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
-            controllerSwapper.activeController = PlayerControllerSwapper.Controller.Observer;
+            controllerSwapper.activeController = Controller.Observer;
             controllerSwapper.RefreshActive();
 
             recorder.StartReplay();
         }
         else //Run normal experiment
         {
+            if (experiment == null)
+            {
+                errorUI.active = true;
+                wallUI.active = false;
+                return;
+            }
+            
             player.GetComponent<PlayerControllerSwapper>().RefreshActive();
             
             InitRecorder();
@@ -495,7 +500,6 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
         }
         
         experiment.tests[currentItemIndex].questions[currentQuestionIndex].answerIndex = answer;
-        experiment.tests[currentItemIndex].questions[currentQuestionIndex].experimentPart = currentItemIndex;
         
         LoadNextObject();
     }
