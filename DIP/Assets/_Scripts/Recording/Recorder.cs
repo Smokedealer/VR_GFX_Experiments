@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Xsl;
 using UnityEngine;
 using Object = System.Object;
 
@@ -66,6 +67,10 @@ public class Recorder : MonoBehaviour
 	/// </summary>
 	private int replayIndex = 0;
 
+	public int OOitemIndex = 0;
+
+	public int PPefectIndex = 0;
+
 	/// <summary>
 	/// List of recorded camera positions
 	/// </summary>
@@ -97,6 +102,8 @@ public class Recorder : MonoBehaviour
 		}
 		else
 		{
+			//if (ApplicationDataContainer.runMode == Controller.NonVR) playerCamera = Camera.main.transform;
+			
 			recordedData = new Recording
 			{
 				fileType = FileType
@@ -138,9 +145,18 @@ public class Recorder : MonoBehaviour
 	{
 		this.replayIndex = replayIndex;
 	}
+
+	private bool click;
 	
 	void FixedUpdate ()
 	{
+		click = !click;
+		
+		if (click)
+		{
+			return;
+		} 
+		
 		if (recording)
 		{
 			RecordFrame();
@@ -207,6 +223,9 @@ public class Recorder : MonoBehaviour
 		recordedData.cameraPositions.Add(new PointInTime(playerCamera.position, playerCamera.rotation));
 		if (leftController != null) recordedData.leftControllerPositions.Add(new PointInTime(leftController.transform.position, leftController.transform.rotation));
 		if (rightController != null) recordedData.rightControllerPositions.Add(new PointInTime(rightController.transform.position, rightController.transform.rotation));
+		
+		if(FileType == FileType.OO) recordedData.theOOObjectSwapTimes.Add(OOitemIndex);
+		if(FileType == FileType.PP) recordedData.thePPEffectSwapTimes.Add(PPefectIndex);
 	}
 
 	public bool IsReplaying()

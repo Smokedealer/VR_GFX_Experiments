@@ -15,13 +15,20 @@ public class Recording
 
     public List<string> experimentGameObjects;
 
-//    public Experiment experiment;
+    public List<int> theOOObjectSwapTimes;
+
+    public List<int> thePPEffectSwapTimes;
+
+    public Experiment experiment;
     
     public Recording()
     {
         cameraPositions = new List<PointInTime>();
         leftControllerPositions = new List<PointInTime>();
         rightControllerPositions = new List<PointInTime>();
+        
+        theOOObjectSwapTimes = new List<int>();
+        thePPEffectSwapTimes = new List<int>();
     }
     
     public void SaveRecording(string fileName)

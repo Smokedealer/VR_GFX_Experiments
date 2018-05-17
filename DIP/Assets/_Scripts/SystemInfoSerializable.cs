@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class SystemInfoSerializable
 {
+    [XmlElement(ElementName = "OS")] public string os;
+    
     [XmlElement(ElementName = "GPU")] public string gpuName;
 
     [XmlElement(ElementName = "Driver")] public string driver;

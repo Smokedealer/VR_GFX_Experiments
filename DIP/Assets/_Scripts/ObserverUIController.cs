@@ -58,7 +58,7 @@ public class ObserverUIController : MonoBehaviour
 		slider.value = recorder.GetCurrentFrameIndex();
 		recordingProgressText.text = slider.value + "/" + maxFrames;
 		
-		buttonText.text = !playing ? "❚❚" : "►";
+		buttonText.text = !playing ? "►" : "❚❚";
 
 		if (slider.value == maxFrames) playing = false;
 	}

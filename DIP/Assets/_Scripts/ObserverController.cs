@@ -1,38 +1,53 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObserverController : MonoBehaviour
 {
     //initial speed
     public int baseSpeed = 10;
     private int currentSpeed;
-
-    public float mouseSensitivity = 100.0f;
-    public float clampAngle = 80.0f;
     
-    private float rotY; // rotation around the up/y axis
-    private float rotX; // rotation around the right/x axis
-
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        CursorLock();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             MouseLook();
             Movement();
         }
-    }
-
-    public void CursorLock()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
         
     }
 
+    
+    /// <summary>
+    /// Locks the cursor and makes it invisible
+    /// </summary>
+    public void CursorLock()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// Handles the user imput and translates it into player movement.
+    /// </summary>
     private void Movement()
     {
         
@@ -84,17 +99,11 @@ public class ObserverController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Very simple solution to camera rotation.
+    /// </summary>
     private void MouseLook()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = -Input.GetAxis("Mouse Y");
-
-        rotY += mouseX * mouseSensitivity * Time.deltaTime;
-        rotX += mouseY * mouseSensitivity * Time.deltaTime;
-
-        rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
-
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
-        transform.rotation = localRotation;
+        transform.eulerAngles += new Vector3(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Rotation"));
     }
 }

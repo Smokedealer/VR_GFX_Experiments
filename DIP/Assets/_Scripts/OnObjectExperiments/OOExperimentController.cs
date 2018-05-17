@@ -67,6 +67,8 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     /// </summary>
     public GameObject objectNotFoundDummy;
 
+    public Transform objectToTrack;
+    
     public GameObject errorUI;
     public GameObject wallUI;
 
@@ -149,11 +151,13 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
         if (ApplicationDataContainer.replay)
         {
             objectNames = ApplicationDataContainer.loadedRecording.experimentGameObjects;
+
+            experiment = recorder.recordedData.experiment;
             
             var controllerSwapper = player.GetComponent<PlayerControllerSwapper>();
             controllerSwapper.activeController = Controller.Observer;
             controllerSwapper.RefreshActive();
-
+            
             recorder.StartReplay();
         }
         else //Run normal experiment
@@ -168,6 +172,13 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
             player.GetComponent<PlayerControllerSwapper>().RefreshActive();
             
             InitRecorder();
+
+            recorder.recordedData.experiment = experiment;
+            
+            if (ApplicationDataContainer.runMode == Controller.NonVR)
+            {
+                recorder.playerCamera = objectToTrack;
+            }
             
             recorder.StartRecording();
             
@@ -183,7 +194,51 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
 
         
     }
+
+    private int lastItemIndex = -1;
     
+    /// <summary>
+    /// Used for replay purposes
+    ///
+    /// Spawns correct items, that were used durin the experiment.
+    /// </summary>
+    private void FixedUpdate()
+    {
+        if (!ApplicationDataContainer.replay || !recorder.IsReplaying()) return;
+        
+        int actualIndex = recorder.recordedData.theOOObjectSwapTimes[recorder.GetCurrentFrameIndex()];
+
+        if (actualIndex != lastItemIndex)
+        {
+            SpawnItemsForReplay(actualIndex);
+            lastItemIndex = actualIndex;
+        }
+    }
+
+    /// <summary>
+    /// Spawns the actual items that were part of the recording.
+    /// </summary>
+    /// <param name="i">Item index</param>
+    private void SpawnItemsForReplay(int i)
+    {
+        foreach (Transform child in spawnPoint1)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in spawnPoint2)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        GameObject item = Resources.Load<GameObject>(recorder.recordedData.experimentGameObjects[i]);
+        Debug.Log("Name: " + item.name);
+        
+        
+        
+        Instantiate(item, spawnPoint1.position, spawnPoint1.rotation, spawnPoint1);
+        Instantiate(item, spawnPoint2.position, spawnPoint2.rotation, spawnPoint2);
+    }
+
     /// <summary>
     /// If the recorder is not explicitly set this method will attempt to find it in the scene.
     /// </summary>
@@ -401,31 +456,24 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     /// </summary>
     private void SpawnExperimentObjects()
     {
-        swapPositions = Random.value < 0.5f;
-
-        //Swap the positions
-        Transform actualSpawnPoint1 = swapPositions ? spawnPoint2 : spawnPoint1;
-        Transform actualSpawnPoint2 = swapPositions ? spawnPoint1 : spawnPoint2;
-
-        originalObject = Instantiate(experimentObject, actualSpawnPoint1.position, actualSpawnPoint1.rotation);
-        copyObject = Instantiate(experimentObject, actualSpawnPoint2.position, actualSpawnPoint2.rotation);
+        originalObject = Instantiate(experimentObject, spawnPoint1.position, spawnPoint1.rotation);
+        copyObject = Instantiate(experimentObject, spawnPoint2.position, spawnPoint2.rotation);
 
         AddExperimentMaterialToObject(originalObject, copyObject);
-
     }
 
     /// <summary>
     /// Loads next question to be show to the user. The question
     /// contains a list of answers that are spawned as well.
     /// </summary>
-    private void LoadNextQuestion()
+    IEnumerator LoadNextQuestion()
     {
-        if (currentQuestionIndex + 1 < experiment.tests[currentQuestionIndex].questions.Count)
-        {
-            currentQuestionIndex++;
-            SetQuestionText();
-            SetOptions();
-        }
+        RemoveAnswersDisplay();
+        RemoveQuestionText();
+        yield return new WaitForSeconds(1f);
+        currentQuestionIndex++;
+        SetQuestionText();
+        SetOptions();
     }
 
     
@@ -435,9 +483,9 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     /// </summary>
     public void LoadNextObject()
     {
-        if (currentQuestionIndex + 1 < experiment.tests[currentItemIndex].questions.Count)
+        if (currentQuestionIndex + 1 < experiment.tests[currentQuestionIndex].questions.Count)
         {
-            LoadNextQuestion();
+            StartCoroutine(LoadNextQuestion());
         }
         else if (currentItemIndex + 1 >= experiment.tests.Count) //Experiment is done
         {
@@ -446,6 +494,7 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
         }
         else
         {
+            currentQuestionIndex = 0;
             currentItemIndex++;
             NextRound();
         }
@@ -459,18 +508,18 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
     {
         DateTime now = DateTime.Now;
         experiment.experimentEndTime = now;
-        string filename = now.ToString("yyyyMMddhhmm");
+        string filename = now.ToString("yyyy-MM-dd-HH-mm");
         
         RemoveAnswersDisplay();
         RemoveQuestionText();
         DespawnOldObjects();
         
-        experiment.SaveResult("OO-Result-" + filename + ".xml");
+        experiment.SaveResult("OO-" + filename + ".xml");
 
         if (recorder)
         {
             recorder.recordedData.experimentGameObjects = objectNames;
-            recorder.StopRecording("OO-Recording-" + filename + ".rec");
+            recorder.StopRecording("OO-" + filename + ".rec");
         }
         
         ReturnToMainMenu();
@@ -500,6 +549,8 @@ public class OOExperimentController : MonoBehaviour, IExperimentController {
         }
         
         experiment.tests[currentItemIndex].questions[currentQuestionIndex].answerIndex = answer;
+
+        if(recorder) recorder.OOitemIndex++;
         
         LoadNextObject();
     }

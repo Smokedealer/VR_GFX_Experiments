@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ExperimentType>OO</ExperimentType>
+  <ExperimentStart>2018-05-17T04:20:28.9815495+02:00</ExperimentStart>
+  <ExperimentEnd>2018-05-17T04:20:37.2097705+02:00</ExperimentEnd>
+  <Tests>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>Which of the two boxes is more appeling to you?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>Are these boxes obviously dofferent?</Text>
+          <Options>
+            <Option>Yes</Option>
+            <Option>I don't know</Option>
+            <Option>No</Option>
+          </Options>
+          <Answer>2</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>WoodenCrate</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>Which of the two milk churns is more appeling to you?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+        <Question>
+          <Text>Would you say that these two objects are one and the same?</Text>
+          <Options>
+            <Option>Yes</Option>
+            <Option>I don't know</Option>
+            <Option>No</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>MilkChurn</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>Which of the two sacks is more appeling to you?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>Which one looks more realistic?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>CoffeeSack</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects is more appeling to you?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>Which one looks more realistic?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>WoodenBarrel</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+    <TestOO>
+      <Questions>
+        <Question>
+          <Text>Which of the two objects looks more "rough"?</Text>
+          <Options>
+            <Option>Left</Option>
+            <Option>I can't tell</Option>
+            <Option>Right</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+        <Question>
+          <Text>Does the barrel on the right have more detail?</Text>
+          <Options>
+            <Option>Yes</Option>
+            <Option>I can't tell</Option>
+            <Option>No</Option>
+          </Options>
+          <Answer>1</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>RedBarrelDamaged2</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
+  </Tests>
+  <SystemInfo>
+    <OS>Windows 10  (10.0.0) 64bit</OS>
+    <GPU>NVIDIA GeForce GTX 1070</GPU>
+    <Driver>Direct3D 11.0 [level 11.1]</Driver>
+    <CPU>Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz</CPU>
+  </SystemInfo>
+  <VRDevice>None</VRDevice>
+</Experiment>

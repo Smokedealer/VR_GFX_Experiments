@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ExperimentType>PP</ExperimentType>
+  <ExperimentStart>0001-01-01T00:00:00</ExperimentStart>
+  <ExperimentEnd>0001-01-01T00:00:00</ExperimentEnd>
+  <Tests>
+    <TestPP>
+      <Questions>
+        <Question>
+          <Text>Which of the two variants is more appeling to you?</Text>
+          <Options>
+            <Option>Variant 1</Option>
+            <Option>Can't tell </Option>
+            <Option>Variant 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How much of a difference do you see between the two variants?</Text>
+          <Options>
+			<Option>Variant 1 is way better</Option>
+            <Option>Variant 1 is better</Option>
+            <Option>They look alike</Option>
+            <Option>Variant 2 is better</Option>
+			<Option>Variant 2 is way better</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>Do you see any flickering in any of the variants?</Text>
+          <Options>
+            <Option>Yes in 1</Option>
+            <Option>No</Option>
+            <Option>Yes in both</Option>
+			<Option>Yes in 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How comfortable do you feel in variant 2?</Text>
+          <Options>
+            <Option>Very comfortable</Option>
+            <Option>Comfortable</Option>
+            <Option>Normal</Option>
+			<Option>Uncomfortable</Option>
+			<Option>Very uncomfortable</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>furniture_room</ExperimentRoomName>
+    </TestPP>
+	<TestPP>
+      <Questions>
+        <Question>
+          <Text>Which of the two variants is more appeling to you?</Text>
+          <Options>
+            <Option>Variant 1</Option>
+            <Option>Can't tell </Option>
+            <Option>Variant 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How much of a difference do you see between the two variants?</Text>
+          <Options>
+			<Option>Variant 1 is way better</Option>
+            <Option>Variant 1 is better</Option>
+            <Option>They look alike</Option>
+            <Option>Variant 2 is better</Option>
+			<Option>Variant 2 is way better</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>Do you see any flickering in any of the variants?</Text>
+          <Options>
+            <Option>Yes in 1</Option>
+            <Option>No</Option>
+            <Option>Yes in both</Option>
+			<Option>Yes in 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How comfortable do you feel in variant 2?</Text>
+          <Options>
+            <Option>Very comfortable</Option>
+            <Option>Comfortable</Option>
+            <Option>Normal</Option>
+			<Option>Uncomfortable</Option>
+			<Option>Very uncomfortable</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>junk_room</ExperimentRoomName>
+    </TestPP>
+	<TestPP>
+      <Questions>
+        <Question>
+          <Text>Which of the two variants is more appeling to you?</Text>
+          <Options>
+            <Option>Variant 1</Option>
+            <Option>Can't tell </Option>
+            <Option>Variant 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How much of a difference do you see between the two variants?</Text>
+          <Options>
+			<Option>Variant 1 is way better</Option>
+            <Option>Variant 1 is better</Option>
+            <Option>They look alike</Option>
+            <Option>Variant 2 is better</Option>
+			<Option>Variant 2 is way better</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>Do you see any flickering in any of the variants?</Text>
+          <Options>
+            <Option>Yes in 1</Option>
+            <Option>No</Option>
+            <Option>Yes in both</Option>
+			<Option>Yes in 2</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+		<Question>
+          <Text>How comfortable do you feel in variant 2?</Text>
+          <Options>
+            <Option>Very comfortable</Option>
+            <Option>Comfortable</Option>
+            <Option>Normal</Option>
+			<Option>Uncomfortable</Option>
+			<Option>Very uncomfortable</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+      <ExperimentRoomName>wood_stuff_room</ExperimentRoomName>
+    </TestPP>
+  </Tests>
+</Experiment>

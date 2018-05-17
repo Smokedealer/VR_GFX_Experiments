@@ -14,8 +14,15 @@ public class TooltipHider : MonoBehaviour
 	{
 		visible = true;
 		_tooltips = GetComponent<VRTK_ControllerTooltips>();
+
+		StartCoroutine(Hide());
 	}
 
+	IEnumerator Hide()
+	{
+		yield return new WaitForSeconds(20f);
+		Toggle();
+	}
 
 	public void Toggle()
 	{

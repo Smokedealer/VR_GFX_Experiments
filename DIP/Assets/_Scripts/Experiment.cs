@@ -74,8 +74,9 @@ public class Experiment
     private void FillInSystemInfo()
     {
         systemInfo = new SystemInfoSerializable();
-        
-        systemInfo.cpuName = SystemInfo.graphicsDeviceName;
+
+        systemInfo.os = SystemInfo.operatingSystem;
+        systemInfo.gpuName = SystemInfo.graphicsDeviceName;
         systemInfo.cpuName = SystemInfo.processorType;
         systemInfo.driver = SystemInfo.graphicsDeviceVersion;
 

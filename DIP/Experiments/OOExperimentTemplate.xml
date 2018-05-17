@@ -32,5 +32,33 @@
         </Settings>
       </ObjectTwoSettings>
     </TestOO>
+	<TestOO>
+      <Questions>
+        <Question>
+          <Text>[This text can be whatever you want.]</Text>
+          <Options>
+            <Option>Answer 1</Option>
+            <Option>Answer 2</Option>
+            <Option>Answer 3</Option>
+          </Options>
+          <Answer>0</Answer>
+        </Question>
+      </Questions>
+      <ExperimentObjectName>Generator</ExperimentObjectName>
+      <ObjectOneSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>1</PropertyValue>
+        </Settings>
+      </ObjectOneSettings>
+      <ObjectTwoSettings>
+        <Settings>
+          <PropertyName>_BumpMap</PropertyName>
+          <PropertyType>texture</PropertyType>
+          <PropertyValue>0</PropertyValue>
+        </Settings>
+      </ObjectTwoSettings>
+    </TestOO>
   </Tests>
 </Experiment>

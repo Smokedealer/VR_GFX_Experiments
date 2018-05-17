@@ -11,18 +11,55 @@ using VRTK;
 
 public class PPExperimentController : MonoBehaviour, IExperimentController
 {
+    
+    /// <summary>
+    /// Experiment that is being conducted
+    /// </summary>
     public Experiment experiment;
+    
+    /// <summary>
+    /// Postprocessing behaviour to be switched around
+    /// </summary>
     public PostProcessingBehaviour postProcessingBehaviour;
+
+    /// <summary>
+    /// For vr smooth transitions
+    /// </summary>
     public VRTK_HeadsetFade headsetFade;
 
+    /// <summary>
+    /// Default room reference
+    /// </summary>
     public GameObject defaultRoom;
 
+    
+    /// <summary>
+    /// Simple contaner for UI elements
+    /// </summary>
     public UIContainer ui;
+    
+    /// <summary>
+    /// Container for default room UI
+    /// </summary>
     public IntroOutroUI defaulRoomUI;
 
+    /// <summary>
+    /// Recorder reference
+    /// </summary>
     private Recorder recorder;
 
+    
+    /// <summary>
+    /// Helper transform for recording position.
+    /// </summary>
     public Transform nonVRTransformToRecord;
+
+    /// <summary>
+    /// This reference is needed for correct character transportation.
+    /// </summary>
+    public GameObject nonVRplayer;
+
+    public Text replayEffectIndexText;
 
 
     /********************************************************/
@@ -80,6 +117,9 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
         }
     }
 
+    /// <summary>
+    /// Fallback error room is used in case experiment is corrupted
+    /// </summary>
     private void EndWithError()
     {
         defaulRoomUI.headline.text = "Experiment Error";
@@ -123,17 +163,11 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
             recorder.SetType(this);
         }
 
-
-        var a = Camera.main.transform;
-        var b = nonVRTransformToRecord;
-        
-        Debug.Log(a.name + " - " + b.name);
-            
         if (ApplicationDataContainer.runMode == Controller.NonVR)
         {
-            Debug.Log("Setting alternative record point");
-            recorder.playerCamera = a;
+            recorder.playerCamera = nonVRTransformToRecord;
         }
+     
     }
 
 
@@ -143,9 +177,10 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
     /// </summary>
     public virtual void PrepareExperiment()
     {
-        postProcessingBehaviour = FindObjectOfType<PostProcessingBehaviour>();
+        if(ApplicationDataContainer.runMode == Controller.NonVR) postProcessingBehaviour = FindObjectOfType<PostProcessingBehaviour>();
         headsetFade = FindObjectOfType<VRTK_HeadsetFade>();
         
+        experiment.experimentStartTime = DateTime.Now;
         
         var loadedTests = experiment.tests;
         tests = new List<PostProTest>();
@@ -191,7 +226,6 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
 
                 //Default error room
                 room = Resources.Load<GameObject>(roomsFolder + "error_room");
-                //TODO set text and option to error
             }
 
             Instantiate(room, new Vector3(xOffset, 0, 0), room.transform.rotation);
@@ -352,6 +386,17 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
         }
     }
 
+    private int effectIndexOld = -1;
+    
+    private void FixedUpdate()
+    {
+        if (!ApplicationDataContainer.replay || !recorder.IsReplaying()) return;
+
+        int effectIndex = recorder.recordedData.thePPEffectSwapTimes[recorder.GetCurrentFrameIndex()];
+
+        if(effectIndexOld != effectIndex) replayEffectIndexText.text = "Variant\n" + (effectIndex + 1);
+    }
+
 
     /// <summary>
     /// Applies the next available post processing profile to be tested.
@@ -495,39 +540,53 @@ public class PPExperimentController : MonoBehaviour, IExperimentController
             yield return new WaitForSeconds(transitionDuration);
             headsetFade.Unfade(transitionDuration * 2);
         }
-       
+
+        recorder.PPefectIndex = currentProfileIndex;
+        
         postProcessingBehaviour.profile = postProcessingProfiles[currentProfileIndex];
         ui.sceneValueText.text = currentProfileIndex + 1 + "/" + postProcessingProfiles.Count;
     }
 
 
     /// <summary>
-    /// 
+    ///  Room change routine.
     /// </summary>
     /// <returns>IEnumerator for the room swap</returns>
     IEnumerator RoomSwapRoutine()
     {
-        headsetFade.Fade(Color.black, transitionDuration);
-        yield return new WaitForSeconds(transitionDuration);
-        player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
+        if (ApplicationDataContainer.runMode == Controller.NonVR)
+        {
+            player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
+            nonVRplayer.transform.position = roomSpawnPoints[currentRoomNumber].transform.position + Vector3.up;
+        }
+        else
+        {
+            headsetFade.Fade(Color.black, transitionDuration);
+            yield return new WaitForSeconds(transitionDuration);
+            player.transform.position = roomSpawnPoints[currentRoomNumber].transform.position;
+            headsetFade.Unfade(transitionDuration);
+        }
+        
         ui.wallUICanvas.transform.position = canvasAnchors[currentRoomNumber].transform.position;
-        headsetFade.Unfade(transitionDuration);
     }
 
+    /// <summary>
+    /// Finalize and gather all the data needed
+    /// </summary>
     public void EndExperiment()
     {
         DateTime now = DateTime.Now;
-        string filename = now.ToString("yyyyMMddhhmm");
+        string filename = now.ToString("yyyy-MM-dd-HH-mm");
         
         if (recorder)
         {
             recorder.recordedData.experimentGameObjects = GetAllRoomStrings();
-            recorder.StopRecording("PP-Recording-" + filename + ".rec");   
+            recorder.StopRecording("PP-" + filename + ".rec");   
         }
         
         experiment.experimentEndTime = now;
         
-        experiment.SaveResult("PP-Result-" + filename + ".xml");
+        experiment.SaveResult("PP-" + filename + ".xml");
 
         ReturnToMainMenu();
     }

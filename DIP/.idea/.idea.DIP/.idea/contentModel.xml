@@ -471,6 +471,7 @@
           </e>
         </e>
       </e>
+      <e p="Assets\SelfHide.cs" t="Include" />
       <e p="Assets\Standard Assets" t="Include">
         <e p="Environment" t="Include">
           <e p="Water" t="Include">
